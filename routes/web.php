@@ -1,0 +1,274 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+//Font-end
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('index',[
+    'as'=>'trang-chu',
+    'uses'=>'PageController@getIndex'
+]); 
+Route::get('loai-san-pham/{type}',[
+    'as'=>'loaisanpham',
+    'uses'=>'PageController@getLoaiSp'
+]); 
+Route::get('nha-cung-cap-san-pham/{type}',[
+    'as'=>'nhacungcapsanpham',
+    'uses'=>'PageController@getNhaCungCapSp'
+]); 
+Route::get('chi-tiet-san-pham/{id}',[
+    'as'=>'chitietsanpham',
+    'uses'=>'PageController@getChitiet'
+]); 
+Route::get('lien-he',[
+    'as'=>'lienhe',
+    'uses'=>'PageController@getLienHe'
+]);
+Route::get('gioi-thieu',[
+    'as'=>'gioithieu',
+    'uses'=>'PageController@getGioiThieu'
+]);
+Route::get('faqs',[
+    'as'=>'faqs',
+    'uses'=>'PageController@getFaqs'
+]);
+Route::get('terms',[
+    'as'=>'terms',
+    'uses'=>'PageController@getTerms'
+]);
+Route::get('privacy',[
+    'as'=>'privacy',
+    'uses'=>'PageController@getPrivacy'
+]);
+Route::get('add-to-cart/{id}',[
+    'as'=>'themgiohang',
+    'uses'=>'PageController@getAddtoCart'
+]);
+Route::get('del-cart/{id}',[
+    'as'=>'xoagiohang',
+    'uses'=>'PageController@getDelItemCart'
+]);
+Route::get('dat-hang',[
+    'as'=>'dathang',
+    'uses'=>'PageController@getCheckout'
+]);
+Route::post('dat-hang',[
+    'as'=>'dathang',
+    'uses'=>'PageController@postCheckout'
+]);
+Route::get('dang-nhap',[
+    'as'=>'dangnhap',
+    'uses'=>'PageController@getLogin'
+]);
+Route::post('dang-nhap',[
+    'as'=>'dangnhap',
+    'uses'=>'PageController@postLogin'
+]);
+Route::get('dang-ky',[
+    'as'=>'dangky',
+    'uses'=>'PageController@getSignup'
+]);
+Route::post('dang-ky',[
+    'as'=>'dangky',
+    'uses'=>'PageController@postSignup'
+]);
+Route::get('dang-xuat',[
+    'as'=>'dangxuat',
+    'uses'=>'PageController@getLogout'
+]);
+Route::get('search',[
+    'as'=>'search',
+    'uses'=>'PageController@getSearch'
+]);
+
+//Back-end
+
+Route::get('admin',[
+    'as'=>'admin',
+    'uses'=>'AdminController@index'
+]);
+Route::get('dashboard',[
+    'as'=>'dashboard',
+    'uses'=>'AdminController@show_dashboard'
+]);
+Route::get('logout',[
+    'as'=>'logout',
+    'uses'=>'AdminController@logout'
+]);
+Route::post('admin-dashboard',[
+    'as'=>'admin-dashboard',
+    'uses'=>'AdminController@dashboard'
+]);
+Route::get('admin-registration',[
+    'as'=>'admin-registration',
+    'uses'=>'AdminController@registration'
+]);
+Route::post('save-registration',[
+    'as'=>'save-registration',
+    'uses'=>'AdminController@save_registration'
+]);
+
+//CategoryProduct
+
+Route::get('add-category-product',[
+    'as'=>'add-category-product',
+    'uses'=>'CategoryProduct@add_category_product'
+]);
+Route::get('edit-category-product/{category_product_id}',[
+    'as'=>'edit-category-product',
+    'uses'=>'CategoryProduct@edit_category_product'
+]);
+Route::get('delete-category-product/{category_product_id}',[
+    'as'=>'delete-category-product',
+    'uses'=>'CategoryProduct@delete_category_product'
+]);
+Route::get('all-category-product',[
+    'as'=>'all-category-product',
+    'uses'=>'CategoryProduct@all_category_product'
+]);
+Route::post('save-category-product',[
+    'as'=>'save-category-product',
+    'uses'=>'CategoryProduct@save_category_product'
+]);
+Route::post('update-category-product/{category_product_id}',[
+    'as'=>'update-category-product',
+    'uses'=>'CategoryProduct@update_category_product'
+]);
+Route::get('unactive-category-product/{category_product_id}',[
+    'as'=>'unactive-category-product',
+    'uses'=>'CategoryProduct@unactive_category_product'
+]);
+Route::get('active-category-product/{category_product_id}',[
+    'as'=>'active-category-product',
+    'uses'=>'CategoryProduct@active_category_product'
+]);
+
+//BrandProduct
+
+Route::get('add-brand-product',[
+    'as'=>'add-brand-product',
+    'uses'=>'BrandProduct@add_brand_product'
+]);
+Route::get('edit-brand-product/{brand_product_id}',[
+    'as'=>'edit-brand-product',
+    'uses'=>'BrandProduct@edit_brand_product'
+]);
+Route::get('delete-brand-product/{brand_product_id}',[
+    'as'=>'delete-brand-product',
+    'uses'=>'BrandProduct@delete_brand_product'
+]);
+Route::get('all-brand-product',[
+    'as'=>'all-brand-product',
+    'uses'=>'BrandProduct@all_brand_product'
+]);
+Route::post('save-brand-product',[
+    'as'=>'save-brand-product',
+    'uses'=>'BrandProduct@save_brand_product'
+]);
+Route::post('update-brand-product/{brand_product_id}',[
+    'as'=>'update-brand-product',
+    'uses'=>'BrandProduct@update_brand_product'
+]);
+Route::get('unactive-brand-product/{brand_product_id}',[
+    'as'=>'unactive-brand-product',
+    'uses'=>'BrandProduct@unactive_brand_product'
+]);
+Route::get('active-brand-product/{brand_product_id}',[
+    'as'=>'active-brand-product',
+    'uses'=>'BrandProduct@active_brand_product'
+]);
+
+//Product
+
+Route::get('add-product',[
+    'as'=>'add-product',
+    'uses'=>'ProductController@add_product'
+]);
+Route::get('edit-product/{product_id}',[
+    'as'=>'edit-product',
+    'uses'=>'ProductController@edit_product'
+]);
+Route::get('delete-product/{product_id}',[
+    'as'=>'delete-product',
+    'uses'=>'ProductController@delete_product'
+]);
+Route::get('all-product',[
+    'as'=>'all-product',
+    'uses'=>'ProductController@all_product'
+]);
+Route::post('save-product',[
+    'as'=>'save-product',
+    'uses'=>'ProductController@save_product'
+]);
+Route::post('update-product/{product_id}',[
+    'as'=>'update-product',
+    'uses'=>'ProductController@update_product'
+]);
+Route::get('unactive-product/{product_id}',[
+    'as'=>'unactive-product',
+    'uses'=>'ProductController@unactive_product'
+]);
+Route::get('active-product/{product_id}',[
+    'as'=>'active-product',
+    'uses'=>'ProductController@active_product'
+]);
+
+//Order
+
+Route::get('all-order',[
+    'as'=>'all-order',
+    'uses'=>'OrderController@all_order'
+]);
+Route::get('all-order-detail/{order_detail_id}',[
+    'as'=>'all-order-detail',
+    'uses'=>'OrderController@all_order_detail'
+]);
+
+//Customer
+
+Route::get('add-customer',[
+    'as'=>'add-customer',
+    'uses'=>'CustomerController@add_customer'
+]);
+Route::get('edit-customer/{customer_id}',[
+    'as'=>'edit-customer',
+    'uses'=>'CustomerController@edit_customer'
+]);
+Route::get('delete-customer/{customer_id}',[
+    'as'=>'delete-customer',
+    'uses'=>'CustomerController@delete_customer'
+]);
+Route::get('all-customer',[
+    'as'=>'all-customer',
+    'uses'=>'CustomerController@all_customer'
+]);
+Route::post('save-customer',[
+    'as'=>'save-customer',
+    'uses'=>'CustomerController@save_customer'
+]);
+Route::post('update-customer/{customer_id}',[
+    'as'=>'update-customer',
+    'uses'=>'CustomerController@update_customer'
+]);
+
+// ProfileAdmin
+
+Route::get('edit-profile/{profile_id}',[
+    'as'=>'edit-profile',
+    'uses'=>'UserController@edit_profile'
+]);
+Route::post('update-profile/{profile_id}',[
+    'as'=>'update-profile',
+    'uses'=>'UserController@update_profile'
+]);
+ 

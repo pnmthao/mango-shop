@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\Http\\Controllers",
+    "\\database",
+    "\\database\\migrations",
+    "\\resources\\lang"
+  ],
+  "SelectedNode": "\\database\\migrations\\2019_07_15_083901_create_students_table.php",
+  "PreviewInSolutionExplorer": false
+}
