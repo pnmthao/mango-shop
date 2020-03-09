@@ -132,14 +132,14 @@
 			})
 			total = totalAmount - totalDiscount
 			raws += `<tr class="rem-total">
-						<td class="invert" colspan="4">TOTAL</td>
+						<td class="invert" colspan="4">TỔNG</td>
 						<td class="invert total total-discount">${number_format(totalDiscount)}</td>
 						<td class="invert total total-amount">${number_format(totalAmount)}</td>
 						<td class="invert total item-total" style="font-weight: bold">${number_format(total)}</td>
 						<td class="invert"><i class="fa fa-check icon-check"></i></td>
 					</tr>`
 			document.getElementById("body-checkout").innerHTML = raws
-			document.getElementById("product-qty").innerHTML = items.length + " Product(s)"
+			document.getElementById("product-qty").innerHTML = items.length + " Sản phẩm"
 		}
 
 		function qtyChange(index, value){

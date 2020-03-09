@@ -9,7 +9,7 @@
 						<a href="index">Home</a>
 						<i>|</i>
 					</li>
-					<li>Checkout</li>
+					<li>Thanh toán</li>
 				</ul>
 			</div>
 		</div>
@@ -19,7 +19,7 @@
 	<div class="privacy">
 		<div class="container">
 			<!-- tittle heading -->
-			<h3 class="tittle-w3l">Checkout
+			<h3 class="tittle-w3l">Thanh toán
 				<span class="heading-style">
 					<i></i>
 					<i></i>
@@ -28,7 +28,7 @@
 			</h3>
 			<!-- //tittle heading -->
 			<div class="checkout-right">
-				<h4>Your shopping cart contains:
+				<h4>Giỏ hàng của bạn có:
 					<span id="product-qty"></span>
 				</h4>
 				<div class="table-responsive">
