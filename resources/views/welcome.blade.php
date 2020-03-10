@@ -75,12 +75,20 @@
                     @endauth
                 </div>
             @endif
-
+            <div>
+                <a href="locale/vi">Viet nam</a>
+                <a href="locale/en">English</a>
+            </div>
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel, @lang('login.Hi', ['name' => 'Minh Thao'])
+                    Laravel. @lang('login.hi', ['name' => 'Minh Thao'])
                 </div>
-
+                <div>
+                    <select name="myselect" id="switcher-language" onchange="getLang()">
+						<option value="vi" selected='selected'>Tiếng Việt</option>
+						<option value="en">English</option>
+					</select>
+                </div>
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
@@ -93,4 +101,5 @@
             </div>
         </div>
     </body>
+    
 </html>

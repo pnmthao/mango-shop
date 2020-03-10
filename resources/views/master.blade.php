@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html  lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
 	<title>Mango Shop</title>
 	<base href="{{asset('')}}">
@@ -34,12 +34,12 @@
 </head>
 
 <body>
-	@include('header')
+	{{-- @include('header') --}}
 	@yield('content')
-	@include('footer')
+	{{-- @include('footer') --}}
 
 	<!-- js-files -->
-
+	
 	<!-- jquery -->
 	<script src="js/jquery-2.1.4.min.js"></script>
 	<!-- //jquery -->
@@ -73,7 +73,6 @@
 	<script src="js/minicart.js"></script>
 	<script>
 		let hrefCheckout = '@if(Session::get('customer_id')) {{"window.location.href='dat-hang'"}} @else {{"window.location.href='dang-nhap'"}} @endif';
-		console.log(hrefCheckout);
 		paypalm.minicartk.render({
 			"strings": {
 				"hrefCheckout": hrefCheckout
@@ -90,7 +89,7 @@
 						<td class="invert">${index+1}</td>
 						<td class="invert-image">
 							<a href="chi-tiet-san-pham/${item_id}">
-								<img src="uploads/product/${item_image}" alt=" " class="img-responsive">
+								<img src="public/uploads/product/${item_image}" alt=" " class="img-responsive">
 							</a>
 						</td>
 						<td class="invert">${item_name}</td>
@@ -258,7 +257,7 @@
 	<!-- //script for tabs -->
 	
 	<!-- password-script -->
-	<script>
+	{{-- <script>
 		window.onload = function () {
 			document.getElementById("password1").onchange = validatePassword;
 			document.getElementById("password2").onchange = validatePassword;
@@ -273,7 +272,7 @@
 				document.getElementById("password2").setCustomValidity('');
 			//empty string means no validation error
 		}
-	</script>
+	</script> --}}
 	<!-- //password-script -->
 
 	<!-- smoothscroll -->

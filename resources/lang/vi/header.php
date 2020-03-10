@@ -14,5 +14,8 @@ return [
     */
 
     'hi' => 'Xin chào, :name',
+    'register' => 'Dang ky',
+    'test' => 'Sản phẩm bán chạy nhất'
+
 
 ];

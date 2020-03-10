@@ -228,7 +228,7 @@
             <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                     <?php $image = Session::get('admin_image');  $id = Session::get('admin_id');?>
-                    <img alt="" src="{{asset('uploads/profile/'.$image)}}">
+                    <img alt="" src="{{asset('public/uploads/profile/'.$image)}}">
                     <span class="username">
                         <?php
                             $name = Session::get('admin_name');

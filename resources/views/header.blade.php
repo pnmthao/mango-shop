@@ -12,7 +12,7 @@
 				<a href="{{route('trang-chu')}}">
 					<span>M</span>ango
 					<span>S</span>hop
-					<img src="uploads/logo/logo2.png" alt=" ">
+					<img src="public/uploads/logo/logo2.png" alt=" ">
 				</a>
 			</h1>
 		</div>
@@ -32,12 +32,20 @@
 					<span class="fa fa-phone" aria-hidden="true"></span> 0949 422 936
 				</li>
 				@if(Session::get('customer_id'))
-					<li>Chào bạn, {{Session::get('customer_name')}}</li>
+					<li>@lang('header.hi', ['name' => Session::get('customer_name')])</li>
 					<li><a href="{{route('dangxuat')}}"> Đăng xuất</a></li>
 				@else
-					<li><a href="{{route('dangky')}}">Đăng ký</a></li>
+					<li><a href="{{route('dangky')}}">@lang('header.register')</a></li>
 					<li><a href="{{route('dangnhap')}}">Đăng nhập</a></li>
 				@endif
+				<li>
+					<a href="locale/vi">Viet nam</a>
+                	<a href="locale/en">English</a>
+					{{-- <select name="myselect" id="switcher-language">
+						<option value="1" selected='selected'><a href="#">Tiếng Việt</a></option>
+						<option value="2">English</option>
+					</select> --}}
+				</li>
 				{{-- <li>
 				<a href="{{route('dangnhap')}}" data-toggle="modal" data-target="#myModal1">
 				<span class="fa fa-unlock-alt" aria-hidden="true"></span>Đăng nhập </a>

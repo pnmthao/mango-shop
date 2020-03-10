@@ -13,6 +13,8 @@ return [
     |
     */
 
-    'hi' => 'Xin chào, :name',
+    'hi' => 'Hi, :name',
+    'register' => 'Register',
+    'test' => 'Debuggg'
 
 ];

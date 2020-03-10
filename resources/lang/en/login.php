@@ -13,6 +13,6 @@ return [
     |
     */
 
-    'Hi' => 'Hi, :name',
+    'hi' => 'Hi, :name',
 
 ];

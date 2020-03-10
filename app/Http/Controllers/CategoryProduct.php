@@ -53,7 +53,7 @@ class CategoryProduct extends Controller
             $get_name_image = $get_image->getClientOriginalName();
             $name_image = current(explode('.',$get_name_image));
             $new_image = $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
-            $get_image->move('uploads/category_product',$new_image);
+            $get_image->move('public/uploads/category_product',$new_image);
             $data['image'] = $new_image;
         }        
         DB::table('type_products')->insert($data);
@@ -72,7 +72,7 @@ class CategoryProduct extends Controller
             $get_name_image = $get_image->getClientOriginalName();
             $name_image = current(explode('.',$get_name_image));
             $new_image = $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
-            $get_image->move('uploads/category_product',$new_image);
+            $get_image->move('public/uploads/category_product',$new_image);
             $data['image'] = $new_image;
             DB::table('type_products')->where('id',$category_product_id)->update($data);
             Session::put('message','Cập nhật danh mục sản phẩm thành công');

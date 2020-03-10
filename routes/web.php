@@ -11,12 +11,16 @@
 |
 */
 //Font-end
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('welcome/{locale}', function ($locale) {
-    App::setLocale($locale);
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/',[
+    'as'=>'trang-chu',
+    'uses'=>'PageController@getIndex'
+]);
+Route::get('locale/{locale}', function ($locale) {
+    Session::put('locale', $locale);
+    return redirect()->back();
 });
 Route::get('index',[
     'as'=>'trang-chu',

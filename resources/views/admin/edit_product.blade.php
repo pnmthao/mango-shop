@@ -44,7 +44,7 @@
                             <div class="form-group">
                                 <label for="product_image">Hình ảnh</label>
                                 <input type="file" class="form-control" name="product_image" id="product_image">
-                                <img src="{{asset('uploads/product/'.$edit_value->image)}}" height="100" width="100"></<img>
+                                <img src="{{asset('public/uploads/product/'.$edit_value->image)}}" height="100" width="100"></<img>
                             </div>
                             <div class="form-group">
                                 <label for="product_description">Mô tả sản phẩm</label>

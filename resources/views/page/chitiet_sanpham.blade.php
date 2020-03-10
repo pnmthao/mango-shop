@@ -31,9 +31,9 @@
 				<div class="grid images_3_of_2">
 					<div class="flexslider">
 						<ul class="slides">
-							<li data-thumb="uploads/product/{{$sanpham->image}}">
+							<li data-thumb="public/uploads/product/{{$sanpham->image}}">
 								<div class="thumb-image">
-									<img src="uploads/product/{{$sanpham->image}}" data-imagezoom="true" class="img-responsive" alt=""> </div>
+									<img src="public/uploads/product/{{$sanpham->image}}" data-imagezoom="true" class="img-responsive" alt=""> </div>
 							</li>
 						</ul>
 						<div class="clearfix"></div>
@@ -135,7 +135,7 @@
 						<div class="w3l-specilamk">
 							<div class="speioffer-agile">
 								<a href="{{route('chitietsanpham',$sptt->id)}}">
-									<img src="uploads/product/{{$sptt->image}}" alt="" width="150" height="150">
+									<img src="public/uploads/product/{{$sptt->image}}" alt="" width="150" height="150">
 								</a>
 							</div>
 							<div class="product-name-w3l">
@@ -160,7 +160,7 @@
 											<input type="hidden" name="item_image" value="{{$sptt->image}}" />
 											<input type="hidden" name="item_name" value="{{$sptt->name}}" />
 											<input type="hidden" name="amount" value="{{$sptt->unit_price}}" />
-										<input type="hidden" name="discount_amount" value="{{$sptt->promotion_price == 0 ? 0 : $sptt->unit_price-$sptt->promotion_price}}" />
+											<input type="hidden" name="discount_amount" value="{{$sptt->promotion_price == 0 ? 0 : $sptt->unit_price-$sptt->promotion_price}}" />
 											<input type="hidden" name="currency_code" value="VND" />
 											<input type="hidden" name="return" value=" " />
 											<input type="hidden" name="cancel_return" value=" " />
@@ -176,5 +176,5 @@
 			</div>
 		</div>
 	</div>
-    <!-- //special offers -->s
+    <!-- //special offers -->
 @endsection
