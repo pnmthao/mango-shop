@@ -14,6 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('welcome/{locale}', function ($locale) {
+    App::setLocale($locale);
+    return view('welcome');
+});
 Route::get('index',[
     'as'=>'trang-chu',
     'uses'=>'PageController@getIndex'
@@ -49,6 +53,10 @@ Route::get('terms',[
 Route::get('privacy',[
     'as'=>'privacy',
     'uses'=>'PageController@getPrivacy'
+]);
+Route::get('payment',[
+    'as'=>'payment',
+    'uses'=>'PageController@getPayment'
 ]);
 Route::get('add-to-cart/{id}',[
     'as'=>'themgiohang',

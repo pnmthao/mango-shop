@@ -11,13 +11,22 @@ use App\Bill;
 use App\BillDetail;
 use App\User;
 use App\Brand;
+use DB;
 use Session;
 use Hash;
-use Auth;
+// use Auth;
 
 
 class PageController extends Controller
 {
+    public function AuthLogin(){
+        $customer_id = Session::get('customer_id');
+        if($customer_id){
+            return Redirect('index');
+        }else{
+            return Redirect('dang-nhap')->send();
+        }
+    }
     public function getIndex(){
         $slide = Slide::all();
         $new_product = Product::where('new',1)->paginate(4);
@@ -80,7 +89,11 @@ class PageController extends Controller
             Session::forget('cart');
         return redirect()->back();
     }
+    public function getPayment(){
+        return view('page.payment');
+    }
     public function getCheckout(){
+        $this->AuthLogin();
         if(Session('cart')){
             $oldCart = Session::get('cart');
             $cart = new Cart($oldCart);
@@ -122,6 +135,10 @@ class PageController extends Controller
         return redirect()->back()->with('thongbao','Đặt hàng thành công');
     }
     public function getLogin(){
+        $customer_id = Session::get('customer_id');
+        if($customer_id){
+            return Redirect('index');
+        }
         return view('page.dangnhap');
     }
     public function postLogin(Request $req){
@@ -137,15 +154,28 @@ class PageController extends Controller
                 'password.min'=>'Mật khẩu ít nhất 6 ký tự',
                 'password.max'=>'Mật khẩu ít nhất 20 ký tự'
             ]);
-       
         $credentials = array('email'=>$req->email,'password'=>$req->password);
+        $customer_email = $req->email; 
+        $customer_password = md5($req->password);
+        $result = DB::table('customers')->where('email',$customer_email)->where('password',$customer_password)->first();
 
-        if(Auth::attempt($credentials)){
-            return redirect()->back()->with(['flag'=>'success','message'=>'Bạn đăng nhập thành công']);
+        if ($result) {
+            Session::put('customer_name',$result->name);
+            Session::put('customer_id',$result->id);
+            Session::put('customer_email',$result->email);
+            Session::put('customer_address',$result->address);
+            Session::put('customer_phone',$result->phone);
+            return Redirect('index');
+            // return redirect()->back()->with(['flag'=>'success','message'=>'Bạn đăng nhập thành công']);
         }
-        else{
-            return redirect()->back()->with(['flag'=>'fail','message'=>'Bạn đăng nhập không thành công']);
-        }    
+        return redirect()->back()->with(['flag'=>'fail','message'=>'Bạn đăng nhập khong thành công']);
+        // if(Auth::attempt($credentials)){
+        //     $result = DB::table('customers')->where('email',$req->email)->first();
+        //     Session::put('customer_name',$result->name);
+        //     Session::put('customer_id',$result->id);
+        //     return redirect()->back()->with(['flag'=>'success','message'=>'Bạn đăng nhập thành công']);
+        // }
+        // return redirect()->back()->with(['flag'=>'success','message'=>'Bạn đăng nhập thành công']);
     }
     public function getSignup(){
         return view('page.dangky');
@@ -169,17 +199,18 @@ class PageController extends Controller
                 'password.max'=>'Mật khẩu ít nhất 20 ký tự'
             ]);
         $user = new Customer;
-       // $user = User::find(Auth::user()->id);
         $user->name = $req->name;  
         $user->email = $req->email; 
-        $user->password=Hash::make($req->password);
+        $user->password=md5($req->password);
         $user->address = $req->address;
         $user->phone = $req->phone;  
         $user->save();
         return redirect()->back()->with('thongbao','Bạn đã tạo tài khoản thành công');
     }
     public function getLogout(){
-        Auth::logout();
+        $this->AuthLogin();
+        Session::flush();
+        // Auth::logout();
         return redirect()->route('trang-chu');
     }
     public function getSearch(Request $req){

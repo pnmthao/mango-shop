@@ -78,7 +78,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Laravel, @lang('login.Hi', ['name' => 'Minh Thao'])
                 </div>
 
                 <div class="links">

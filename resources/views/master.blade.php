@@ -72,7 +72,13 @@
 	<!-- cart-js -->
 	<script src="js/minicart.js"></script>
 	<script>
-		paypalm.minicartk.render();
+		let hrefCheckout = '@if(Session::get('customer_id')) {{"window.location.href='dat-hang'"}} @else {{"window.location.href='dang-nhap'"}} @endif';
+		console.log(hrefCheckout);
+		paypalm.minicartk.render({
+			"strings": {
+				"hrefCheckout": hrefCheckout
+			}
+		});
 		function number_format(number){
 			return new Intl.NumberFormat('vn-VN', { style: 'currency', currency: 'VND' }).format(number)
 		}
@@ -138,8 +144,10 @@
 						<td class="invert total item-total" style="font-weight: bold">${number_format(total)}</td>
 						<td class="invert"><i class="fa fa-check icon-check"></i></td>
 					</tr>`
-			document.getElementById("body-checkout").innerHTML = raws
-			document.getElementById("product-qty").innerHTML = items.length + " Sản phẩm"
+			if (document.getElementById("body-checkout") && document.getElementById("product-qty")){
+				document.getElementById("body-checkout").innerHTML = raws
+				document.getElementById("product-qty").innerHTML = items.length + " Sản phẩm"
+			}
 		}
 
 		function qtyChange(index, value){
@@ -231,12 +239,9 @@
 	<!-- script for tabs -->
 	<script>
 		$(function () {
-
 			var menu_ul = $('.faq > li > ul'),
 				menu_a = $('.faq > li > a');
-
 			menu_ul.hide();
-
 			menu_a.click(function (e) {
 				e.preventDefault();
 				if (!$(this).hasClass('active')) {
@@ -248,7 +253,6 @@
 					$(this).next().stop(true, true).slideUp('normal');
 				}
 			});
-
 		});
 	</script>
 	<!-- //script for tabs -->
@@ -314,7 +318,8 @@
 	<!-- for bootstrap working -->
 	<script src="js/bootstrap.js"></script>
 	<!-- //for bootstrap working -->
-
+	
 	<!-- //js-files -->
+	
 </body>
 </html>

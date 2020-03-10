@@ -9,7 +9,7 @@
 						<a href="{{route('trang-chu')}}">Home</a>
 						<i>|</i>
 					</li>
-					<li>FAQS</li>
+					<li>Hỏi đáp</li>
 				</ul>
 			</div>
 		</div>
@@ -19,7 +19,7 @@
 	<div class="faqs-w3l">
 		<div class="container">
 			<!-- tittle heading -->
-			<h3 class="tittle-w3l">FAQS
+			<h3 class="tittle-w3l">Hỏi đáp
 				<span class="heading-style">
 					<i></i>
 					<i></i>

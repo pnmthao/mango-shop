@@ -1583,6 +1583,7 @@ ul.w3_short {
 }
 .contact input[type='text'],
 .contact input[type='email'],
+.contact input[type='password'],
 .contact textarea {
     width: 100%;
     color: #000;

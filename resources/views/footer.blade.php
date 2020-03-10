@@ -24,7 +24,7 @@
 		<div class="container">
 			<!-- footer first section -->
 			<p class="footer-main">
-				<span>"Grocery Shoppy"</span> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
+				<span>"Mango Shop"</span> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
 				magni dolores eos qui ratione voluptatem sequi nesciunt.Sed ut perspiciatis unde omnis iste natus error sit voluptatem
 				accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
 				beatae vitae dicta sunt explicabo.</p>
@@ -66,47 +66,47 @@
 				<!-- footer categories -->
 				<div class="col-sm-5 address-right">
 					<div class="col-xs-6 footer-grids">
-						<h3>Categories</h3>
+						<h3>Sản phẩm HOT!!!</h3>
 						<ul>
 							<li>
-								<a href="product.html">Grocery</a>
+								<a href="{{route('chitietsanpham',116)}}">Thịt bò Wagyu</a>
 							</li>
 							<li>
-								<a href="product.html">Fruits</a>
+								<a href="{{route('chitietsanpham',117)}}">Thịt bò Kobe</a>
 							</li>
 							<li>
-								<a href="product.html">Soft Drinks</a>
+								<a href="{{route('chitietsanpham',112)}}">Nho Mỹ xanh</a>
 							</li>
 							<li>
-								<a href="product2.html">Dishwashers</a>
+								<a href="{{route('chitietsanpham',113)}}">Nho Mỹ đen</a>
 							</li>
 							<li>
-								<a href="product.html">Biscuits & Cookies</a>
+								<a href="{{route('chitietsanpham',105)}}">Táo đỏ Mỹ</a>
 							</li>
 							<li>
-								<a href="product2.html">Baby Diapers</a>
+								<a href="{{route('chitietsanpham',114)}}">Dâu tây Đà Lạt</a>
 							</li>
 						</ul>
 					</div>
 					<div class="col-xs-6 footer-grids agile-secomk">
 						<ul>
 							<li>
-								<a href="product.html">Snacks & Beverages</a>
+								<a href="{{route('chitietsanpham',116)}}">Thịt bò Wagyu</a>
 							</li>
 							<li>
-								<a href="product.html">Bread & Bakery</a>
+								<a href="{{route('chitietsanpham',117)}}">Thịt bò Kobe</a>
 							</li>
 							<li>
-								<a href="product.html">Sweets</a>
+								<a href="{{route('chitietsanpham',112)}}">Nho Mỹ xanh</a>
 							</li>
 							<li>
-								<a href="product.html">Chocolates & Biscuits</a>
+								<a href="{{route('chitietsanpham',113)}}">Nho Mỹ đen</a>
 							</li>
 							<li>
-								<a href="product2.html">Personal Care</a>
+								<a href="{{route('chitietsanpham',105)}}">Táo đỏ Mỹ</a>
 							</li>
 							<li>
-								<a href="product.html">Dried Fruits & Nuts</a>
+								<a href="{{route('chitietsanpham',114)}}">Dâu tây Đà Lạt</a>
 							</li>
 						</ul>
 					</div>
@@ -116,19 +116,16 @@
 				<!-- quick links -->
 				<div class="col-sm-5 address-right">
 					<div class="col-xs-6 footer-grids">
-						<h3>Quick Links</h3>
+						<h3>Liên kết nhanh</h3>
 						<ul>
 							<li>
-								<a href="{{route('gioithieu')}}">About Us</a>
+								<a href="{{route('gioithieu')}}">Giới thiệu cửa hàng</a>
 							</li>
 							<li>
-								<a href="{{route('lienhe')}}">Contact Us</a>
+								<a href="{{route('lienhe')}}">Thông tin liên hệ</a>
 							</li>
 							<li>
-								<a href="help.html">Help</a>
-							</li>
-							<li>
-								<a href="{{route('faqs')}}">Faqs</a>
+								<a href="{{route('faqs')}}">Hỏi đáp</a>
 							</li>
 							<li>
 								<a href="{{route('terms')}}">Điều khoản dịch vụ</a>
@@ -139,17 +136,17 @@
 						</ul>
 					</div>
 					<div class="col-xs-6 footer-grids">
-						<h3>Get in Touch</h3>
+						<h3>Thông tin liên hệ</h3>
 						<ul>
 							<li>
 								<i class="fa fa-map-marker"></i> Nguyễn Văn Cừ, An Hòa</li>
 							<li>
-								<i class="fa fa-mobile"></i> 333 222 3333 </li>
+								<i class="fa fa-mobile"></i> 0949 422 936 </li>
 							<li>
-								<i class="fa fa-phone"></i> +222 11 4444 </li>
+								<i class="fa fa-phone"></i> +84 893 379 </li>
 							<li>
 								<i class="fa fa-envelope-o"></i>
-								<a href="mailto:example@mail.com"> mail@example.com</a>
+								<a href="mailto:example@mail.com"> pnmthaoct@gmail.com</a>
 							</li>
 						</ul>
 					</div>
@@ -157,7 +154,7 @@
 				<!-- //quick links -->
 				<!-- social icons -->
 				<div class="col-sm-2 footer-grids  w3l-socialmk">
-					<h3>Follow Us on</h3>
+					<h3>Kết nối</h3>
 					<div class="social">
 						<ul>
 							<li>
@@ -178,7 +175,7 @@
 						</ul>
 					</div>
 					<div class="agileits_app-devices">
-						<h5>Download the App</h5>
+						<h5>Tải App</h5>
 						<a href="#">
 							<img src="images/1.png" alt="">
 						</a>
@@ -196,12 +193,12 @@
 			<div class="agile-sometext">
 				<div class="sub-some">
 					<h5>Cửa hàng trực tuyến Mango Shop</h5>
-					<p>Đặt hàng trực tuyến. Tất cả các sản phẩm yêu thích của bạn từ siêu thị trực tuyến giá thấp để giao hàng tại nhà.</p>
+					<p>Đặt hàng trực tuyến. Tất cả các sản phẩm yêu thích của bạn từ siêu thị trực tuyến giá thấp đến giao hàng tại nhà.</p>
 				</div>
 				<div class="sub-some">
-					<h5>Shop online with the best deals & offers</h5>
-					<p>Now Get Upto 40% Off On Everyday Essential Products Shown On The Offer Page. The range includes Grocery, Personal Care,
-						Baby Care, Pet Supplies, Healthcare and Other Daily Need Products. Discount May Vary From Product To Product.</p>
+					<h5>Mua sắm trực tuyến với các ưu đãi tốt nhất</h5>
+					<p>Đặt hàng ngay hôm nay. Nhận quà liền tay.
+						Giảm giá 40% các sản phẩm thiết yếu được hiển thị trên trang ưu đãi mỗi ngày. Phạm vi bao gồm nông sản sạch, các thực phẩm tốt cho sức khỏe và các sản phẩm cần thiết hàng ngày khác.</p>
 				</div>
 				<!-- brands -->
 				<div class="sub-some">
@@ -227,7 +224,7 @@
 				<!-- //brands -->
 				<!-- payment -->
 				<div class="sub-some child-momu">
-					<h5>Payment Method</h5>
+					<h5>Phương thức thanh toán</h5>
 					<ul>
 						<li><img src="images/pay2.png" alt=""></li>
 						<li><img src="images/pay5.png" alt=""></li>
