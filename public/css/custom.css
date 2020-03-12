@@ -6,3 +6,18 @@
     display: flex;
     align-items: center;
 }
+.switcher-language .dropdown-menu{
+    padding: 16px;
+}
+.switcher-language a{
+    display: block;
+}
+.switcher-language img {
+    height: 24px;
+    width: 24px;
+    margin-right: 8px;
+}
+.switcher-language button, .switcher-language a {
+    display: flex;
+    align-items: center;
+}

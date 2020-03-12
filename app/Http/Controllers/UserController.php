@@ -25,7 +25,6 @@ class UserController extends Controller
         $this->AuthLogin();
         $data = array();
         $data['admin_name'] = $req->profile_name;
-        $data['admin_image'] = $req->profile_image;
         $data['admin_email'] = $req->profile_email;
         $data['admin_phone'] = $req->profile_phone;
         $data['admin_password'] = md5($req->profile_password);
@@ -45,5 +44,4 @@ class UserController extends Controller
         Session::put('message','Cập nhật hồ sơ cá nhân thành công');
         return redirect()->back();
     }
-
 }

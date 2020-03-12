@@ -9,20 +9,20 @@ class AdminController extends Controller
 {
     public function AuthLogin(){
         $admin_id = Session::get('admin_id');
-        if($admin_id){
-            return Redirect('dashboard');
-        }else{
-            return Redirect('admin_login')->send();
-        }
+        if ($admin_id) return Redirect('dashboard');
+        return view('admin_login');
     }
     public function index(){
+        $admin_id = Session::get('admin_id');
+        if ($admin_id) return Redirect('dashboard');
         return view('admin_login');
     }
     public function show_dashboard(){
-        $this->AuthLogin();
-        return view('admin.dashboard');
+        $admin_id = Session::get('admin_id');
+        if ($admin_id) return view('admin.dashboard');
+        return view('admin_login');
     }
-    public function dashboard(Request $req){   
+    public function dashboard(Request $req){
         $admin_email = $req->admin_email; 
         $admin_password = md5($req->admin_password);
         $result = DB::table('admin')->where('admin_email',$admin_email)->where('admin_password',$admin_password)->first();

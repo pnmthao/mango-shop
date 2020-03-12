@@ -39,12 +39,27 @@
 					<li><a href="{{route('dangnhap')}}">Đăng nhập</a></li>
 				@endif
 				<li>
-					<a href="locale/vi">Viet nam</a>
-                	<a href="locale/en">English</a>
-					{{-- <select name="myselect" id="switcher-language">
-						<option value="1" selected='selected'><a href="#">Tiếng Việt</a></option>
-						<option value="2">English</option>
-					</select> --}}
+					<div class="dropdown switcher-language">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							@if (App::getLocale() == 'vi')
+								<img src="public/uploads/flags/vi.png" alt="Chinese" title="Tiếng Việt"> 
+								Tiếng Việt
+							@else
+								<img src="public/uploads/flags/en.png" alt="Chinese" title="English"> 
+								English
+							@endif
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a class="dropdown-item" href="locale/vi">
+								<img src="public/uploads/flags/vi.png" alt="Chinese" title="Tiếng Việt"> 
+								Tiếng Việt
+							</a>
+							<a class="dropdown-item" href="locale/en">
+								<img src="public/uploads/flags/en.png" alt="Chinese" title="English"> 
+								English
+							</a>
+						</div>
+					  </div>
 				</li>
 				{{-- <li>
 				<a href="{{route('dangnhap')}}" data-toggle="modal" data-target="#myModal1">

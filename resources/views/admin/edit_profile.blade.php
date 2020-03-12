@@ -22,7 +22,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="profile_image">Hình ảnh</label>
-                                <input type="file" class="form-control" name="profile_image" id="profile_image">
+                                <input type="file" class="form-control" name="profile_image" id="profile_image" value="{{$edit_value->admin_image}}">
                                 <img src="{{asset('public/uploads/profile/'.$edit_value->admin_image)}}" height="100" width="100"></<img>
                             </div>
                             {{-- <div class="form-group">
@@ -43,11 +43,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="profile_password">Mật khẩu</label>
-                                <input type="password" class="form-control" name="profile_password" id="profile_password" value="" placeholder="Mật khẩu">
+                                <input type="password" class="form-control" name="profile_password" id="profile_password" value="" placeholder="Mật khẩu" required>
                             </div>
                             <div class="form-group">
                                 <label for="re_password">Nhập lại mật khẩu</label>
-                                <input type="password" class="form-control" name="re_password" id="re_password" value="" placeholder="Xác nhận lại mật khẩu">
+                                <input type="password" class="form-control" name="re_password" id="re_password" value="" placeholder="Xác nhận lại mật khẩu" required>
                             </div>
                             <button type="submit" class="btn btn-info" name="edit_profile">Cập nhật nhân viên</button>
                         </form>
