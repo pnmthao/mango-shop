@@ -1,6 +1,6 @@
 <!-- top-header -->
 <div class="header-most-top">
-	<p>Cửa hàng trực tuyến ưu đãi toàn cầu</p>
+	<p>@lang('header.logo')</p>
 </div>
 <!-- //top-header -->
 <!-- header-bot-->
@@ -74,7 +74,7 @@
 			<!-- search -->
 			<div class="agileits_search">
 				<form action="{{route('search')}}" method="get">
-					<input name="key" type="search" placeholder="Nhập từ khóa cần tìm" required="">
+					<input name="key" type="search" placeholder="@if(Session::get('locale') == 'en') Search here @else Tìm kiếm @endif" required="">
 					<button type="submit" class="btn btn-default" aria-label="Left Align">
 						<span class="fa fa-search" aria-hidden="true"> </span>
 					</button>

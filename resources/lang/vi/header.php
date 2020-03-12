@@ -26,5 +26,6 @@ return [
     'aboutus' => 'Giới thiệu',
     'brand' => 'Nhà cung cấp',
     'faqs' => 'Tư vấn',
-    'contact' => 'Liên hệ'
+    'contact' => 'Liên hệ',
+    'logo' => 'Cửa hàng trực tuyến ưu đãi toàn cầu'
 ];
