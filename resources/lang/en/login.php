@@ -13,6 +13,8 @@ return [
     |
     */
 
-    'hi' => 'Hi, :name',
+    'signin' => 'Sign In',
+    'email' => 'Email (*)',
+    'password' => 'Password (*)'
 
 ];

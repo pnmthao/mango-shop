@@ -13,6 +13,7 @@ return [
     |
     */
 
-    'hi' => 'Xin chào, :name',
-
+    'signin' => 'Đăng nhập',
+    'email' => 'Email (*)',
+    'password' => 'Mật khẩu (*)'
 ];

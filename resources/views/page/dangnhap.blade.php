@@ -5,7 +5,7 @@
 <div class="contact-w3l">
     <div class="container">
         <!-- tittle heading -->
-        <h3 class="tittle-w3l">Đăng nhập
+        <h3 class="tittle-w3l">@lang('login.signin')
             <span class="heading-style">
                 <i></i>
                 <i></i>
@@ -23,11 +23,11 @@
                             <div class="alert alert-{{Session::get('flag')}}">{{Session::get('message')}}</div>
                         @endif
                         <div class="">
-                            <label for="email">Địa chỉ Email (*)</label>
+                            <label for="email">@lang('login.email')</label>
                             <input type="email" class="email" name="email" placeholder="Nhập địa chỉ Email" required>
                         </div>
                         <div class="">
-                            <label for="password">Mật khẩu (*)</label>
+                            <label for="password">@lang('login.password')</label>
                             <input type="password" class="password" name="password" placeholder="Nhập mật khẩu" required>
                         </div>
                         <input type="submit" value="Đăng nhập">
