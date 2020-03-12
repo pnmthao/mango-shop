@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'signin' => 'Sign In',
-    'email' => 'Email (*)',
-    'password' => 'Password (*)'
+    'title' => 'Sign In',
+    'email' => 'Email',
+    'password' => 'Password'
 
 ];

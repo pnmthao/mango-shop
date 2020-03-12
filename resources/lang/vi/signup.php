@@ -13,7 +13,11 @@ return [
     |
     */
 
-    'title' => 'Đăng nhập',
+    'title' => 'Đăng ký tài khoản',
     'email' => 'Email',
-    'password' => 'Mật khẩu'
+    'fullname' => 'Họ và tên',
+    'address' => 'Địa chỉ',
+    'phone' => 'Số điện thoại',
+    'password' => 'Mật khẩu',
+    're_password' => 'Nhập lại mật khẩu'
 ];

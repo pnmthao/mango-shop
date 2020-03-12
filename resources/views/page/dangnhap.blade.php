@@ -5,7 +5,7 @@
 <div class="contact-w3l">
     <div class="container">
         <!-- tittle heading -->
-        <h3 class="tittle-w3l">@lang('login.signin')
+        <h3 class="tittle-w3l">@lang('login.title')
             <span class="heading-style">
                 <i></i>
                 <i></i>
@@ -30,7 +30,7 @@
                             <label for="password">@lang('login.password')</label>
                             <input type="password" class="password" name="password" placeholder="Nhập mật khẩu" required>
                         </div>
-                        <input type="submit" value="Đăng nhập">
+                        <input type="submit"  value="@if(Session::get('locale') == 'en') Submit @else Đăng nhập @endif">
                     </form>
                 </div>
             </div>
