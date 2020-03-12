@@ -22,14 +22,16 @@ class ProductController extends Controller
         $this->AuthLogin();
         $cate_product = DB::table('type_products')->orderby('id','desc')->get();
         $brand_product = DB::table('brand')->orderby('id','desc')->get();
-        return view('admin.add_product')->with('cate_product',$cate_product)->with('brand_product',$brand_product);
+        $unit_product = DB::table('unit')->orderby('unit_id','desc')->get();
+        return view('admin.add_product')->with('cate_product',$cate_product)->with('brand_product',$brand_product)->with('unit_product',$unit_product);
     }
     public function edit_product($product_id){
         $this->AuthLogin();
         $edit_product = DB::table('products')->where('id',$product_id)->get();
         $cate_product = DB::table('type_products')->orderby('id','desc')->get();
         $brand_product = DB::table('brand')->orderby('id','desc')->get();
-        $manager_product = view('admin.edit_product')->with('edit_product',$edit_product)->with('cate_product',$cate_product)->with('brand_product',$brand_product); 
+        $unit_product = DB::table('unit')->orderby('unit_id','desc')->get();
+        $manager_product = view('admin.edit_product')->with('edit_product',$edit_product)->with('cate_product',$cate_product)->with('brand_product',$brand_product)->with('unit_product',$unit_product); 
         return view('admin_layout')->with('admin.edit_product',$manager_product);
     }
     public function delete_product($product_id){
@@ -43,7 +45,8 @@ class ProductController extends Controller
         $all_product = DB::table('products')
                     ->join('type_products','type_products.id','=','products.id_type')
                     ->join('brand','brand.id','=','products.id_brand')
-                    ->select('products.*', 'products.description as description_product', 'type_products.name as name_type', 'brand.name as name_brand')
+                    ->join('unit','unit.unit_id','=','products.id_unit')
+                    ->select('products.*', 'products.description as description_product', 'type_products.name as name_type', 'brand.name as name_brand', 'unit.unit_name as unit_name')
                     ->orderby('products.id','desc')->get();
         $manager_product = view('admin.all_product')->with('all_product',$all_product);
         return view('admin_layout')->with('admin.all_product',$manager_product);
@@ -52,13 +55,15 @@ class ProductController extends Controller
         $this->AuthLogin();
         $data = array();
         $data['name'] = $req->product_name;
+        $data['name_en'] = $req->product_name_en;
         $data['id_type'] = $req->product_cate; //Products table
         $data['id_brand'] = $req->product_brand; //Products table
+        $data['id_unit'] = $req->product_unit;
         $data['description'] = $req->product_description;
+        $data['description_en'] = $req->product_description_en;
         $data['quantity'] = $req->product_quantity;
         $data['promotion_price'] = $req->product_promotion_price;
         $data['unit_price'] = $req->product_unit_price;
-        $data['unit'] = $req->product_unit;
         $data['status'] = $req->product_status;
         $data['new'] = $req->product_new;
         $data['created_at'] = $data['updated_at'] = date('Y-m-d H:i:s');
@@ -95,13 +100,15 @@ class ProductController extends Controller
         $this->AuthLogin();
         $data = array();
         $data['name'] = $req->product_name;
+        $data['name_en'] = $req->product_name_en;
         $data['id_type'] = $req->product_cate; //Products table
         $data['id_brand'] = $req->product_brand; //Products table
+        $data['id_unit'] = $req->product_unit;
         $data['description'] = $req->product_description;
+        $data['description_en'] = $req->product_description_en;
         $data['quantity'] = $req->product_quantity;
         $data['promotion_price'] = $req->product_promotion_price;
         $data['unit_price'] = $req->product_unit_price;
-        $data['unit'] = $req->product_unit;
         $data['status'] = $req->product_status;
         $data['new'] = $req->product_new;
         $data['created_at'] = $data['updated_at'] = date('Y-m-d H:i:s');

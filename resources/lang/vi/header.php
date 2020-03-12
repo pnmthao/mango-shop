@@ -14,8 +14,17 @@ return [
     */
 
     'hi' => 'Xin chào, :name',
-    'register' => 'Dang ky',
-    'test' => 'Sản phẩm bán chạy nhất'
-
-
+    'register' => 'Đăng ký',
+    'signin' => 'Đăng nhập',
+    'signout' => 'Đăng xuất',
+    'shoplocator' => 'Vị trí cửa hàng',
+    'trackorder' => 'Vận chuyển',
+    'chooselocate' => 'Chọn vị trí',
+    'choosecity' => 'Chọn thành phố',
+    'category_product' => 'Loại sản phẩm',
+    'homepage' => 'Trang chủ',
+    'aboutus' => 'Giới thiệu',
+    'brand' => 'Nhà cung cấp',
+    'faqs' => 'Tư vấn',
+    'contact' => 'Liên hệ'
 ];

@@ -36,7 +36,8 @@ class OrderController extends Controller
                         ->join('customers','bills.id_customer','=','customers.id')
                         ->join('products','bill_detail.id_product','=','products.id')
                         ->join('status','bills.id_status','=','status.id')
-                        ->select('bill_detail.*', 'customers.name as customer_name', 'products.name as product_name', 'bills.*','status.name as status_name' )
+                        ->join('unit','unit.unit_id','=','bill_detail.id_unit')
+                        ->select('bill_detail.*', 'customers.name as customer_name', 'products.name as product_name', 'bills.*','status.name as status_name','unit.unit_name as unit_name' )
                         ->get();
         $manager_order_detail = view('admin.all_order_detail')->with('all_order_detail',$all_order_detail)->with('bill_status',$bill_status);
         return view('admin_layout')->with('admin.all_order_detail',$manager_order_detail);

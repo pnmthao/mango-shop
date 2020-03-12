@@ -21,13 +21,21 @@
                                 <input type="text" class="form-control" value="{{$edit_value->name}}" name="brand_product_name" id="brand_product_name" placeholder="Tên danh mục">
                             </div>
                             <div class="form-group">
+                                <label for="brand_product_name_en">Tên nhà cung cấp (English)</label>
+                                <input type="text" class="form-control" value="{{$edit_value->name}}" name="brand_product_name_en" id="brand_product_name_en" placeholder="Tên danh mục">
+                            </div>
+                            <div class="form-group">
                                 <label for="brand_product_image">Hình ảnh</label>
                                 <input type="file" class="form-control" name="brand_product_image" id="brand_product_image">
                                 <img src="{{asset('public/uploads/brand/'.$edit_value->image)}}" height="100" width="100"></<img>
-                            </div>
+                            </div>                            
                             <div class="form-group">
                                 <label for="brand_product_description">Mô tả nhà cung cấp</label>
                                 <textarea style="resize:none" rows="8" class="form-control" id="brand_product_description" name="brand_product_description">{{$edit_value->description}}</textarea>
+                            </div>                            
+                            <div class="form-group">
+                                <label for="brand_product_description_en">Mô tả nhà cung cấp (English)</label>
+                                <textarea style="resize:none" rows="8" class="form-control" id="brand_product_description_en" name="brand_product_description_en">{{$edit_value->description_en}}</textarea>
                             </div>
                             <button type="submit" class="btn btn-info" name="edit_brand_product">Cập nhật nhà cung cấp</button>
                         </form>

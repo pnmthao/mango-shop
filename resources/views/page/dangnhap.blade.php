@@ -1,5 +1,6 @@
 @extends('master')
 @section('content')
+@include('../header')
 <!-- Sign in page -->
 <div class="contact-w3l">
     <div class="container">
@@ -37,4 +38,5 @@
         <!-- //Sign in -->
     </div>
 </div>
+@include('../footer')
 @endsection

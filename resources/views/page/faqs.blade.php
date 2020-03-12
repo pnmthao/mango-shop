@@ -1,5 +1,6 @@
 @extends('master')
-@section('content')  
+@section('content') 
+@include('../header') 
 	<!-- page -->
 	<div class="services-breadcrumb">
 		<div class="agile_inner_breadcrumb">
@@ -121,5 +122,6 @@
 			</div>
 		</div>
 	</div>
-    <!-- //FAQ-help-page -->
+	<!-- //FAQ-help-page -->
+@include('../footer')
 @endsection

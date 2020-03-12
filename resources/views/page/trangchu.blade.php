@@ -1,7 +1,6 @@
 @extends('master')
-
 @section('content')
-    @include('../header')
+@include('../header')
     <!-- banner -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators-->
@@ -270,7 +269,11 @@
                                 </div>
                                 <div class="item-info-product ">
                                     <h4>
-                                        <a href="{{route('chitietsanpham',$spkm->id)}}">{{$spkm->name}}</a>
+                                        <a href="{{route('chitietsanpham',$spkm->id)}}">
+                                            @if(Session::get('locale') == 'en') {{$spkm->name_en}}
+                                            @else  {{$spkm->name}}
+                                            @endif
+                                        </a>
                                     </h4>
                                     <div class="info-product-price">
                                         @if($spkm->promotion_price==0)
@@ -288,7 +291,9 @@
                                                 <input type="hidden" name="business" value=" " />
                                                 <input type="hidden" name="item_id" value="{{$spkm->id}}" />
                                                 <input type="hidden" name="item_image" value="{{$spkm->image}}" />
-                                                <input type="hidden" name="item_name" value="{{$spkm->name}}" />
+                                                <input type="hidden" name="item_name" value="@if(Session::get('locale') == 'en') {{$spkm->name_en}}
+                                                @else  {{$spkm->name}}
+                                                @endif" />
                                                 <input type="hidden" name="amount" value="{{$spkm->unit_price}}" />
                                                 <input type="hidden" name="discount_amount" value="{{$spkm->promotion_price == 0 ? 0 : $spkm->unit_price-$spkm->promotion_price}}" />
                                                 <input type="hidden" name="currency_code" value="VND" />
@@ -494,5 +499,5 @@
         </div>
     </div>
     <!-- //special offers -->
-    @include('../footer')
+@include('../footer')
 @endsection

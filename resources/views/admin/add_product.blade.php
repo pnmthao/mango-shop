@@ -22,6 +22,10 @@
                             <input type="text" class="form-control" name="product_name" id="product_name" placeholder="Tên danh mục">
                         </div>
                         <div class="form-group">
+                            <label for="product_name_en">Tên sản phẩm (English)</label>
+                            <input type="text" class="form-control" name="product_name_en" id="product_name_en" placeholder="Tên danh mục">
+                        </div>
+                        <div class="form-group">
                             <label for="product_unit_price">Giá gốc</label>
                             <input type="text" class="form-control" name="product_unit_price" id="product_unit_price" placeholder="Tên danh mục">
                         </div>
@@ -34,21 +38,16 @@
                             <input type="text" class="form-control" name="product_quantity" id="product_quantity" placeholder="Nhập số lượng">
                         </div>
                         <div class="form-group">
-                            <label for="product_unit">Đơn vị tính</label>
-                            <select name="product_unit" class="form-control input-sm m-bot15">
-                                <option>Hộp</option>
-                                <option>Chai</option>
-                                <option>Thùng</option>
-                                <option>Kg</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
                             <label for="product_image">Hình ảnh</label>
                             <input type="file" class="form-control" name="product_image" id="product_image">
-                        </div>
+                        </div>                        
                         <div class="form-group">
-                            <label for="product_description">Mô tả sản phẩm</label>
-                            <textarea style="resize:none" rows="8" class="form-control" id="product_description" name="product_description" placeholder="Mô tả"></textarea>
+                            <label for="product_unit">Đơn vị tính</label>
+                            <select name="product_unit" class="form-control input-sm m-bot15">
+                                @foreach ($unit_product as $key => $unit)
+                                    <option value="{{$unit->unit_id}}">{{$unit->unit_name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="product_cate">Danh mục sản phẩm</label>
@@ -65,6 +64,14 @@
                                     <option value="{{$brand->id}}">{{$brand->name}}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="product_description">Mô tả sản phẩm</label>
+                            <textarea style="resize:none" rows="8" class="form-control" id="product_description" name="product_description" placeholder="Mô tả"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="product_description_en">Mô tả sản phẩm (English)</label>
+                            <textarea style="resize:none" rows="8" class="form-control" id="product_description_en" name="product_description_en" placeholder="Mô tả"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="product_status">Hiển thị</label>

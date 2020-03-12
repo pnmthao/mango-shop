@@ -15,7 +15,7 @@
         <button class="btn btn-sm btn-default">Apply</button>                
       </div> --}}
       <div class="col-sm-4">
-        <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Thêm danh mục</button>
+        {{-- <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Thêm danh mục</button> --}}
       </div>
       <div class="col-sm-5 ">
       </div>
@@ -63,6 +63,7 @@
                 <tr>
                     <th>Sản phẩm</th>
                     <th>Số lượng</th>
+                    <th>Đơn vị tính</th>
                     <th>Đơn giá</th>
                     <th>Thành tiền</th>
                 </tr> 
@@ -71,6 +72,7 @@
                 <tr>
                     <td>{{$order_detail->product_name}}</td>
                     <td>{{$order_detail->quantity}}</td>
+                    <td>{{$order_detail->unit_name}}</td>
                     <td>{{$order_detail->unit_price}}</td>
                     <td>{{$order_detail->quantity * $order_detail->unit_price}}</td>
                 </tr>

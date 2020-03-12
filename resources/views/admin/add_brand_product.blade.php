@@ -26,6 +26,14 @@
                             <textarea style="resize:none" rows="8" class="form-control" id="brand_product_description" name="brand_product_description" placeholder="Mô tả nhà cung cấp"></textarea>
                         </div>
                         <div class="form-group">
+                            <label for="brand_product_name_en">Tên nhà cung cấp (English)</label>
+                            <input type="text" class="form-control" name="brand_product_name_en" id="brand_product_name_en" placeholder="Tên nhà cung cấp">
+                        </div>
+                        <div class="form-group">
+                            <label for="brand_product_description_en">Mô tả nhà cung cấp (English)</label>
+                            <textarea style="resize:none" rows="8" class="form-control" id="brand_product_description_en" name="brand_product_description_en" placeholder="Mô tả nhà cung cấp"></textarea>
+                        </div>
+                        <div class="form-group">
                             <label for="brand_product_image">Hình ảnh</label>
                             <input type="file" class="form-control" name="brand_product_image" id="brand_product_image">
                         </div>

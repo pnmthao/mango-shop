@@ -2,8 +2,8 @@
 	<div class="footer-top">
 		<div class="container-fluid">
 			<div class="col-xs-8 agile-leftmk">
-				<h2>Get your Groceries delivered from local stores</h2>
-				<p>Free Delivery on your first order!</p>
+				<h2>@lang('footer.banner_top1')</h2>
+				<p>@lang('footer.banner_top2')</p>
 				<form action="#" method="post">
 					<input type="email" placeholder="E-mail" name="email" required="">
 					<input type="submit" value="Subscribe">
@@ -24,10 +24,7 @@
 		<div class="container">
 			<!-- footer first section -->
 			<p class="footer-main">
-				<span>"Mango Shop"</span> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-				magni dolores eos qui ratione voluptatem sequi nesciunt.Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-				accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
-				beatae vitae dicta sunt explicabo.</p>
+				<span>@lang('footer.shop_name')</span>@lang('footer.shop_desc')</p>
 			<!-- //footer first section -->
 			<!-- footer second section -->
 			<div class="w3l-grids-footer">
@@ -36,7 +33,7 @@
 						<span class="fa fa-map-marker" aria-hidden="true"></span>
 					</div>
 					<div class="col-xs-8 text-form-footer">
-						<h3>Track Your Order</h3>
+						<h3>@lang('footer.trackorder')</h3>
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -45,7 +42,7 @@
 						<span class="fa fa-refresh" aria-hidden="true"></span>
 					</div>
 					<div class="col-xs-8 text-form-footer">
-						<h3>Free & Easy Returns</h3>
+						<h3>@lang('footer.return')</h3>
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -54,7 +51,7 @@
 						<span class="fa fa-times" aria-hidden="true"></span>
 					</div>
 					<div class="col-xs-8 text-form-footer">
-						<h3>Online cancellation </h3>
+						<h3>@lang('footer.onlinecancel')</h3>
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -66,47 +63,47 @@
 				<!-- footer categories -->
 				<div class="col-sm-5 address-right">
 					<div class="col-xs-6 footer-grids">
-						<h3>Sản phẩm HOT!!!</h3>
+						<h3>@lang('footer.hot_product')</h3>
 						<ul>
 							<li>
-								<a href="{{route('chitietsanpham',116)}}">Thịt bò Wagyu</a>
+								<a href="{{route('chitietsanpham',116)}}">@lang('footer.hp_wagyu')</a>
 							</li>
 							<li>
-								<a href="{{route('chitietsanpham',117)}}">Thịt bò Kobe</a>
+								<a href="{{route('chitietsanpham',117)}}">@lang('footer.hp_kobe')</a>
 							</li>
 							<li>
-								<a href="{{route('chitietsanpham',112)}}">Nho Mỹ xanh</a>
+								<a href="{{route('chitietsanpham',112)}}">@lang('footer.hp_greengrape')</a>
 							</li>
 							<li>
-								<a href="{{route('chitietsanpham',113)}}">Nho Mỹ đen</a>
+								<a href="{{route('chitietsanpham',113)}}">@lang('footer.hp_blackgrape')</a>
 							</li>
 							<li>
-								<a href="{{route('chitietsanpham',105)}}">Táo đỏ Mỹ</a>
+								<a href="{{route('chitietsanpham',105)}}">@lang('footer.hp_redapple')</a>
 							</li>
 							<li>
-								<a href="{{route('chitietsanpham',114)}}">Dâu tây Đà Lạt</a>
+								<a href="{{route('chitietsanpham',114)}}">@lang('footer.hp_strawberry')</a>
 							</li>
 						</ul>
 					</div>
 					<div class="col-xs-6 footer-grids agile-secomk">
 						<ul>
 							<li>
-								<a href="{{route('chitietsanpham',116)}}">Thịt bò Wagyu</a>
+								<a href="{{route('chitietsanpham',116)}}">@lang('footer.hp_wagyu')</a>
 							</li>
 							<li>
-								<a href="{{route('chitietsanpham',117)}}">Thịt bò Kobe</a>
+								<a href="{{route('chitietsanpham',117)}}">@lang('footer.hp_kobe')</a>
 							</li>
 							<li>
-								<a href="{{route('chitietsanpham',112)}}">Nho Mỹ xanh</a>
+								<a href="{{route('chitietsanpham',112)}}">@lang('footer.hp_greengrape')</a>
 							</li>
 							<li>
-								<a href="{{route('chitietsanpham',113)}}">Nho Mỹ đen</a>
+								<a href="{{route('chitietsanpham',113)}}">@lang('footer.hp_blackgrape')</a>
 							</li>
 							<li>
-								<a href="{{route('chitietsanpham',105)}}">Táo đỏ Mỹ</a>
+								<a href="{{route('chitietsanpham',105)}}">@lang('footer.hp_redapple')</a>
 							</li>
 							<li>
-								<a href="{{route('chitietsanpham',114)}}">Dâu tây Đà Lạt</a>
+								<a href="{{route('chitietsanpham',114)}}">@lang('footer.hp_strawberry')</a>
 							</li>
 						</ul>
 					</div>
@@ -116,37 +113,37 @@
 				<!-- quick links -->
 				<div class="col-sm-5 address-right">
 					<div class="col-xs-6 footer-grids">
-						<h3>Liên kết nhanh</h3>
+						<h3>@lang('footer.quicklinks')</h3>
 						<ul>
 							<li>
-								<a href="{{route('gioithieu')}}">Giới thiệu cửa hàng</a>
+								<a href="{{route('gioithieu')}}">@lang('footer.aboutus')</a>
 							</li>
 							<li>
-								<a href="{{route('lienhe')}}">Thông tin liên hệ</a>
+								<a href="{{route('lienhe')}}">@lang('footer.contact')</a>
 							</li>
 							<li>
-								<a href="{{route('faqs')}}">Hỏi đáp</a>
+								<a href="{{route('faqs')}}">@lang('footer.faqs')</a>
 							</li>
 							<li>
-								<a href="{{route('terms')}}">Điều khoản dịch vụ</a>
+								<a href="{{route('terms')}}">@lang('footer.terms')</a>
 							</li>
 							<li>
-								<a href="{{route('privacy')}}">Chính sách riêng tư</a>
+								<a href="{{route('privacy')}}">@lang('footer.privacy')</a>
 							</li>
 						</ul>
 					</div>
 					<div class="col-xs-6 footer-grids">
-						<h3>Thông tin liên hệ</h3>
+						<h3>@lang('footer.contact')</h3>
 						<ul>
 							<li>
-								<i class="fa fa-map-marker"></i> Nguyễn Văn Cừ, An Hòa</li>
+								<i class="fa fa-map-marker"></i>@lang('footer.address')</li>
 							<li>
-								<i class="fa fa-mobile"></i> 0949 422 936 </li>
+								<i class="fa fa-mobile"></i>0949 422 936 </li>
 							<li>
-								<i class="fa fa-phone"></i> +84 893 379 </li>
+								<i class="fa fa-phone"></i>+84 893 379 </li>
 							<li>
 								<i class="fa fa-envelope-o"></i>
-								<a href="mailto:example@mail.com"> pnmthaoct@gmail.com</a>
+								<a href="mailto:example@mail.com">pnmthaoct@gmail.com</a>
 							</li>
 						</ul>
 					</div>
@@ -154,7 +151,7 @@
 				<!-- //quick links -->
 				<!-- social icons -->
 				<div class="col-sm-2 footer-grids  w3l-socialmk">
-					<h3>Kết nối</h3>
+					<h3>@lang('footer.socialnetwork')</h3>
 					<div class="social">
 						<ul>
 							<li>
@@ -175,7 +172,7 @@
 						</ul>
 					</div>
 					<div class="agileits_app-devices">
-						<h5>Tải App</h5>
+						<h5>@lang('footer.downloadapp')</h5>
 						<a href="#">
 							<img src="images/1.png" alt="">
 						</a>
@@ -192,39 +189,38 @@
 			<!-- footer fourth section (text) -->
 			<div class="agile-sometext">
 				<div class="sub-some">
-					<h5>Cửa hàng trực tuyến Mango Shop</h5>
-					<p>Đặt hàng trực tuyến. Tất cả các sản phẩm yêu thích của bạn từ siêu thị trực tuyến giá thấp đến giao hàng tại nhà.</p>
+					<h5>@lang('footer.shop_online')</h5>
+					<p>@lang('footer.shop_online_desc1')</p>
 				</div>
 				<div class="sub-some">
-					<h5>Mua sắm trực tuyến với các ưu đãi tốt nhất</h5>
-					<p>Đặt hàng ngay hôm nay. Nhận quà liền tay.
-						Giảm giá 40% các sản phẩm thiết yếu được hiển thị trên trang ưu đãi mỗi ngày. Phạm vi bao gồm nông sản sạch, các thực phẩm tốt cho sức khỏe và các sản phẩm cần thiết hàng ngày khác.</p>
+					<h5>@lang('footer.shop_online_desc2')</h5>
+					<p>@lang('footer.shop_online_desc3')</p>
 				</div>
 				<!-- brands -->
 				<div class="sub-some">
-					<h5>Nhà cung cấp</h5>
+					<h5>@lang('footer.brand')</h5>
 					<ul>
 						<li>
-							<a href="https://vinmart.com/">Vinmart</a>
+							<a href="https://vinmart.com/">@lang('footer.brand1')</a>
 						</li>
 						<li>
-							<a href="https://vinmart.com/">Metro</a>
+							<a href="https://vinmart.com/">@lang('footer.brand2')</a>
 						</li>
 						<li>
-							<a href="https://vinmart.com/">Lotteria</a>
+							<a href="https://vinmart.com/">@lang('footer.brand3')</a>
 						</li>
 						<li>
-							<a href="https://vinmart.com/">Vinatex Mart</a>
+							<a href="https://vinmart.com/">@lang('footer.brand4')</a>
 						</li>
 						<li>
-							<a href="https://vinmart.com/">Co.op Mart</a>
+							<a href="https://vinmart.com/">@lang('footer.brand5')</a>
 						</li>
 					</ul>
 				</div>
 				<!-- //brands -->
 				<!-- payment -->
 				<div class="sub-some child-momu">
-					<h5>Phương thức thanh toán</h5>
+					<h5>@lang('footer.payment')</h5>
 					<ul>
 						<li><img src="images/pay2.png" alt=""></li>
 						<li><img src="images/pay5.png" alt=""></li>
@@ -246,7 +242,7 @@
 	<!-- copyright -->
 	<div class="copy-right">
 		<div class="container">
-			<p>© 2020 All rights reserved | Design by <a href="http://w3layouts.com"> W3layouts.</a></p>
+			<p>Hân hạnh được phục vụ quý khách</p>
 		</div>
 	</div>
 	<!-- //copyright -->

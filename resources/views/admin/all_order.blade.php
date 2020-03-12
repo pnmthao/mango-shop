@@ -13,8 +13,11 @@
           </select>
           <button class="btn btn-sm btn-default">Apply</button>                
         </div> --}}
-        <div class="col-sm-4">
+        {{-- <div class="col-sm-4">
           <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Thêm đơn hàng</button>
+        </div> --}}
+        <div class="col-sm-4">
+          {{-- <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Thêm đơn hàng</button> --}}
         </div>
         <div class="col-sm-5 ">
         </div>

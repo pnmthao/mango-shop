@@ -44,6 +44,8 @@ class CategoryProduct extends Controller
         $data = array();
         $data['name'] = $req->category_product_name;
         $data['description'] = $req->category_product_description;
+        $data['name_en'] = $req->category_product_name_en;
+        $data['description_en'] = $req->category_product_description_en;
         $data['status'] = $req->category_product_status;
         $data['created_at'] = $data['updated_at'] = date('Y-m-d H:i:s');
         $data['image'] = $req->category_product_image;
@@ -65,7 +67,8 @@ class CategoryProduct extends Controller
         $data = array();
         $data['name'] = $req->category_product_name;
         $data['description'] = $req->category_product_description;
-        $data['image'] = $req->category_product_image;
+        $data['name_en'] = $req->category_product_name_en;
+        $data['description_en'] = $req->category_product_description_en;
         $data['created_at'] = $data['updated_at'] = date('Y-m-d H:i:s');
         $get_image = $req->file('category_product_image');
         if($get_image){

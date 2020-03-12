@@ -1,5 +1,6 @@
 @extends('master')
 @section('content')  
+@include('../header')
     <!-- //page -->
 	<!-- Terms of use-section -->
 	<section class="terms-of-use">
@@ -71,5 +72,6 @@
 		</div>
 		<!-- /terms -->
 	</section>
-    <!-- //Terms of use-section -->
-    @endsection
+	<!-- //Terms of use-section -->
+@include('../footer')
+@endsection

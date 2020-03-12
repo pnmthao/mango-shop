@@ -1,5 +1,6 @@
 @extends('master')
 @section('content')
+@include('../header')
 	<!-- //page -->
 	<!-- payment page-->
 	<div class="privacy">
@@ -267,4 +268,5 @@
 		});
 	</script>
 	<!-- //credit-card -->
+@include('../footer')
 @endsection

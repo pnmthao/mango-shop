@@ -64,7 +64,7 @@
                   <td>{{$pro->description_product}}</td>
                   <td>{{$pro->unit_price}}</td>
                   <td>{{$pro->promotion_price}}</td>
-                  <td>{{$pro->unit}}</td>
+                  <td>{{$pro->unit_name}}</td>
                   <td>{{$pro->quantity}}</td>
                   <td>{{$pro->name_type}}</td>
                   <td>{{$pro->name_brand}}</td>

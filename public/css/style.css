@@ -67,9 +67,11 @@ label {
 /*-- header-bottom --*/
 /*-- Header Lists --*/
 .header ul li {
-    display: inline-block;
     width: 19%;
-    text-align: center;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: #000;
     font-size: 13px;
     padding: 7px 0;

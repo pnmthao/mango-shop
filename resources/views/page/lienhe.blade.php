@@ -1,5 +1,6 @@
 @extends('master')
 @section('content')
+@include('../header')
 	<!-- //page -->
 	<!-- contact page -->
 	<div class="contact-w3l">
@@ -60,4 +61,5 @@
 		    allowfullscreen></iframe>
 	</div>
 	<!-- //map -->
+@include('../footer')
 @endsection

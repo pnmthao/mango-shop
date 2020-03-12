@@ -22,8 +22,16 @@
                             <input type="text" class="form-control" name="category_product_name" id="category_product_name" placeholder="Tên danh mục">
                         </div>
                         <div class="form-group">
+                            <label for="category_product_name_en">Tên danh mục sản phẩm (English)</label>
+                            <input type="text" class="form-control" name="category_product_name_en" id="category_product_name_en" placeholder="Tên danh mục">
+                        </div>
+                        <div class="form-group">
                             <label for="category_product_description">Mô tả danh mục</label>
                             <textarea style="resize:none" rows="8" class="form-control" id="category_product_description" name="category_product_description" placeholder="Mô tả danh mục"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="category_product_description_en">Mô tả danh mục (English)</label>
+                            <textarea style="resize:none" rows="8" class="form-control" id="category_product_description_en" name="category_product_description_en" placeholder="Mô tả danh mục"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="category_product_image">Hình ảnh</label>

@@ -22,21 +22,21 @@
 			<ul>
 				<li>
 					<a class="play-icon popup-with-zoom-anim" href="#small-dialog1">
-						<span class="fa fa-map-marker" aria-hidden="true"></span>Shop Locator</a>
+						<span class="fa fa-map-marker" aria-hidden="true"></span>@lang('header.shoplocator')</a>
 				</li>
 				<li>
 					<a href="#" data-toggle="modal" data-target="#myModal1">
-						<span class="fa fa-truck" aria-hidden="true"></span>Track Order</a>
+						<span class="fa fa-truck" aria-hidden="true"></span>@lang('header.trackorder')</a>
 				</li>
 				<li>
 					<span class="fa fa-phone" aria-hidden="true"></span> 0949 422 936
 				</li>
 				@if(Session::get('customer_id'))
 					<li>@lang('header.hi', ['name' => Session::get('customer_name')])</li>
-					<li><a href="{{route('dangxuat')}}"> Đăng xuất</a></li>
+					<li><a href="{{route('dangxuat')}}">@lang('header.signout')</a></li>
 				@else
 					<li><a href="{{route('dangky')}}">@lang('header.register')</a></li>
-					<li><a href="{{route('dangnhap')}}">Đăng nhập</a></li>
+					<li><a href="{{route('dangnhap')}}">@lang('header.signin')</a></li>
 				@endif
 				<li>
 					<div class="dropdown switcher-language">
@@ -103,10 +103,10 @@
 <!-- Button trigger modal(shop-locator) -->
 <div id="small-dialog1" class="mfp-hide">
 	<div class="select-city">
-		<h3>Chọn vị trí của bạn</h3>
+		<h3>@lang('header.chooselocate')</h3>
 		<select class="list_of_cities">
 			<optgroup label="Popular Cities">
-				<option selected style="display:none;color:#eee;">Chọn thành phố</option>
+				<option selected style="display:none;color:#eee;">@lang('header.choosecity')</option>
 				<option>Hà Nội</option>
 				<option>Cần Thơ</option>
 				<option>TP Hồ Chí Minh</option>
@@ -120,16 +120,16 @@
 <!-- navigation -->
 <div class="ban-top">
 	<div class="container">
-		<div class="agileits-navi_search">
+		{{-- <div class="agileits-navi_search">
 			<form action="#" method="post">
 				<select id="agileinfo-nav_search" name="agileinfo_search" required="">
-					<option value="">Loại sản phẩm</option>
+					<option value="">@lang('header.category_product')</option>
 					@foreach ($loai_sp as $loai)                            
 						<option><a href="{{route('loaisanpham',$loai->id)}}">{{$loai->name}}</a></option>
 					@endforeach
 				</select>
 			</form>
-		</div>
+		</div> --}}
 		<div class="top_nav_left">
 			<nav class="navbar navbar-default">
 				<div class="container-fluid">
@@ -147,15 +147,15 @@
 					<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav menu__list">
 							<li class="active">
-								<a class="nav-stylehead" href="{{route('trang-chu')}}">Trang chủ
+								<a class="nav-stylehead" href="{{route('trang-chu')}}">@lang('header.homepage')
 									<span class="sr-only">(current)</span>
 								</a>
 							</li>
 							<li class="">
-								<a class="nav-stylehead" href="{{route('gioithieu')}}">Giới thiệu</a>
+								<a class="nav-stylehead" href="{{route('gioithieu')}}">@lang('header.aboutus')</a>
 							</li>
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Nhà cung cấp
+								<a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@lang('header.brand')
 									<span class="caret"></span>
 								</a>
 								<ul class="dropdown-menu multi-column columns-3">
@@ -175,7 +175,7 @@
 								</ul>
 							</li>
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Loại sản phẩm
+								<a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@lang('header.category_product')
 									<span class="caret"></span>
 								</a>
 								<ul class="dropdown-menu multi-column columns-3">
@@ -195,10 +195,10 @@
 								</ul>
 							</li>
 							<li class="">
-								<a class="nav-stylehead" href="{{route('faqs')}}">Tư vấn</a>
+								<a class="nav-stylehead" href="{{route('faqs')}}">@lang('header.faqs')</a>
 							</li>
 							<li class="">
-								<a class="nav-stylehead" href="{{route('lienhe')}}">Liên hệ</a>
+								<a class="nav-stylehead" href="{{route('lienhe')}}">@lang('header.contact')</a>
 							</li>
 						</ul>
 					</div>

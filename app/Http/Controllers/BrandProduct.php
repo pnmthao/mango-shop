@@ -42,6 +42,8 @@ class BrandProduct extends Controller
         $data = array();
         $data['name'] = $req->brand_product_name;
         $data['description'] = $req->brand_product_description;
+        $data['name_en'] = $req->brand_product_name_en;
+        $data['description_en'] = $req->brand_product_description_en;
         $data['status'] = $req->brand_product_status;
         $data['created_at'] = $data['updated_at'] = date('Y-m-d H:i:s');
         $data['image'] = $req->brand_product_image;
@@ -63,7 +65,8 @@ class BrandProduct extends Controller
         $data = array();
         $data['name'] = $req->brand_product_name;
         $data['description'] = $req->brand_product_description;
-        $data['image'] = $req->brand_product_image;
+        $data['name_en'] = $req->brand_product_name_en;
+        $data['description_en'] = $req->brand_product_description_en;
         $data['created_at'] = $data['updated_at'] = date('Y-m-d H:i:s');
         $get_image = $req->file('brand_product_image');
         if($get_image){

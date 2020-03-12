@@ -20,4 +20,10 @@
 .switcher-language button, .switcher-language a {
     display: flex;
     align-items: center;
+    margin: 1px;
+    padding: 4px 8px;
+}
+.header-bot .header ul {
+    display: flex;
+    align-items: center;
 }
