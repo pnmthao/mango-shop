@@ -137,7 +137,7 @@
 			})
 			total = totalAmount - totalDiscount
 			raws += `<tr class="rem-total">
-						<td class="invert" colspan="4">TỔNG</td>
+						<td class="invert" colspan="4">@if(Session::get('locale') == 'en') Total @else Tổng @endif</td>
 						<td class="invert total total-discount">${number_format(totalDiscount)}</td>
 						<td class="invert total total-amount">${number_format(totalAmount)}</td>
 						<td class="invert total item-total" style="font-weight: bold">${number_format(total)}</td>
@@ -145,7 +145,7 @@
 					</tr>`
 			if (document.getElementById("body-checkout") && document.getElementById("product-qty")){
 				document.getElementById("body-checkout").innerHTML = raws
-				document.getElementById("product-qty").innerHTML = items.length + " Sản phẩm"
+				document.getElementById("product-qty").innerHTML = items.length + " @if(Session::get('locale') == 'en') products @else sản phẩm @endif"
 			}
 		}
 

@@ -7,10 +7,10 @@
 		<div class="container">
 			<ul class="w3_short">
 				<li>
-					<a href="index">Home</a>
+					<a href="index">@lang('checkout.home')</a>
 					<i>|</i>
 				</li>
-				<li>Thanh toán</li>
+				<li>@lang('checkout.title')</li>
 			</ul>
 		</div>
 	</div>
@@ -20,7 +20,7 @@
 <div class="privacy">
 	<div class="container">
 		<!-- tittle heading -->
-		<h3 class="tittle-w3l">Thanh toán
+		<h3 class="tittle-w3l">@lang('checkout.title')
 			<span class="heading-style">
 				<i></i>
 				<i></i>
@@ -29,21 +29,21 @@
 		</h3>
 		<!-- //tittle heading -->
 		<div class="checkout-right">
-			<h4>Giỏ hàng của bạn có:
+			<h4>@lang('checkout.title_cart')
 				<span id="product-qty"></span>
 			</h4>
 			<div class="table-responsive">
 				<table class="timetable_sub">
 					<thead>
 						<tr>
-							<th>STT</th>
-							<th>Sản phẩm</th>
-							<th>Tên sản phẩm</th>
-							<th>Số lượng</th>
-							<th>Giảm giá</th>
-							<th>Đơn giá</th>
-							<th>Thành tiền</th>
-							<th>Xóa</th>
+							<th>@lang('checkout.cart_stt')</th>
+							<th>@lang('checkout.cart_product_image')</th>
+							<th>@lang('checkout.cart_product_name')</th>
+							<th>@lang('checkout.cart_product_quantity')</th>
+							<th>@lang('checkout.cart_product_discounts')</th>
+							<th>@lang('checkout.cart_product_unit_price')</th>
+							<th>@lang('checkout.cart_product_total')</th>
+							<th>@lang('checkout.cart_product_del')</th>
 						</tr>
 					</thead>
 					<tbody id="body-checkout"></tbody>
@@ -52,7 +52,7 @@
 		</div>
 		<div class="checkout-left">
 			<div class="address_form_agile">
-				<h4>Thông tin đặt hàng</h4>
+				<h4>@lang('checkout.order_info')</h4>
 				@if(Session::has('thongbao'))
 					<div class="alert alert-success">{{Session::get('thongbao')}}</div>
 				@endif
@@ -62,28 +62,28 @@
 						<div class="information-wrapper">
 							<div class="first-row">
 								<div class="controls">
-									<label for="name">Họ tên (*)</label>
-								<input class="billing-address-name" type="text" name="name" value="{{Session::get('customer_name')}}" placeholder="Họ tên" required>
+									<label for="name">@lang('checkout.order_name')</label>
+								<input class="billing-address-name" type="text" name="name" value="{{Session::get('customer_name')}}" placeholder="@if(Session::get('locale') == 'en') Enter Full Name @else Nhập họ tên @endif" required>
 								</div>
 								<div class="controls">
-									<label for="email">Email (*)</label>
+									<label for="email">@lang('checkout.order_email')</label>
 									<input type="text" name="email" value="{{Session::get('customer_email')}}" placeholder="expample@gmail.com" required>
 								</div>
 								<div class="controls">
-									<label for="address">Địa chỉ (*)</label>
-									<input type="text" name="address" value="{{Session::get('customer_address')}}" placeholder="Địa chỉ giao hàng" required>
+									<label for="address">@lang('checkout.order_address')</label>
+									<input type="text" name="address" value="{{Session::get('customer_address')}}" placeholder="@if(Session::get('locale') == 'en') Enter Address @else Nhập địa chỉ giao hàng @endif" required>
 								</div>
 								<div class="controls">
-									<label for="phone">Điện thoại (*)</label>
-									<input type="text" name="phone" value="{{Session::get('customer_phone')}}" placeholder="Số điện thoại" required>
+									<label for="phone">@lang('checkout.order_phone')</label>
+									<input type="text" name="phone" value="{{Session::get('customer_phone')}}" placeholder="@if(Session::get('locale') == 'en') Enter Phone Number @else Nhập số điện thoại @endif" required>
 								</div>
 							</div>
-							<button class="submit check_out">Delivery to this Address</button>
+							<button class="submit check_out">@lang('checkout.order_delivery')</button>
 						</div>
 					</div>
 				</form>
 				<div class="checkout-right-basket">
-					<a href="payment">Thanh toán
+					<a href="payment">@lang('checkout.payment')
 						<span class="fa fa-hand-o-right" aria-hidden="true"></span>
 					</a>
 				</div>

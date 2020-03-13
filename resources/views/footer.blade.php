@@ -242,7 +242,7 @@
 	<!-- copyright -->
 	<div class="copy-right">
 		<div class="container">
-			<p>Hân hạnh được phục vụ quý khách</p>
+			<p>@if(Session::get('locale') == 'en') Good Service, Good quality @else Chất lượng cao @endif</p>
 		</div>
 	</div>
 	<!-- //copyright -->
