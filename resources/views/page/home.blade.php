@@ -469,7 +469,7 @@
 							<div class="product-name-w3l">
 								<h4>
 									<a href="{{route('chitietsanpham',$new->id)}}">
-										@if(Session::get('locale') == 'en') {{$new->name_en}} @else{{$new->name}} @endif
+										@if(Session::get('locale') == 'en'){{$new->name_en}}@else{{$new->name}}@endif
 									</a>
 								</h4>
 								<div class="w3l-pricehkj">  
@@ -488,7 +488,7 @@
 											<input type="hidden" name="business" value=" " />
 											<input type="hidden" name="item_id" value="{{$new->id}}" />
 											<input type="hidden" name="item_image" value="{{$new->image}}" />
-											<input type="hidden" name="item_name" value="@if(Session::get('locale') == 'en') {{$new->name_en}} @else{{$new->name}} @endif" />
+											<input type="hidden" name="item_name" value="@if(Session::get('locale') == 'en'){{$new->name_en}}@else{{$new->name}}@endif" />
 											<input type="hidden" name="item_name_vi" value="{{$new->name}}" />
                                 			<input type="hidden" name="item_name_en" value="{{$new->name_en}}" />
 											<input type="hidden" name="amount" value="{{$new->unit_price}}" />

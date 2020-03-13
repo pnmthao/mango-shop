@@ -18,6 +18,9 @@ Route::get('/',[
     'as'=>'trang-chu',
     'uses'=>'PageController@getIndex'
 ]);
+Route::post('#', function () {
+    return redirect()->back();
+});
 Route::get('locale/{locale}', function ($locale) {
     Session::put('locale', $locale);
     return redirect()->back();
