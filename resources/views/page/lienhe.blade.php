@@ -1,12 +1,26 @@
 @extends('master')
 @section('content')
 @include('../header')
+	<!-- page -->
+	<div class="services-breadcrumb">
+		<div class="agile_inner_breadcrumb">
+			<div class="container">
+				<ul class="w3_short">
+					<li>
+						<a href="{{route('trang-chu')}}">@lang('contact.home')</a>
+						<i>|</i>
+					</li>
+					<li>@lang('contact.title')</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 	<!-- //page -->
 	<!-- contact page -->
 	<div class="contact-w3l">
 		<div class="container">
 			<!-- tittle heading -->
-			<h3 class="tittle-w3l">Liên hệ
+			<h3 class="tittle-w3l">@lang('contact.title')
 				<span class="heading-style">
 					<i></i>
 					<i></i>
@@ -20,28 +34,32 @@
 					<div class="contact-form wthree">
 						<form action="#" method="post">
 							<div class="">
-								<input type="text" name="name" placeholder="Name" required="">
+								<label>@lang('contact.name')</label>
+								<input type="text" name="name" placeholder="@if(Session::get('locale') == 'en') Enter Name @else Nhập họ tên @endif" required="">
 							</div>
 							<div class="">
-								<input class="text" type="text" name="subject" placeholder="Subject" required="">
+								<label>@lang('contact.subject')</label>
+								<input class="text" type="text" name="subject" placeholder="@if(Session::get('locale') == 'en') Enter Subject @else Nhập tiêu đề @endif" required="">
 							</div>
 							<div class="">
-								<input class="email" type="email" name="email" placeholder="Email" required="">
+								<label>@lang('contact.email')</label>
+								<input class="email" type="email" name="email" placeholder="@if(Session::get('locale') == 'en') Enter Email @else Nhập email @endif" required="">
 							</div>
 							<div class="">
-								<textarea placeholder="Message" name="message" required=""></textarea>
+								<label>@lang('contact.message')</label>
+								<textarea placeholder="@if(Session::get('locale') == 'en') Enter Message @else Nhập nội dung @endif" name="message" required=""></textarea>
 							</div>
-							<input type="submit" value="Submit">
+							<input type="submit" value="@if(Session::get('locale') == 'en') Submit @else Gửi @endif">
 						</form>
 					</div>
 					<div class="contact-right wthree">
 						<div class="col-xs-7 contact-text w3-agileits">
-							<h4>Liên hệ qua tổng đài:</h4>
-							<p><i class="fa fa-map-marker"></i> Nguyễn Văn Cừ, An Hòa, Ninh Kiều, TP Cần Thơ</p>
-							<p><i class="fa fa-phone"></i> Điện thoại : 02923 893 379</p>
-							<p><i class="fa fa-fax"></i> FAX : +84 888 888 888</p>
+							<h4>@lang('contact.hotline')</h4>
+							<p><i class="fa fa-map-marker"></i> @lang('contact.address')</p>
+							<p><i class="fa fa-phone"></i> @lang('contact.phone')</p>
+							<p><i class="fa fa-fax"></i> @lang('contact.fax')</p>
 							<p>
-								<i class="fa fa-envelope-o"></i> Email :
+								<i class="fa fa-envelope-o"></i> @lang('contact.email')
 								<a href="mailto:example@mail.com">pnmthaoct@gmail.com</a>
 							</p>
 						</div>

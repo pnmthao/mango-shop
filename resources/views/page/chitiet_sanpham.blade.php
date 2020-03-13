@@ -7,10 +7,10 @@
 			<div class="container">
 				<ul class="w3_short">
 					<li>
-                        <a href="{{route('trang-chu')}}">Home</a>
+                        <a href="{{route('trang-chu')}}">@lang('product_details.home')</a>
 						<i>|</i>
 					</li>
-					<li>Chi tiết sản phẩm</li>
+					<li>@lang('product_details.title')</li>
 				</ul>
 			</div>
 		</div>
@@ -20,7 +20,7 @@
 	<div class="banner-bootom-w3-agileits">
 		<div class="container">
 			<!-- tittle heading -->
-			<h3 class="tittle-w3l">Chi tiết sản phẩm
+			<h3 class="tittle-w3l">@lang('product_details.title')
 				<span class="heading-style">
 					<i></i>
 					<i></i>
@@ -42,7 +42,7 @@
 				</div>
 			</div>
 			<div class="col-md-7 single-right-left simpleCart_shelfItem">
-				<h3>{{$sanpham->name}}</h3>
+				<h3>@if(Session::get('locale') == 'en') {{$sanpham->name_en}} @else{{$sanpham->name}} @endif</h3>
 				<div class="rating1">
 					<span class="starRating">
 						<input id="rating5" type="radio" name="rating" value="5">
@@ -99,13 +99,13 @@
 								<input type="hidden" name="business" value=" " />
 								<input type="hidden" name="item_id" value="{{$sanpham->id}}" />
 								<input type="hidden" name="item_image" value="{{$sanpham->image}}" />
-								<input type="hidden" name="item_name" value="{{$sanpham->name}}" />
+								<input type="hidden" name="item_name" value="@if(Session::get('locale') == 'en') {{$sanpham->name_en}} @else{{$sanpham->name}} @endif" />
 								<input type="hidden" name="amount" value="{{$sanpham->unit_price}}" />
 								<input type="hidden" name="discount_amount" value="{{$sanpham->promotion_price == 0 ? 0 : $sanpham->unit_price-$sanpham->promotion_price}}" />
 								<input type="hidden" name="currency_code" value="VND" />
 								<input type="hidden" name="return" value=" " />
 								<input type="hidden" name="cancel_return" value=" " />
-								<input type="submit" name="submit" value="Add to cart" class="button" />
+								<input type="submit" name="submit" value="@if(Session::get('locale') == 'en') Add to cart @else Thêm vào giỏ @endif" class="button" />
 							</fieldset>
 						</form>
 					</div>
@@ -121,7 +121,7 @@
 	<div class="featured-section" id="projects">
 		<div class="container">
 			<!-- tittle heading -->
-			<h3 class="tittle-w3l">Sản phẩm liên quan
+			<h3 class="tittle-w3l">@lang('product_details.related_products')
 				<span class="heading-style">
 					<i></i>
 					<i></i>
@@ -141,7 +141,9 @@
 							</div>
 							<div class="product-name-w3l">
 								<h4>
-									<a href="{{route('chitietsanpham',$sptt->id)}}">{{$sptt->name}}</a>
+									<a href="{{route('chitietsanpham',$sptt->id)}}">
+										@if(Session::get('locale') == 'en') {{$sptt->name_en}} @else{{$sptt->name}} @endif
+									</a>
 								</h4>
 								<div class="w3l-pricehkj">  
                                     @if($sptt->promotion_price==0)
@@ -159,13 +161,13 @@
 											<input type="hidden" name="business" value=" " />
 											<input type="hidden" name="item_id" value="{{$sptt->id}}" />
 											<input type="hidden" name="item_image" value="{{$sptt->image}}" />
-											<input type="hidden" name="item_name" value="{{$sptt->name}}" />
+											<input type="hidden" name="item_name" value="@if(Session::get('locale') == 'en') {{$sptt->name_en}} @else{{$sptt->name}} @endif" />
 											<input type="hidden" name="amount" value="{{$sptt->unit_price}}" />
 											<input type="hidden" name="discount_amount" value="{{$sptt->promotion_price == 0 ? 0 : $sptt->unit_price-$sptt->promotion_price}}" />
 											<input type="hidden" name="currency_code" value="VND" />
 											<input type="hidden" name="return" value=" " />
 											<input type="hidden" name="cancel_return" value=" " />
-											<input type="submit" name="submit" value="Add to cart" class="button" />
+											<input type="submit" name="submit" value="@if(Session::get('locale') == 'en') Add to cart @else Thêm vào giỏ @endif" class="button" />
 										</fieldset>
 									</form>
 								</div>

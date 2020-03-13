@@ -7,10 +7,10 @@
 			<div class="container">
 				<ul class="w3_short">
 					<li>
-						<a href="{{route('trang-chu')}}">Home</a>
+						<a href="{{route('trang-chu')}}">@lang('about_us.home')</a>
 						<i>|</i>
 					</li>
-					<li>Giới thiệu</li>
+					<li>@lang('about_us.title')</li>
 				</ul>
 			</div>
 		</div>
@@ -21,7 +21,7 @@
 	<div class="welcome">
 		<div class="container">
 			<!-- tittle heading -->
-			<h3 class="tittle-w3l">Giới thiệu về cửa hàng
+			<h3 class="tittle-w3l">@lang('about_us.subtitle')
 				<span class="heading-style">
 					<i></i>
 					<i></i>
@@ -43,7 +43,7 @@
 				<div class="clearfix"> </div>
 			</div>
 			<div class="w3l-welcome-text">
-				<p>Hệ thống siêu thị và chuỗi cửa hàng VinMart & VinMart+ là hai thương hiệu bán lẻ thuộc Tập Đoàn Masan Group. Ra đời từ năm 2014 cho đến nay, hệ thống VinMart & VinMart+ không ngừng phát triển vươn lên, ra mắt với hơn 132 siêu thị VinMart và gần 3000 cửa hàng VinMart+ phủ rộng khắp Việt Nam, mang đến cho người tiêu dùng sự lựa chọn đa dạng về chất lượng hàng hóa và dịch vụ, đáp ứng đầy đủ nhu cầu trải nghiệm mua sắm từ bình dân đến cao cấp của mọi khách hàng.</p>
+				<p>@lang('about_us.logan')</p>
 			</div>
 		</div>
 	</div>
@@ -52,7 +52,7 @@
 	<div class="about">
 		<div class="container">
 			<!-- tittle heading -->
-			<h3 class="tittle-w3l">Xem thêm thông tin chi tiết
+			<h3 class="tittle-w3l">@lang('about_us.video')
 				<span class="heading-style">
 					<i></i>
 					<i></i>
@@ -68,8 +68,8 @@
 					<div class="img-video-about">
 						<img src="images/videoimg2.png" alt="">
 					</div>
-					<h4>Mango Shop</h4>
-					<p>AN TÂM MUA SẮM MỖI NGÀY</p>
+					<h4>@lang('about_us.shop_name')</h4>
+					<p>@lang('about_us.shop_name_desc')</p>
 				</div>
 				<div class="clearfix"></div>
 			</div>

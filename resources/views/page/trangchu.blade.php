@@ -14,8 +14,8 @@
             <div class="item active">
                 <div class="container">
                     <div class="carousel-caption">
-                        <h3>@lang('index.carousel_content_2')
-                            <span>@lang('index.carousel_content_1')</span>
+                        <h3>@lang('index.carousel_content_1')
+                            <span>@lang('index.carousel_content_2')</span>
                         </h3>
                         <p>@lang('index.carousel_content_3')
                             <span>@lang('index.carousel_content_4')</span> @lang('index.carousel_content_5')</p>
