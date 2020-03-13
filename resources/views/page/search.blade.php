@@ -88,9 +88,9 @@
             <!-- product left -->
             <div class="side-bar col-md-3">
                 <div class="search-hotel">
-                    <h3 class="agileits-sear-head">Tìm kiếm..</h3>
+                    <h3 class="agileits-sear-head">@lang('index.search')</h3>
                     <form action="{{route('search')}}" method="get">
-                        <input type="search" placeholder="Tên sản phẩm..." name="search" required="">
+                        <input type="search" placeholder="@if(Session::get('locale') == 'en') Enter key word @else  Nhập từ khóa @endif" name="key" required="">
                         <input type="submit" value=" ">
                     </form>
                 </div>
@@ -257,25 +257,27 @@
                         @foreach ($product as $pro)          
                         <div class="col-md-4 product-men">
                             <div class="men-pro-item simpleCart_shelfItem">
-                                <div class="men-thumb-item">
-                                    <img src="uploads/product/{{$pro->image}}" alt="" height="150" width="150">
+                                <div class="men-thumb-item" onclick="window.location.href='{{route('chitietsanpham',$pro->id)}}'">
+                                    <img src="public/uploads/product/{{$pro->image}}" alt="" height="150" width="150">
                                     <div class="men-cart-pro">
                                         <div class="inner-men-cart-pro">
-                                            <a href="{{route('chitietsanpham',$pro->id)}}" class="link-product-add-cart">Chi tiết</a>
+                                            <a href="{{route('chitietsanpham',$pro->id)}}" class="link-product-add-cart">@lang('index.detail')</a>
                                         </div>
                                     </div>
-                                    <span class="product-new-top">Sale</span>
+                                    <span class="product-new-top">@lang('index.label_promo_product')</span>
                                 </div>
                                 <div class="item-info-product ">
                                     <h4>
-                                        <a href="{{route('chitietsanpham',$pro->id)}}">{{$pro->name}}</a>
+                                        <a href="{{route('chitietsanpham',$pro->id)}}">
+                                            @if(Session::get('locale') == 'en') {{$pro->name_en}} @else  {{$pro->name}} @endif
+                                        </a>
                                     </h4>
                                     <div class="info-product-price">
                                         @if($pro->promotion_price==0)
-                                            <span class="item_price">{{number_format($pro->unit_price)}}VND</span> 
+                                            <span class="item_price">{{Helper::currency_format($pro->unit_price)}}</span> 
                                         @else
-                                            <span class="item_price">{{number_format($pro->promotion_price)}} VND</span>
-                                            <del>{{number_format($pro->unit_price)}} VND</del>
+                                            <span class="item_price">{{Helper::currency_format($pro->promotion_price)}}</span>
+                                            <del>{{Helper::currency_format($pro->unit_price)}}</del>
                                         @endif
                                     </div>
                                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
@@ -284,13 +286,17 @@
                                                 <input type="hidden" name="cmd" value="_cart" />
                                                 <input type="hidden" name="add" value="1" />
                                                 <input type="hidden" name="business" value=" " />
-                                                <input type="hidden" name="item_name" value="Almonds, 100g" />
-                                                <input type="hidden" name="amount" value="149.00" />
-                                                <input type="hidden" name="discount_amount" value="1.00" />
-                                                <input type="hidden" name="currency_code" value="USD" />
+                                                <input type="hidden" name="item_id" value="{{$pro->id}}" />
+                                                <input type="hidden" name="item_image" value="{{$pro->image}}" />
+                                                <input type="hidden" name="item_name" value="@if(Session::get('locale') == 'en') {{$pro->name_en}} @else {{$pro->name}} @endif" />
+                                                <input type="hidden" name="item_name_vi" value="{{$pro->name}}" />
+                                                <input type="hidden" name="item_name_en" value="{{$pro->name_en}}" />
+                                                <input type="hidden" name="amount" value="{{$pro->unit_price}}" />
+                                                <input type="hidden" name="discount_amount" value="{{$pro->promotion_price == 0 ? 0 : $pro->unit_price-$pro->promotion_price}}" />
+                                                <input type="hidden" name="currency_code" value="@if(Session::get('locale') == 'en'){{'USD'}}@else{{'VND'}}@endif" />
                                                 <input type="hidden" name="return" value=" " />
                                                 <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="Add to cart" class="button" />
+                                                <input type="submit" name="submit" value="@lang('checkout.cart_button')" class="button" />
                                             </fieldset>
                                         </form>
                                     </div>
@@ -341,20 +347,22 @@
                             <div class="w3l-specilamk">
                                 <div class="speioffer-agile">
                                     <a href="{{route('chitietsanpham',$new->id)}}">
-                                        <img src="uploads/product/{{$new->image}}" alt="" height="150" width="150">
+                                        <img src="public/uploads/product/{{$new->image}}" alt="" height="150" width="150">
                                     </a>
                                 </div>
                                 <div class="product-name-w3l">
                                     <h4>
-                                        <a href="{{route('chitietsanpham',$new->id)}}">{{$new->name}}</a>
+                                        <a href="{{route('chitietsanpham',$new->id)}}">
+                                            @if(Session::get('locale') == 'en') {{$new->name_en}} @else  {{$new->name}} @endif
+                                        </a>
                                     </h4>
-                                    <span class="product-new-top">New</span>
+                                    <span class="product-new-top">@lang('index.label_promo_product')</span>
                                     <div class="w3l-pricehkj">
                                         @if($new->promotion_price==0)
-                                            <span class="item_price">{{number_format($new->unit_price)}}VND</span> 
+                                            <span class="item_price">{{Helper::currency_format($new->unit_price)}}</span> 
                                         @else
-                                            <span class="item_price">{{number_format($new->promotion_price)}} VND</span>
-                                            <del>{{number_format($new->unit_price)}} VND</del>
+                                            <span class="item_price">{{Helper::currency_format($new->promotion_price)}}</span>
+                                            <del>{{Helper::currency_format($new->unit_price)}}</del>
                                         @endif
                                     </div>
                                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
@@ -363,13 +371,17 @@
                                                 <input type="hidden" name="cmd" value="_cart" />
                                                 <input type="hidden" name="add" value="1" />
                                                 <input type="hidden" name="business" value=" " />
-                                                <input type="hidden" name="item_name" value="Aashirvaad, 5g" />
-                                                <input type="hidden" name="amount" value="220.00" />
-                                                <input type="hidden" name="discount_amount" value="1.00" />
-                                                <input type="hidden" name="currency_code" value="USD" />
+                                                <input type="hidden" name="item_id" value="{{$new->id}}" />
+                                                <input type="hidden" name="item_image" value="{{$new->image}}" />
+                                                <input type="hidden" name="item_name" value="@if(Session::get('locale') == 'en') {{$new->name_en}} @else {{$new->name}} @endif" />
+                                                <input type="hidden" name="item_name_vi" value="{{$new->name}}" />
+                                                <input type="hidden" name="item_name_en" value="{{$new->name_en}}" />
+                                                <input type="hidden" name="amount" value="{{$new->unit_price}}" />
+                                                <input type="hidden" name="discount_amount" value="{{$new->promotion_price == 0 ? 0 : $new->unit_price-$new->promotion_price}}" />
+                                                <input type="hidden" name="currency_code" value="@if(Session::get('locale') == 'en'){{'USD'}}@else{{'VND'}}@endif" />
                                                 <input type="hidden" name="return" value=" " />
                                                 <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="Add to cart" class="button" />
+                                                <input type="submit" name="submit" value="@lang('checkout.cart_button')" class="button" />
                                             </fieldset>
                                         </form>
                                     </div>

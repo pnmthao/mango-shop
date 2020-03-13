@@ -1935,7 +1935,7 @@
                  * @param {string} name Name of the cart (used as a key for storage)
                  * @param {duration} number Time in milliseconds that the cart data should persist
                  */
-                function Cart(name, duration) {
+                function Cart(name, duration, locale) {
                     var data, items, settings, len, i
 
                     this._items = []
@@ -1947,13 +1947,15 @@
                     if ((data = this.load())) {
                         items = data.items
                         settings = data.settings
-
                         if (settings) {
                             this._settings = settings
                         }
-
+                        // console.log({settings, data})
                         if (items) {
                             for (i = 0, len = items.length; i < len; i++) {
+                                // console.log(items[i])
+                                items[i].item_name = items[i]["item_name_" + locale]
+                                items[i].currency_code = locale == "vi" ? "VND" : "USD"
                                 this.add(items[i])
                             }
                         }
@@ -1989,7 +1991,7 @@
 
                     // Look to see if the same product has already been added
                     for (i = 0, len = items.length; i < len; i++) {
-                        if (items[i].isEqual(data)) {
+                        if (items[i]._data.item_id == data.item_id) {
                             product = items[i]
                             product.set(
                                 'quantity',
@@ -2216,7 +2218,8 @@
                         discount: 'Giảm giá:',
                         empty: 'Chưa có sản phẩm nào trong giỏ hàng!',
                         hrefCheckout: "window.location.href='dat-hang'"
-                    }
+                    },
+                    locale: 'vi'
                 })
 
                 /**
@@ -2284,7 +2287,8 @@
                     confModel = minicartk.config = config.load(userConfig)
                     cartModel = minicartk.cart = new Cart(
                         confModel.name,
-                        confModel.duration
+                        confModel.duration,
+                        confModel.locale || 'vi'
                     )
                     viewModel = minicartk.view = new View({
                         config: confModel,
@@ -2725,16 +2729,17 @@
                 }
 
                 module.exports = function currency(amount, config) {
-                    var code = (config && config.currency) || 'USD',
+                    var code = (config && config.currency) || 'VND',
                         value = currencies[code],
                         before = value.before || '',
                         after = value.after || '',
                         length = value.length || 2,
                         showCode = value.code && config && config.showCode,
                         result = amount
-
+                        // console.log(config)
                     if (config && config.format) {
-                        result = before + new Intl.NumberFormat({ style: 'currency'}).format(result) + after
+                        let value = code === 'VND' ? new Intl.NumberFormat({ style: 'currency'}).format(result) : new Intl.NumberFormat({ style: 'currency',}).format((result/23000.0).toFixed(2))
+                        result = before + value + after
                     }
 
                     if (showCode) {

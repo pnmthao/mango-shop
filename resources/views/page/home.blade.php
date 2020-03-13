@@ -258,7 +258,7 @@
                         @foreach ($sanpham_khuyenmai as $spkm)          
                         <div class="col-md-4 product-men">
                             <div class="men-pro-item simpleCart_shelfItem">
-                                <div class="men-thumb-item">
+                                <div class="men-thumb-item" onclick="window.location.href='{{route('chitietsanpham',$spkm->id)}}'">
                                     <img src="public/uploads/product/{{$spkm->image}}" alt="" height="150" width="150">
                                     <div class="men-cart-pro">
                                         <div class="inner-men-cart-pro">
@@ -275,10 +275,10 @@
                                     </h4>
                                     <div class="info-product-price">
                                         @if($spkm->promotion_price==0)
-                                            <span class="item_price">{{number_format($spkm->unit_price)}} VND</span> 
+                                            <span class="item_price">{{Helper::currency_format($spkm->unit_price)}}</span> 
                                         @else
-                                            <span class="item_price">{{number_format($spkm->promotion_price)}} VND</span>
-                                            <del>{{number_format($spkm->unit_price)}} VND</del>
+                                            <span class="item_price">{{Helper::currency_format($spkm->promotion_price)}}</span>
+                                            <del>{{Helper::currency_format($spkm->unit_price)}}</del>
                                         @endif
                                     </div>
                                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
@@ -290,12 +290,14 @@
                                                 <input type="hidden" name="item_id" value="{{$spkm->id}}" />
                                                 <input type="hidden" name="item_image" value="{{$spkm->image}}" />
                                                 <input type="hidden" name="item_name" value="@if(Session::get('locale') == 'en') {{$spkm->name_en}} @else {{$spkm->name}} @endif" />
+                                                <input type="hidden" name="item_name_vi" value="{{$spkm->name}}" />
+                                                <input type="hidden" name="item_name_en" value="{{$spkm->name_en}}" />
                                                 <input type="hidden" name="amount" value="{{$spkm->unit_price}}" />
                                                 <input type="hidden" name="discount_amount" value="{{$spkm->promotion_price == 0 ? 0 : $spkm->unit_price-$spkm->promotion_price}}" />
-                                                <input type="hidden" name="currency_code" value="VND" />
+                                                <input type="hidden" name="currency_code" value="@if(Session::get('locale') == 'en'){{'USD'}}@else{{'VND'}}@endif" />
                                                 <input type="hidden" name="return" value=" " />
                                                 <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="@if(Session::get('locale') == 'en') Add to cart @else Thêm vào giỏ @endif" class="button" />
+                                                <input type="submit" name="submit" value="@lang('checkout.cart_button')" class="button" />
                                             </fieldset>
                                         </form>
                                     </div>
@@ -328,7 +330,7 @@
                         @foreach($sp_traicay as $sp_tc)
                         <div class="col-md-4 product-men">
                             <div class="men-pro-item simpleCart_shelfItem">
-                                <div class="men-thumb-item">
+                                <div class="men-thumb-item" onclick="window.location.href='{{route('chitietsanpham',$sp_tc->id)}}'">
                                     <img src="public/uploads/product/{{$sp_tc->image}}" alt="" height="150" width="150">
                                     <div class="men-cart-pro">
                                         <div class="inner-men-cart-pro">
@@ -345,10 +347,10 @@
                                     </h4>
                                     <div class="info-product-price">
                                         @if($sp_tc->promotion_price==0)
-                                            <span class="item_price">{{number_format($sp_tc->unit_price)}}VND</span> 
+                                            <span class="item_price">{{Helper::currency_format($sp_tc->unit_price)}}</span> 
                                         @else
-                                            <span class="item_price">{{number_format($sp_tc->promotion_price)}} VND</span>
-                                            <del>{{number_format($sp_tc->unit_price)}} VND</del>
+                                            <span class="item_price">{{Helper::currency_format($sp_tc->promotion_price)}}</span>
+                                            <del>{{Helper::currency_format($sp_tc->unit_price)}}</del>
                                         @endif
                                     </div>
                                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
@@ -360,12 +362,14 @@
                                                 <input type="hidden" name="item_id" value="{{$sp_tc->id}}" />
                                                 <input type="hidden" name="item_image" value="{{$sp_tc->image}}" />
                                                 <input type="hidden" name="item_name" value="@if(Session::get('locale') == 'en') {{$sp_tc->name_en}} @else  {{$sp_tc->name}} @endif" />
+                                                <input type="hidden" name="item_name_vi" value="{{$sp_tc->name}}" />
+                                                <input type="hidden" name="item_name_en" value="{{$sp_tc->name_en}}" />
                                                 <input type="hidden" name="amount" value="{{$sp_tc->unit_price}}" />
                                                 <input type="hidden" name="discount_amount" value="{{$sp_tc->promotion_price == 0 ? 0 : $sp_tc->unit_price-$sp_tc->promotion_price}}" />
-                                                <input type="hidden" name="currency_code" value="VND" />
+                                                <input type="hidden" name="currency_code" value="@if(Session::get('locale') == 'en'){{'USD'}}@else{{'VND'}}@endif" />
                                                 <input type="hidden" name="return" value=" " />
                                                 <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="@if(Session::get('locale') == 'en') Add to cart @else Thêm vào giỏ @endif" class="button" />
+                                                <input type="submit" name="submit" value="@lang('checkout.cart_button')" class="button" />
                                             </fieldset>
                                         </form>
                                     </div>
@@ -383,7 +387,7 @@
                         @foreach($sp_thit as $sp_t)
                         <div class="col-md-4 product-men">
                             <div class="men-pro-item simpleCart_shelfItem">
-                                <div class="men-thumb-item">
+                                <div class="men-thumb-item" onclick="window.location.href='{{route('chitietsanpham',$sp_t->id)}}'">
                                     <img src="public/uploads/product/{{$sp_t->image}}" alt="" height="150" width="150">
                                     <div class="men-cart-pro">
                                         <div class="inner-men-cart-pro">
@@ -400,10 +404,10 @@
                                     </h4>
                                     <div class="info-product-price">
                                         @if($sp_t->promotion_price==0)
-                                            <span class="item_price">{{number_format($sp_t->unit_price)}}VND</span> 
+                                            <span class="item_price">{{Helper::currency_format($sp_t->unit_price)}}</span> 
                                         @else
-                                            <span class="item_price">{{number_format($sp_t->promotion_price)}} VND</span>
-                                            <del>{{number_format($sp_t->unit_price)}} VND</del>
+                                            <span class="item_price">{{Helper::currency_format($sp_t->promotion_price)}}</span>
+                                            <del>{{Helper::currency_format($sp_t->unit_price)}}</del>
                                         @endif
                                     </div>
                                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
@@ -415,12 +419,14 @@
                                                 <input type="hidden" name="item_id" value="{{$sp_t->id}}" />
                                                 <input type="hidden" name="item_image" value="{{$sp_t->image}}" />
                                                 <input type="hidden" name="item_name" value="@if(Session::get('locale') == 'en') {{$sp_t->name_en}} @else  {{$sp_t->name}} @endif" />
+                                                <input type="hidden" name="item_name_vi" value="{{$sp_t->name}}" />
+                                                <input type="hidden" name="item_name_en" value="{{$sp_t->name_en}}" />
                                                 <input type="hidden" name="amount" value="{{$sp_t->unit_price}}" />
                                                 <input type="hidden" name="discount_amount" value="{{$sp_t->promotion_price == 0 ? 0 : $sp_t->unit_price-$sp_t->promotion_price}}" />
-                                                <input type="hidden" name="currency_code" value="VND" />
+                                                <input type="hidden" name="currency_code" value="@if(Session::get('locale') == 'en'){{"USD"}}@else{{"VND"}}@endif" />
                                                 <input type="hidden" name="return" value=" " />
                                                 <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="@if(Session::get('locale') == 'en') Add to cart @else Thêm vào giỏ @endif" class="button" />
+                                                <input type="submit" name="submit" value="@lang('checkout.cart_button')" class="button" />
                                             </fieldset>
                                         </form>
                                     </div>
@@ -453,49 +459,50 @@
             <div class="content-bottom-in">
                 <ul id="flexiselDemo1">
                     @foreach ($new_product as $new)
-                        <li>
-                            <div class="w3l-specilamk">
-                                <div class="speioffer-agile">
-                                    <a href="{{route('chitietsanpham',$new->id)}}">
-                                        <img src="public/uploads/product/{{$new->image}}" alt="" height="150" width="150">
-                                    </a>
-                                </div>
-                                <div class="product-name-w3l">
-                                    <h4>
-                                        <a href="{{route('chitietsanpham',$new->id)}}">
-                                            @if(Session::get('locale') == 'en') {{$new->name_en}} @else  {{$new->name}} @endif
-                                        </a>
-                                    </h4>
-                                    <span class="product-new-top">@lang('index.label_new_product')</span>
-                                    <div class="w3l-pricehkj">
-                                        @if($new->promotion_price==0)
-                                            <span class="item_price">{{number_format($new->unit_price)}}VND</span> 
-                                        @else
-                                            <span class="item_price">{{number_format($new->promotion_price)}} VND</span>
-                                            <del>{{number_format($new->unit_price)}} VND</del>
-                                        @endif
-                                    </div>
-                                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                        <form action="#" method="post">
-                                            <fieldset>
-                                                <input type="hidden" name="cmd" value="_cart" />
-                                                <input type="hidden" name="add" value="1" />
-                                                <input type="hidden" name="business" value=" " />
-                                                <input type="hidden" name="item_id" value="{{$new->id}}" />
-                                                <input type="hidden" name="item_image" value="{{$new->image}}" />
-                                                <input type="hidden" name="item_name" value="@if(Session::get('locale') == 'en') {{$new->name_en}} @else  {{$new->name}} @endif" />
-                                                <input type="hidden" name="amount" value="{{$new->unit_price}}" />
-                                                <input type="hidden" name="discount_amount" value="{{$new->promotion_price == 0 ? 0 : $new->unit_price-$new->promotion_price}}" />
-                                                <input type="hidden" name="currency_code" value="VND" />
-                                                <input type="hidden" name="return" value=" " />
-                                                <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="@if(Session::get('locale') == 'en') Add to cart @else Thêm vào giỏ @endif" class="button" />
-                                            </fieldset>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                    <li>
+						<div class="w3l-specilamk">
+							<div class="speioffer-agile">
+								<a href="{{route('chitietsanpham',$new->id)}}">
+									<img src="public/uploads/product/{{$new->image}}" alt="" width="150" height="150">
+								</a>
+							</div>
+							<div class="product-name-w3l">
+								<h4>
+									<a href="{{route('chitietsanpham',$new->id)}}">
+										@if(Session::get('locale') == 'en') {{$new->name_en}} @else{{$new->name}} @endif
+									</a>
+								</h4>
+								<div class="w3l-pricehkj">  
+                                    @if($new->promotion_price==0)
+                                        <span class="item_price">{{Helper::currency_format($new->unit_price)}}</span> 
+                                    @else
+                                        <span class="item_price">{{Helper::currency_format($new->promotion_price)}}</span>
+                                        <del>{{Helper::currency_format($new->unit_price)}}</del>
+                                    @endif
+								</div>
+								<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+									<form action="#" method="post">
+										<fieldset>
+											<input type="hidden" name="cmd" value="_cart" />
+											<input type="hidden" name="add" value="1" />
+											<input type="hidden" name="business" value=" " />
+											<input type="hidden" name="item_id" value="{{$new->id}}" />
+											<input type="hidden" name="item_image" value="{{$new->image}}" />
+											<input type="hidden" name="item_name" value="@if(Session::get('locale') == 'en') {{$new->name_en}} @else{{$new->name}} @endif" />
+											<input type="hidden" name="item_name_vi" value="{{$new->name}}" />
+                                			<input type="hidden" name="item_name_en" value="{{$new->name_en}}" />
+											<input type="hidden" name="amount" value="{{$new->unit_price}}" />
+											<input type="hidden" name="discount_amount" value="{{$new->promotion_price == 0 ? 0 : $new->unit_price-$new->promotion_price}}" />
+											<input type="hidden" name="currency_code" value="@if(Session::get('locale') == 'en'){{'USD'}}@else{{'VND'}}@endif" />
+											<input type="hidden" name="return" value=" " />
+											<input type="hidden" name="cancel_return" value=" " />
+											<input type="submit" name="submit" value="@lang('checkout.cart_button')" class="button" />
+										</fieldset>
+									</form>
+								</div>
+							</div>
+                        </div>
+                    </li>
                     @endforeach
                 </ul>
             </div>

@@ -72,13 +72,21 @@
 	<!-- cart-js -->
 	<script src="js/minicart.js"></script>
 	<script>
+		// paypalm.minicartk.reset()
 		let hrefCheckout = '@if(Session::get('customer_id')) {{"window.location.href='dat-hang'"}} @else {{"window.location.href='dang-nhap'"}} @endif';
 		paypalm.minicartk.render({
-			"strings": {
-				"hrefCheckout": hrefCheckout
-			}
+			strings: {
+				hrefCheckout,
+				subtotal: "@lang('checkout.cart_subtotal')",
+				discount: "@lang('checkout.cart_discount')",
+				empty: "@lang('checkout.cart_empty')",
+				button: "@lang('checkout.cart_button_checkout')"
+			},
+			locale: "{{App::getLocale()}}",
 		});
 		function number_format(number){
+			if ('{{Session::get('locale')}}' == 'en')
+				return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format((number/23000.0).toFixed(2))
 			return new Intl.NumberFormat('vn-VN', { style: 'currency', currency: 'VND' }).format(number)
 		}
 		function transformRaw(item, index) {
