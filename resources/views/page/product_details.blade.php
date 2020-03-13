@@ -64,8 +64,12 @@
 						<span class="item_price">{{number_format($sanpham->promotion_price)}} VND</span>
 						<del>{{number_format($sanpham->unit_price)}} VND</del>
 					@endif
-					{{-- <label>Free delivery</label> --}}
 				</p>
+				<p>
+					
+					<label>@if(Session::get('locale') == 'en') Description of products @else Mô tả sản phẩm @endif</label>
+				</p>
+				<i class="fa fa-hand-o-right" aria-hidden="true"></i> @if(Session::get('locale') == 'en') {{$sanpham->description_en}} @else{{$sanpham->description}} @endif
 				{{-- <div class="single-infoagile">
 					<ul>
 						<li>Cash on Delivery Eligible.</li>

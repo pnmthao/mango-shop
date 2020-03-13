@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'carousel_content_1' => 'Cực mạnh',
-    'carousel_content_2' => 'Giảm giá',
+    'carousel_content_1' => 'Giảm giá',
+    'carousel_content_2' => 'Cực mạnh',
     'carousel_content_3' => 'Nhận ngay ưu đãi',
     'carousel_content_4' => '10%',
     'carousel_content_5' => 'Hoàn tiền',

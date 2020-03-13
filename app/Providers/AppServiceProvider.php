@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
             $nha_cung_cap_sp = Brand::all();
             $view->with('nha_cung_cap_sp',$nha_cung_cap_sp);
         });
-        view()->composer(['../header','page.dat_hang'],function($view){
+        view()->composer(['../header','page.checkout'],function($view){
             if(Session('cart')){
                 $oldCart = Session::get('cart');
                 $cart = new Cart($oldCart);

@@ -31,35 +31,35 @@ class PageController extends Controller
         $slide = Slide::all();
         $new_product = Product::where('new',1)->paginate(4);
         $sanpham_khuyenmai = Product::where('promotion_price','<>',0)->paginate(8);
-        //return view('page.trangchu',['slide'=>$slide]);
+        //return view('page.home',['slide'=>$slide]);
         $sp_traicay = Product::where('id_type','=','4')->get();
         $sp_thit = Product::where('id_type','=','20')->get();
-        return view('page.trangchu',compact('slide','new_product','sanpham_khuyenmai','sp_traicay','sp_thit'));
+        return view('page.home',compact('slide','new_product','sanpham_khuyenmai','sp_traicay','sp_thit'));
     }
     public function getLoaiSp($type){
         $sp_theoloai = Product::where('id_type',$type)->get();
         $sp_khac = Product::where('id_type','<>',$type)->paginate(3);
         $loai = ProductType::all();
         $loai_sp = ProductType::where('id',$type)->first();
-        return view('page.loai_sanpham',compact('sp_theoloai','sp_khac','loai','loai_sp'));
+        return view('page.products_by_category',compact('sp_theoloai','sp_khac','loai','loai_sp'));
     }
     public function getNhaCungCapSp($type){
         $sp_theonhacungcap = Product::where('id_brand',$type)->get();
         $sp_khac = Product::where('id_brand','<>',$type)->paginate(3);
         $nha_cung_cap = Brand::all();
         $nha_cung_cap_sp = Brand::where('id',$type)->first();
-        return view('page.nhacungcap_sanpham',compact('sp_theonhacungcap','sp_khac','nha_cung_cap','nha_cung_cap_sp'));
+        return view('page.products_by_supplier',compact('sp_theonhacungcap','sp_khac','nha_cung_cap','nha_cung_cap_sp'));
     }
     public function getChitiet(Request $req){
         $sanpham = Product::where('id',$req->id)->first();
         $sp_tuongtu = Product::where('id_type',$sanpham->id_type)->whereNotIn('id',array($req->id))->paginate(3);
-        return view('page.chitiet_sanpham',compact('sanpham','sp_tuongtu'));
+        return view('page.product_details',compact('sanpham','sp_tuongtu'));
     }
     public function getLienHe(){
-        return view('page.lienhe');
+        return view('page.contact');
     }
     public function getGioiThieu(){
-        return view('page.gioithieu');
+        return view('page.about_us');
     }
     public function getFaqs(){
         return view('page.faqs');
@@ -98,10 +98,10 @@ class PageController extends Controller
             $oldCart = Session::get('cart');
             $cart = new Cart($oldCart);
             //dd($cart);
-            return view('page.dat_hang',['product_cart'=>$cart->items, 'totalPrice'=>$cart->totalPrice, 'totalQty'=>$cart->totalQty]);
+            return view('page.checkout',['product_cart'=>$cart->items, 'totalPrice'=>$cart->totalPrice, 'totalQty'=>$cart->totalQty]);
         }
         else{
-            return view('page.dat_hang');
+            return view('page.checkout');
         }
     }
     public function postCheckout(Request $req){
@@ -139,7 +139,7 @@ class PageController extends Controller
         if($customer_id){
             return Redirect('index');
         }
-        return view('page.dangnhap');
+        return view('page.signin');
     }
     public function postLogin(Request $req){
         $this->validate($req,
@@ -178,7 +178,7 @@ class PageController extends Controller
         // return redirect()->back()->with(['flag'=>'success','message'=>'Bạn đăng nhập thành công']);
     }
     public function getSignup(){
-        return view('page.dangky');
+        return view('page.register');
     }
     public function postSignup(Request $req){
         $this->validate($req,
