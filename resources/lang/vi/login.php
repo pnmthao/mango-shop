@@ -15,5 +15,8 @@ return [
 
     'title' => 'Đăng nhập',
     'email' => 'Email',
-    'password' => 'Mật khẩu'
+    'password' => 'Mật khẩu',
+    'button'=>'Đăng nhập',
+    'place_email'=>'Nhập email',
+    'place_password'=>'Nhập mật khẩu'
 ];

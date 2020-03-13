@@ -56,7 +56,7 @@
 				@if(Session::has('thongbao'))
 					<div class="alert alert-success">{{Session::get('thongbao')}}</div>
 				@endif
-				<form action="dathang" method="post" class="creditly-card-form agileinfo_form">
+				<form action="{{route('dathang')}}" method="post" class="creditly-card-form agileinfo_form">
 					<input type="hidden" name="_token" value="{{csrf_token()}}">
 					<div class="creditly-wrapper wthree, w3_agileits_wrapper">
 						<div class="information-wrapper">
@@ -78,14 +78,12 @@
 									<input type="text" name="phone" value="{{Session::get('customer_phone')}}" placeholder="@if(Session::get('locale') == 'en') Enter Phone Number @else Nhập số điện thoại @endif" required>
 								</div>
 							</div>
-							<button class="submit check_out">@lang('checkout.order_delivery')</button>
+							<button type="submit" class="submit check_out">@lang('checkout.order_delivery')</button> 
 						</div>
 					</div>
 				</form>
 				<div class="checkout-right-basket">
-					<a href="payment">@lang('checkout.payment')
-						<span class="fa fa-hand-o-right" aria-hidden="true"></span>
-					</a>
+					<a href="payment">@lang('checkout.payment')<span class="fa fa-hand-o-right" aria-hidden="true"></span></a>
 				</div>
 			</div>
 			<div class="clearfix"> </div>

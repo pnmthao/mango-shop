@@ -43,14 +43,6 @@ return [
     'reviews' => 'Đánh giá',
     'cuisine' => 'Khẩu vị',
     'deals' => 'Sản phẩm đặc biệt',
-    'title_promo_product' => 'Sản phẩm khuyến mãi',
     'detail' => 'Chi tiết',
-    'label_promo_product' => 'Giảm giá',
-    'fruits' => 'Trái cây',
-    'label_fruits' => 'Mới',
-    'meat' => 'Thịt',
-    'label_meat' => 'Mới',
-    'new_product' => 'Sản phẩm mới về',
-    'label_new_product' => 'Mới',
     'place_search' => "Nhập từ khóa cần tìm"
 ];

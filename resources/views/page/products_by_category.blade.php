@@ -20,7 +20,7 @@
 <div class="ads-grid">
     <div class="container">
         <!-- tittle heading -->
-        <h3 class="tittle-w3l">@if(Session::get('locale') == 'en') {{$loai_sp->name_en}} @else {{$loai_sp->name}} @endif
+        <h3 class="tittle-w3l">@if(Session::get('locale') == 'en'){{$loai_sp->name_en}} @else {{$loai_sp->name}} @endif
             <span class="heading-style">
                 <i></i>
                 <i></i>
@@ -28,6 +28,7 @@
             </span>
         </h3>
         <!-- //tittle heading -->
+
         <!-- product left -->
         <div class="side-bar col-md-3">
             <div class="search-hotel">
@@ -191,6 +192,7 @@
             <!-- //deals -->
         </div>
         <!-- //product left -->
+
         <!-- product right -->
         <div class="agileinfo-ads-display col-md-9 ">
             <div class="wrapper">
@@ -255,6 +257,7 @@
     </div>
 </div>
 <!-- //top products -->
+
 <!-- special offers -->
 <div class="featured-section" id="projects">
     <div class="container">
@@ -319,6 +322,6 @@
         </div>
     </div>
 </div>
-    <!-- //special offers --> 
+<!-- //special offers --> 
 @include('../footer')
 @endsection

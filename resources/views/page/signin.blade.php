@@ -24,13 +24,13 @@
                         @endif
                         <div class="">
                             <label for="email">@lang('login.email')</label>
-                            <input type="email" class="email" name="email" placeholder="Nhập địa chỉ Email" required>
+                            <input type="email" class="email" name="email" placeholder="@lang('login.place_email')" required>
                         </div>
                         <div class="">
                             <label for="password">@lang('login.password')</label>
-                            <input type="password" class="password" name="password" placeholder="Nhập mật khẩu" required>
+                            <input type="password" class="password" name="password" placeholder="@lang('login.place_password')" required>
                         </div>
-                        <input type="submit"  value="@if(Session::get('locale') == 'en') Submit @else Đăng nhập @endif">
+                        <input type="submit"  value="@lang('login.button')">
                     </form>
                 </div>
             </div>

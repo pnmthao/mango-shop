@@ -19,9 +19,13 @@ return [
     'subject'=>'Subject',
     'email'=> 'Email',
     'message'=> 'Content',
-    'hotline'=> 'Contact HotLine',
-    'address'=>'Nguyen Van cu Street, An Hoa Ward, Ninh Kieu District, Can Tho City, Viet Nam',
+    'hotline'=> 'HotLine',
+    'address'=>'Nguyen Van cu Str., An Hoa Ward, Ninh Kieu District, Can Tho City, Viet Nam',
     'phone'=>'Phone Number : 02923 893 379',
     'fax'=>'FAX : +84 888 888 888',
-
+    'place_name'=> 'Enter Full Name',
+    'place_email'=> 'Enter Email',
+    'place_subject'=>'Enter Subject',
+    'place_message'=>'Enter Content',
+    'button' => 'Submit'
 ];

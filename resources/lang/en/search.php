@@ -43,14 +43,6 @@ return [
     'reviews' => 'Reviews',
     'cuisine' => 'Cuisine',
     'deals' => 'Best Deals',
-    'title_promo_product' => 'Promotion Products',
     'detail' => 'More Details',
-    'label_promo_product' => 'Sale',
-    'fruits' => 'Fruits',
-    'label_fruits' => 'New',
-    'meat' => 'Meat',
-    'label_meat' => 'New',
-    'new_product' => 'New Products',
-    'label_new_product' => 'New',
     'place_search' => "Enter key words"
 ];

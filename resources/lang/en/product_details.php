@@ -15,5 +15,6 @@ return [
 
     'home' => 'Home',
     'title' => 'Product Details',
-    'related_products' => 'Related Products'
+    'related_products' => 'Related Products',
+    'desc' => 'Description'
 ];
