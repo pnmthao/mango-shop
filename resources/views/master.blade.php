@@ -131,19 +131,23 @@
 			let items = paypalm.minicartk.cart.items(), raws = ''
 			var total, totalDiscount = 0, totalAmount = 0
 			let url = window.location.href
-		
-			
 			if (items.length == 0 && url.substring(url.lastIndexOf('/')+1) == 'dat-hang'){
 				alert('Your shopping cart is empty')
 				window.location.href = "index"
 			}
+			let items_array = []
 			items.forEach((item, index) => {
-				let {quantity, amount, discount_amount} = item._data
+				let {item_id, item_unit, quantity, amount, discount_amount} = item._data
 				totalDiscount += discount_amount * quantity
 				totalAmount += amount * quantity
 				raws += transformRaw(item, index)
+				items_array.push({item_id, item_unit, quantity, unit_price: amount})
 			})
 			total = totalAmount - totalDiscount
+			if (document.forms["form-checkout"]){
+				document.forms["form-checkout"]["items"].value = JSON.stringify(items_array)
+				document.forms["form-checkout"]["total"].value = total
+			}
 			raws += `<tr class="rem-total">
 						<td class="invert" colspan="4">@if(Session::get('locale') == 'en') Total @else Tổng @endif</td>
 						<td class="invert total total-discount">${number_format(totalDiscount)}</td>
@@ -156,7 +160,9 @@
 				document.getElementById("product-qty").innerHTML = items.length + " @if(Session::get('locale') == 'en') products @else sản phẩm @endif"
 			}
 		}
-
+		function checkout(){
+			paypalm.minicartk.reset()
+		}
 		function qtyChange(index, value){
 			let items = paypalm.minicartk.cart.items()
 			let item  = items[index]._data

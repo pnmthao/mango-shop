@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Slide;
 use App\Product;
@@ -19,156 +20,165 @@ use Hash;
 
 class PageController extends Controller
 {
-    public function AuthLogin(){
+    public function AuthLogin()
+    {
         $customer_id = Session::get('customer_id');
-        if($customer_id){
+        if ($customer_id) {
             return Redirect('index');
-        }else{
+        } else {
             return Redirect('dang-nhap')->send();
         }
     }
-    public function getIndex(){
+    public function getIndex()
+    {
         $slide = Slide::all();
-        $new_product = Product::where('new',1)->paginate(4);
-        $sanpham_khuyenmai = Product::where('promotion_price','<>',0)->paginate(8);
+        $new_product = Product::where('new', 1)->paginate(4);
+        $sanpham_khuyenmai = Product::where('promotion_price', '<>', 0)->paginate(8);
         //return view('page.home',['slide'=>$slide]);
-        $sp_traicay = Product::where('id_type','=','4')->get();
-        $sp_thit = Product::where('id_type','=','20')->get();
-        return view('page.home',compact('slide','new_product','sanpham_khuyenmai','sp_traicay','sp_thit'));
+        $sp_traicay = Product::where('id_type', '=', '4')->get();
+        $sp_thit = Product::where('id_type', '=', '20')->get();
+        return view('page.home', compact('slide', 'new_product', 'sanpham_khuyenmai', 'sp_traicay', 'sp_thit'));
     }
-    public function getLoaiSp($type){
-        $sp_theoloai = Product::where('id_type',$type)->get();
-        $sp_khac = Product::where('id_type','<>',$type)->paginate(3);
+    public function getLoaiSp($type)
+    {
+        $sp_theoloai = Product::where('id_type', $type)->get();
+        $sp_khac = Product::where('id_type', '<>', $type)->paginate(3);
         $loai = ProductType::all();
-        $loai_sp = ProductType::where('id',$type)->first();
-        return view('page.products_by_category',compact('sp_theoloai','sp_khac','loai','loai_sp'));
+        $loai_sp = ProductType::where('id', $type)->first();
+        return view('page.products_by_category', compact('sp_theoloai', 'sp_khac', 'loai', 'loai_sp'));
     }
-    public function getNhaCungCapSp($type){
-        $sp_theonhacungcap = Product::where('id_brand',$type)->get();
-        $sp_khac = Product::where('id_brand','<>',$type)->paginate(3);
+    public function getNhaCungCapSp($type)
+    {
+        $sp_theonhacungcap = Product::where('id_brand', $type)->get();
+        $sp_khac = Product::where('id_brand', '<>', $type)->paginate(3);
         $nha_cung_cap = Brand::all();
-        $nha_cung_cap_sp = Brand::where('id',$type)->first();
-        return view('page.products_by_supplier',compact('sp_theonhacungcap','sp_khac','nha_cung_cap','nha_cung_cap_sp'));
+        $nha_cung_cap_sp = Brand::where('id', $type)->first();
+        return view('page.products_by_supplier', compact('sp_theonhacungcap', 'sp_khac', 'nha_cung_cap', 'nha_cung_cap_sp'));
     }
-    public function getChitiet(Request $req){
-        $sanpham = Product::where('id',$req->id)->first();
-        $sp_tuongtu = Product::where('id_type',$sanpham->id_type)->whereNotIn('id',array($req->id))->paginate(3);
-        return view('page.product_details',compact('sanpham','sp_tuongtu'));
+    public function getChitiet(Request $req)
+    {
+        $sanpham = Product::where('id', $req->id)->first();
+        $sp_tuongtu = Product::where('id_type', $sanpham->id_type)->whereNotIn('id', array($req->id))->paginate(3);
+        return view('page.product_details', compact('sanpham', 'sp_tuongtu'));
     }
-    public function getLienHe(){
+    public function getLienHe()
+    {
         return view('page.contact');
     }
-    public function getGioiThieu(){
+    public function getGioiThieu()
+    {
         return view('page.about_us');
     }
-    public function getFaqs(){
+    public function getFaqs()
+    {
         return view('page.faqs');
     }
-    public function getTerms(){
+    public function getTerms()
+    {
         return view('page.terms');
     }
-    public function getPrivacy(){
+    public function getPrivacy()
+    {
         return view('page.privacy');
     }
-    public function getAddtoCart(Request $req, $id){
+    public function getAddtoCart(Request $req, $id)
+    {
         $qty = $req->qty;
         $product = Product::Find($id);
-        $oldCart= Session('cart')?Session::get('cart'):null;
+        $oldCart = Session('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $cart->add($product, $id, $qty);
-        $req->Session()->put('cart',$cart);
+        $req->Session()->put('cart', $cart);
         return redirect()->back();
     }
-    public function getDelItemCart($id){
-        $oldCart= Session::has('cart')?Session::get('cart'):null;
+    public function getDelItemCart($id)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $cart->removeItem($id);
-        if(count($cart->items)>0)
-            Session::put('cart',$cart);
+        if (count($cart->items) > 0)
+            Session::put('cart', $cart);
         else
             Session::forget('cart');
         return redirect()->back();
     }
-    public function getPayment(){
+    public function getPayment()
+    {
         return view('page.payment');
     }
-    public function getCheckout(){
+    public function getCheckout()
+    {
         $this->AuthLogin();
-        if(Session('cart')){
+        if (Session('cart')) {
             $oldCart = Session::get('cart');
             $cart = new Cart($oldCart);
             //dd($cart);
-            return view('page.checkout',['product_cart'=>$cart->items, 'totalPrice'=>$cart->totalPrice, 'totalQty'=>$cart->totalQty]);
-        }
-        else{
+            return view('page.checkout', ['product_cart' => $cart->items, 'totalPrice' => $cart->totalPrice, 'totalQty' => $cart->totalQty]);
+        } else {
             return view('page.checkout');
         }
     }
-    public function postCheckout(Request $req){
-        $cart = Session::get('cart');
-        $customer = new Customer;
-        $customer->name = $req->full_name; 
-        $customer->gender = $req->gender; 
-        $customer->email = $req->email; 
-        $customer->address = $req->address;
-        $customer->phone = $req->phone;  
-        $customer->note = $req->notes;
-        $customer->save();
-
+    public function postCheckout(Request $req)
+    {
         $bill = new Bill;
-        $bill->id_customer = $customer->id;
+        $bill->id_customer = Session::get('customer_id');
         $bill->date_order = date('Y-m-d');
-        $bill->total = $cart->totalPrice;
-        $bill->payment = $req->payment_method;
-        $bill->note = $req->notes;
+        $bill->total = $req->total;
+        // $bill->payment = $req->payment_method;
+        // $bill->note = $req->notes;
         $bill->save();
 
-        foreach($cart->items as $key=>$value){
+        $items = json_decode($req->items, true);
+        foreach ($items as $key => $value) {
             $bill_detail = new BillDetail;
             $bill_detail->id_bill = $bill->id;
-            $bill_detail->id_product = $key;
-            $bill_detail->quantity = $value['qty'];
-            $bill_detail->unit_price = $value['price']/$value['qty'];
+            $bill_detail->id_unit = $value['item_unit'];
+            $bill_detail->id_product = $value['item_id'];
+            $bill_detail->quantity = $value['quantity'];
+            $bill_detail->unit_price = $value['unit_price'];
             $bill_detail->save();
         }
-        Session::forget('cart');
-        return redirect()->back()->with('thongbao','Đặt hàng thành công');
+        return redirect()->back()->with('thongbao', 'Đặt hàng thành công');
     }
-    public function getLogin(){
+    public function getLogin()
+    {
         $customer_id = Session::get('customer_id');
-        if($customer_id){
+        if ($customer_id) {
             return Redirect('index');
         }
         return view('page.signin');
     }
-    public function postLogin(Request $req){
-        $this->validate($req,
+    public function postLogin(Request $req)
+    {
+        $this->validate(
+            $req,
             [
-                'email'=>'required|email',
-                'password'=>'required|min:6|max:20'
+                'email' => 'required|email',
+                'password' => 'required|min:6|max:20'
             ],
             [
-                'email.required'=>'Vui lòng nhập email',
-                'email.email'=>'Không đúng định dạng email',
-                'password.required'=>'Vui lòng nhập mật khẩu',
-                'password.min'=>'Mật khẩu ít nhất 6 ký tự',
-                'password.max'=>'Mật khẩu ít nhất 20 ký tự'
-            ]);
-        $credentials = array('email'=>$req->email,'password'=>$req->password);
-        $customer_email = $req->email; 
+                'email.required' => 'Vui lòng nhập email',
+                'email.email' => 'Không đúng định dạng email',
+                'password.required' => 'Vui lòng nhập mật khẩu',
+                'password.min' => 'Mật khẩu ít nhất 6 ký tự',
+                'password.max' => 'Mật khẩu ít nhất 20 ký tự'
+            ]
+        );
+        $credentials = array('email' => $req->email, 'password' => $req->password);
+        $customer_email = $req->email;
         $customer_password = md5($req->password);
-        $result = DB::table('customers')->where('email',$customer_email)->where('password',$customer_password)->first();
+        $result = DB::table('customers')->where('email', $customer_email)->where('password', $customer_password)->first();
 
         if ($result) {
-            Session::put('customer_name',$result->name);
-            Session::put('customer_id',$result->id);
-            Session::put('customer_email',$result->email);
-            Session::put('customer_address',$result->address);
-            Session::put('customer_phone',$result->phone);
+            Session::put('customer_name', $result->name);
+            Session::put('customer_id', $result->id);
+            Session::put('customer_email', $result->email);
+            Session::put('customer_address', $result->address);
+            Session::put('customer_phone', $result->phone);
             return Redirect('index');
             // return redirect()->back()->with(['flag'=>'success','message'=>'Bạn đăng nhập thành công']);
         }
-        return redirect()->back()->with(['flag'=>'fail','message'=>'Bạn đăng nhập khong thành công']);
+        return redirect()->back()->with(['flag' => 'fail', 'message' => 'Bạn đăng nhập khong thành công']);
         // if(Auth::attempt($credentials)){
         //     $result = DB::table('customers')->where('email',$req->email)->first();
         //     Session::put('customer_name',$result->name);
@@ -177,48 +187,54 @@ class PageController extends Controller
         // }
         // return redirect()->back()->with(['flag'=>'success','message'=>'Bạn đăng nhập thành công']);
     }
-    public function getSignup(){
+    public function getSignup()
+    {
         return view('page.register');
     }
-    public function postSignup(Request $req){
-        $this->validate($req,
+    public function postSignup(Request $req)
+    {
+        $this->validate(
+            $req,
             [
-                'email'=>'required|email|unique:customers,email',
-                'password'=>'required|min:6|max:20',
-                'name'=>'required',
-                're_password'=>'required|same:password'
+                'email' => 'required|email|unique:customers,email',
+                'password' => 'required|min:6|max:20',
+                'name' => 'required',
+                're_password' => 'required|same:password'
             ],
             [
-                'email.required'=>'Vui lòng nhập email',
-                'email.email'=>'Không đúng định dạng email',
-                'email.unique'=>'Email đã tồn tại',
-                'password.required'=>'Vui lòng nhập mật khẩu',
-                're_password.required'=>'Vui lòng nhập mật khẩu',
-                're_password.same'=>'Mật khẩu không giống nhau',
-                'password.min'=>'Mật khẩu ít nhất 6 ký tự',
-                'password.max'=>'Mật khẩu ít nhất 20 ký tự'
-            ]);
+                'email.required' => 'Vui lòng nhập email',
+                'email.email' => 'Không đúng định dạng email',
+                'email.unique' => 'Email đã tồn tại',
+                'password.required' => 'Vui lòng nhập mật khẩu',
+                're_password.required' => 'Vui lòng nhập mật khẩu',
+                're_password.same' => 'Mật khẩu không giống nhau',
+                'password.min' => 'Mật khẩu ít nhất 6 ký tự',
+                'password.max' => 'Mật khẩu ít nhất 20 ký tự'
+            ]
+        );
         $user = new Customer;
-        $user->name = $req->name;  
-        $user->email = $req->email; 
-        $user->password=md5($req->password);
+        $user->name = $req->name;
+        $user->email = $req->email;
+        $user->password = md5($req->password);
         $user->address = $req->address;
-        $user->phone = $req->phone;  
+        $user->phone = $req->phone;
         $user->save();
-        return redirect()->back()->with('thongbao','Bạn đã tạo tài khoản thành công');
+        return redirect()->back()->with('thongbao', 'Bạn đã tạo tài khoản thành công');
     }
-    public function getLogout(){
+    public function getLogout()
+    {
         $this->AuthLogin();
         Session::flush();
         // Auth::logout();
         return redirect()->route('trang-chu');
     }
-    public function getSearch(Request $req){
-        $product = Product::where('name','like','%'.$req->key.'%')
-                            ->orWhere('name_en','like','%'.$req->key.'%')
-                            ->orWhere('unit_price',$req->key)
-                            ->get();
-        $new_product = Product::where('new',1)->paginate(4);
-        return view('page.search',compact('product','new_product'));
+    public function getSearch(Request $req)
+    {
+        $product = Product::where('name', 'like', '%' . $req->key . '%')
+            ->orWhere('name_en', 'like', '%' . $req->key . '%')
+            ->orWhere('unit_price', $req->key)
+            ->get();
+        $new_product = Product::where('new', 1)->paginate(4);
+        return view('page.search', compact('product', 'new_product'));
     }
 }

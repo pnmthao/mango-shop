@@ -56,14 +56,16 @@
 				@if(Session::has('thongbao'))
 					<div class="alert alert-success">{{Session::get('thongbao')}}</div>
 				@endif
-				<form action="dathang" method="post" class="creditly-card-form agileinfo_form">
+				<form name="form-checkout" action="{{route('dathang')}}" method="post" class="creditly-card-form agileinfo_form" onsubmit="checkout()">
 					<input type="hidden" name="_token" value="{{csrf_token()}}">
+					<input type="hidden" name="items" value="">
+					<input type="hidden" name="total" value="">
 					<div class="creditly-wrapper wthree, w3_agileits_wrapper">
 						<div class="information-wrapper">
 							<div class="first-row">
 								<div class="controls">
 									<label for="name">@lang('checkout.order_name')</label>
-								<input class="billing-address-name" type="text" name="name" value="{{Session::get('customer_name')}}" placeholder="@if(Session::get('locale') == 'en') Enter Full Name @else Nhập họ tên @endif" required>
+									<input class="billing-address-name" type="text" name="name" value="{{Session::get('customer_name')}}" placeholder="@if(Session::get('locale') == 'en') Enter Full Name @else Nhập họ tên @endif" required>
 								</div>
 								<div class="controls">
 									<label for="email">@lang('checkout.order_email')</label>

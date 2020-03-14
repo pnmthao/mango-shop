@@ -288,6 +288,7 @@
                                                 <input type="hidden" name="add" value="1" />
                                                 <input type="hidden" name="business" value=" " />
                                                 <input type="hidden" name="item_id" value="{{$spkm->id}}" />
+                                                <input type="hidden" name="item_unit" value="{{$spkm->id_unit}}" />
                                                 <input type="hidden" name="item_image" value="{{$spkm->image}}" />
                                                 <input type="hidden" name="item_name" value="@if(Session::get('locale') == 'en') {{$spkm->name_en}} @else {{$spkm->name}} @endif" />
                                                 <input type="hidden" name="item_name_vi" value="{{$spkm->name}}" />

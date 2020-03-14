@@ -2,8 +2,17 @@
 @section('admin_content')
 <div class="table-agile-info">
   <div class="panel panel-default">
-    @foreach($all_order_detail as $key => $order_detail)
-    <div class="panel-heading">Chi tiết đơn hàng {{$order_detail->id_bill}}</div>
+    <?php
+      foreach($all_order_detail as $key => $order_detail)
+        $id_bill = $order_detail->id_bill;
+        $date_order = $order_detail->date_order;
+        $note = $order_detail->note;
+        $customer_name = $order_detail->customer_name;
+        $payment = $order_detail->payment;
+        $total = $order_detail->total;
+      ?>
+    
+    <div class="panel-heading">Chi tiết đơn hàng {{$id_bill}}</div>
     <div class="row w3-res-tb">
       {{-- <div class="col-sm-5 m-b-xs">
         <select class="input-sm form-control w-sm inline v-middle">
@@ -40,14 +49,14 @@
             <table class="table table-striped b-t b-light">       
               <thead>
                 <tr> 
-                    <th>Mã đơn hàng: {{$order_detail->id_bill}}</th> 
-                    <th>Ngày đặt: {{date('d-m-Y', strtotime($order_detail->date_order))}}</th> 
-                    <th>Ghi chú: {{$order_detail->note}}</th>     
+                    <th>Mã đơn hàng: {{$id_bill}}</th> 
+                    <th>Ngày đặt: {{date('d-m-Y', strtotime($date_order))}}</th> 
+                    <th>Ghi chú: {{$note}}</th>     
                 </tr>
                 <tr>
-                    <th>Tên khách hàng: {{$order_detail->customer_name}}</th> 
-                    <th>Hình thức thanh toán: {{$order_detail->payment}}</th>
-                    {{-- <th>Trạng thái: {{$order_detail->status_name}}</th> --}}
+                    <th>Tên khách hàng: {{$customer_name}}</th> 
+                    <th>Hình thức thanh toán: {{$payment}}</th>
+                    {{-- <th>Trạng thái: {{$status_name}}</th> --}}
                     <th>
                       <select name="bill_status" class="form-control input-sm m-bot15">
                       @foreach ($bill_status as $key => $bill_sta)
@@ -69,6 +78,7 @@
                 </tr> 
               </thead>
               <tbody> 
+                @foreach($all_order_detail as $key => $order_detail)
                 <tr>
                     <td>{{$order_detail->product_name}}</td>
                     <td>{{$order_detail->quantity}}</td>
@@ -76,10 +86,11 @@
                     <td>{{$order_detail->unit_price}}</td>
                     <td>{{$order_detail->quantity * $order_detail->unit_price}}</td>
                 </tr>
-                <tr>
-                    <th>Tổng tiền: {{number_format($order_detail->total)}}</th>
-                </tr>
                 @endforeach
+                <tr>
+                    <th>Tổng tiền: {{number_format($total)}}</th>
+                </tr>
+                
               </tbody>
             </table>
           </div>
