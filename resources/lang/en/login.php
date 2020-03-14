@@ -15,6 +15,8 @@ return [
 
     'title' => 'Sign In',
     'email' => 'Email',
-    'password' => 'Password'
-
+    'password' => 'Password',
+    'button' => 'Sign In',
+    'place_email'=>'Enter email',
+    'place_password'=>'Enter password'
 ];

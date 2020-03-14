@@ -19,5 +19,12 @@ return [
     'address' => 'Địa chỉ',
     'phone' => 'Số điện thoại',
     'password' => 'Mật khẩu',
-    're_password' => 'Nhập lại mật khẩu'
+    're_password' => 'Nhập lại mật khẩu',
+    'button'=>'Đăng ký',
+    'place_email' => 'Nhập địa chỉ email',
+    'place_name' => 'Nhập họ tên',
+    'place_address'=>'Nhập địa chỉ',
+    'place_phone' => 'Nhập số điện thoại',
+    'place_password' => 'Nhập mật khẩu',
+    'place_password_again' => 'Nhập lại mật khẩu',
 ];

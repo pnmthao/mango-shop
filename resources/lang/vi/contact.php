@@ -23,4 +23,9 @@ return [
     'address'=>'Nguyễn Văn Cừ, An Hòa, Ninh Kiều, TP Cần Thơ',
     'phone'=>'Điện thoại : 02923 893 379',
     'fax'=>'FAX : +84 888 888 888',
+    'place_name'=> 'Nhập họ tên',
+    'place_email'=> 'Nhập địa chỉ email',
+    'place_subject'=>'Nhập tiêu đề',
+    'place_message'=>'Nhập nội dung',
+    'button' => 'Gửi'
 ];

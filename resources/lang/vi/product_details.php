@@ -15,5 +15,6 @@ return [
 
     'home' => 'Trang chủ',
     'title' => 'Chi tiết sản phẩm',
-    'related_products' => 'Sản phẩm liên quan'
+    'related_products' => 'Sản phẩm liên quan',
+    'desc' => 'Mô tả sản phẩm'
 ];

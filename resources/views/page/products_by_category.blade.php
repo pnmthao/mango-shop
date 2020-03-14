@@ -20,7 +20,7 @@
 <div class="ads-grid">
     <div class="container">
         <!-- tittle heading -->
-        <h3 class="tittle-w3l">@if(Session::get('locale') == 'en') {{$loai_sp->name_en}} @else {{$loai_sp->name}} @endif
+        <h3 class="tittle-w3l">@if(Session::get('locale') == 'en'){{$loai_sp->name_en}} @else {{$loai_sp->name}} @endif
             <span class="heading-style">
                 <i></i>
                 <i></i>
@@ -28,6 +28,7 @@
             </span>
         </h3>
         <!-- //tittle heading -->
+
         <!-- product left -->
         <div class="side-bar col-md-3">
             <div class="search-hotel">
@@ -191,6 +192,7 @@
             <!-- //deals -->
         </div>
         <!-- //product left -->
+
         <!-- product right -->
         <div class="agileinfo-ads-display col-md-9 ">
             <div class="wrapper">
@@ -199,8 +201,8 @@
                     @foreach ($sp_theoloai as $sp)
                     <div class="col-xs-4 product-men">
                         <div class="men-pro-item simpleCart_shelfItem">
-                            <div class="men-thumb-item" onclick="window.location.href='{{route('chitietsanpham',$sp->id)}}'">
-                                <img src="public/uploads/product/{{$sp->image}}" alt="" height="150" width="150">
+                            <div class="men-thumb-item">
+                                <img src="public/uploads/product/{{$sp->image}}" alt="" height="150" width="150" onclick="window.location.href='{{route('chitietsanpham',$sp->id)}}'">
                                 <div class="men-cart-pro">
                                     <div class="inner-men-cart-pro">
                                         <a href="{{route('chitietsanpham',$sp->id)}}" class="link-product-add-cart">@lang('pro_by_cate.detail')</a>
@@ -255,6 +257,7 @@
     </div>
 </div>
 <!-- //top products -->
+
 <!-- special offers -->
 <div class="featured-section" id="projects">
     <div class="container">
@@ -298,6 +301,7 @@
                                             <input type="hidden" name="add" value="1" />
                                             <input type="hidden" name="business" value=" " />
                                             <input type="hidden" name="item_id" value="{{$sp_k->id}}" />
+                                            <input type="hidden" name="item_unit" value="{{$sp_k->id_unit}}" />
                                             <input type="hidden" name="item_image" value="{{$sp_k->image}}" />
                                             <input type="hidden" name="item_name" value="@if(Session::get('locale') == 'en') {{$sp_k->name_en}} @else {{$sp_k->name}} @endif" />
                                             <input type="hidden" name="item_name_vi" value="{{$sp_k->name}}" />
@@ -319,6 +323,6 @@
         </div>
     </div>
 </div>
-    <!-- //special offers --> 
+<!-- //special offers --> 
 @include('../footer')
 @endsection
