@@ -265,41 +265,42 @@
                                         <a href="{{route('chitietsanpham',$spkm->id)}}" class="link-product-add-cart">@lang('index.detail')</a>
                                     </div>
                                 </div>
-                                <div class="item-info-product ">
-                                    <h4>
-                                        <a href="{{route('chitietsanpham',$spkm->id)}}">
-                                            @if(Session::get('locale') == 'en') {{$spkm->name_en}} @else  {{$spkm->name}} @endif
-                                        </a>
-                                    </h4>
-                                    <div class="info-product-price">
-                                        @if($spkm->promotion_price==0)
-                                            <span class="item_price">{{Helper::currency_format($spkm->unit_price)}}</span> 
-                                        @else
-                                            <span class="item_price">{{Helper::currency_format($spkm->promotion_price)}}</span>
-                                            <del>{{Helper::currency_format($spkm->unit_price)}}</del>
-                                        @endif
-                                    </div>
-                                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                        <form action="#" method="post">
-                                            <fieldset>
-                                                <input type="hidden" name="cmd" value="_cart" />
-                                                <input type="hidden" name="add" value="1" />
-                                                <input type="hidden" name="business" value=" " />
-                                                <input type="hidden" name="item_id" value="{{$spkm->id}}" />
-                                                <input type="hidden" name="item_unit" value="{{$spkm->id_unit}}" />
-                                                <input type="hidden" name="item_image" value="{{$spkm->image}}" />
-                                                <input type="hidden" name="item_name" value="@if(Session::get('locale') == 'en') {{$spkm->name_en}} @else {{$spkm->name}} @endif" />
-                                                <input type="hidden" name="item_name_vi" value="{{$spkm->name}}" />
-                                                <input type="hidden" name="item_name_en" value="{{$spkm->name_en}}" />
-                                                <input type="hidden" name="amount" value="{{$spkm->unit_price}}" />
-                                                <input type="hidden" name="discount_amount" value="{{$spkm->promotion_price == 0 ? 0 : $spkm->unit_price-$spkm->promotion_price}}" />
-                                                <input type="hidden" name="currency_code" value="@if(Session::get('locale') == 'en'){{'USD'}}@else{{'VND'}}@endif" />
-                                                <input type="hidden" name="return" value=" " />
-                                                <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="@lang('checkout.cart_button')" class="button" />
-                                            </fieldset>
-                                        </form>
-                                    </div>
+                                <span class="product-new-top">@lang('index.label_promo_product')</span>
+                            </div>    
+                            <div class="item-info-product ">
+                                <h4>
+                                    <a href="{{route('chitietsanpham',$spkm->id)}}">
+                                        @if(Session::get('locale') == 'en') {{$spkm->name_en}} @else  {{$spkm->name}} @endif
+                                    </a>
+                                </h4>
+                                <div class="info-product-price">
+                                    @if($spkm->promotion_price==0)
+                                        <span class="item_price">{{Helper::currency_format($spkm->unit_price)}}</span> 
+                                    @else
+                                        <span class="item_price">{{Helper::currency_format($spkm->promotion_price)}}</span>
+                                        <del>{{Helper::currency_format($spkm->unit_price)}}</del>
+                                    @endif
+                                </div>
+                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                    <form action="#" method="post">
+                                        <fieldset>
+                                            <input type="hidden" name="cmd" value="_cart" />
+                                            <input type="hidden" name="add" value="1" />
+                                            <input type="hidden" name="business" value=" " />
+                                            <input type="hidden" name="item_id" value="{{$spkm->id}}" />
+                                            <input type="hidden" name="item_unit" value="{{$spkm->id_unit}}" />
+                                            <input type="hidden" name="item_image" value="{{$spkm->image}}" />
+                                            <input type="hidden" name="item_name" value="@if(Session::get('locale') == 'en') {{$spkm->name_en}} @else {{$spkm->name}} @endif" />
+                                            <input type="hidden" name="item_name_vi" value="{{$spkm->name}}" />
+                                            <input type="hidden" name="item_name_en" value="{{$spkm->name_en}}" />
+                                            <input type="hidden" name="amount" value="{{$spkm->unit_price}}" />
+                                            <input type="hidden" name="discount_amount" value="{{$spkm->promotion_price == 0 ? 0 : $spkm->unit_price-$spkm->promotion_price}}" />
+                                            <input type="hidden" name="currency_code" value="@if(Session::get('locale') == 'en'){{'USD'}}@else{{'VND'}}@endif" />
+                                            <input type="hidden" name="return" value=" " />
+                                            <input type="hidden" name="cancel_return" value=" " />
+                                            <input type="submit" name="submit" value="@lang('checkout.cart_button')" class="button" />
+                                        </fieldset>
+                                    </form>
                                 </div>
                             </div>
                         </div>
