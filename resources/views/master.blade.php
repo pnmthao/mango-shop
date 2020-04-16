@@ -26,7 +26,7 @@
 	<!-- price range -->
 	<link rel="stylesheet" type="text/css" href="{{asset('css/jquery-ui1.css')}}">
 	<!-- fonts -->
-	{{-- <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet"> --}}
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
 	<!-- custom css -->
 	<link href="{{asset('css/custom.css')}}" rel="stylesheet" type="text/css" media="all" />
 	<!-- flexslider -->

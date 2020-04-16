@@ -259,7 +259,7 @@
                     <div class="col-md-4 product-men">
                         <div class="men-pro-item simpleCart_shelfItem">
                             <div class="men-thumb-item">
-                                <img src="public/uploads/product/{{$spkm->image}}" alt="" height="150" width="150" onclick="window.location.href='{{route('chitietsanpham',$spkm->id)}}'">
+                                <img src="{{asset('uploads/product/' . $spkm->image)}}" alt="" height="150" width="150" onclick="window.location.href='{{route('chitietsanpham',$spkm->id)}}'">
                                 <div class="men-cart-pro">
                                     <div class="inner-men-cart-pro">
                                         <a href="{{route('chitietsanpham',$spkm->id)}}" class="link-product-add-cart">@lang('index.detail')</a>
@@ -332,7 +332,7 @@
                     <div class="col-md-4 product-men">
                         <div class="men-pro-item simpleCart_shelfItem">
                             <div class="men-thumb-item">
-                                <img src="public/uploads/product/{{$sp_tc->image}}" alt="" height="150" width="150" onclick="window.location.href='{{route('chitietsanpham',$sp_tc->id)}}'">
+                                <img src="{{asset('uploads/product/' . $sp_tc->image)}}" alt="" height="150" width="150" onclick="window.location.href='{{route('chitietsanpham',$sp_tc->id)}}'">
                                 <div class="men-cart-pro">
                                     <div class="inner-men-cart-pro">
                                         <a href="{{route('chitietsanpham',$sp_tc->id)}}" class="link-product-add-cart">@lang('index.detail')</a>
@@ -390,7 +390,7 @@
                     <div class="col-md-4 product-men">
                         <div class="men-pro-item simpleCart_shelfItem">
                             <div class="men-thumb-item">
-                                <img src="public/uploads/product/{{$sp_t->image}}" alt="" height="150" width="150" onclick="window.location.href='{{route('chitietsanpham',$sp_t->id)}}'">
+                                <img src="{{asset('uploads/product/' . $sp_t->image)}}" alt="" height="150" width="150" onclick="window.location.href='{{route('chitietsanpham',$sp_t->id)}}'">
                                 <div class="men-cart-pro">
                                     <div class="inner-men-cart-pro">
                                         <a href="{{route('chitietsanpham',$sp_t->id)}}" class="link-product-add-cart">@lang('index.detail')</a>
@@ -466,7 +466,7 @@
                     <div class="w3l-specilamk">
                         <div class="speioffer-agile">
                             <a href="{{route('chitietsanpham',$new->id)}}">
-                                <img src="public/uploads/product/{{$new->image}}" alt="" width="150" height="150">
+                                <img src="{{asset('uploads/product/' . $new->image)}}" alt="" width="150" height="150">
                             </a>
                         </div>
                         <div class="product-name-w3l">
