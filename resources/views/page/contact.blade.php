@@ -64,7 +64,7 @@
 						</p>
 					</div>
 					<div class="col-xs-5 contact-agile">
-						<img src="public/uploads/logo/contact1.jpg" alt="">
+						<img src="{{asset('uploads/logo/contact1.jpg')}}" alt="">
 					</div>
 					<div class="clearfix"> </div>
 				</div>

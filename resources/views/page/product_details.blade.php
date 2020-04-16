@@ -33,9 +33,9 @@
 			<div class="grid images_3_of_2">
 				<div class="flexslider">
 					<ul class="slides">
-						<li data-thumb="public/uploads/product/{{$sanpham->image}}">
+						<li data-thumb="uploads/product/{{$sanpham->image}}">
 							<div class="thumb-image">
-								<img src="public/uploads/product/{{$sanpham->image}}" data-imagezoom="true" class="img-responsive" alt=""> </div>
+								<img src="uploads/product/{{$sanpham->image}}" data-imagezoom="true" class="img-responsive" alt=""> </div>
 						</li>
 					</ul>
 					<div class="clearfix"></div>
@@ -145,7 +145,7 @@
 					<div class="w3l-specilamk">
 						<div class="speioffer-agile">
 							<a href="{{route('chitietsanpham',$sptt->id)}}">
-								<img src="public/uploads/product/{{$sptt->image}}" alt="" width="150" height="150">
+								<img src="uploads/product/{{$sptt->image}}" alt="" width="150" height="150">
 							</a>
 						</div>
 						<div class="product-name-w3l">

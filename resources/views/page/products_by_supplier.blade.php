@@ -201,7 +201,7 @@
                         <div class="col-xs-4 product-men">
                             <div class="men-pro-item simpleCart_shelfItem">
                                 <div class="men-thumb-item">
-                                    <img src="public/uploads/product/{{$sp->image}}" alt="" height="150" width="150" onclick="window.location.href='{{route('chitietsanpham',$sp->id)}}'">
+                                    <img src="uploads/product/{{$sp->image}}" alt="" height="150" width="150" onclick="window.location.href='{{route('chitietsanpham',$sp->id)}}'">
                                     <div class="men-cart-pro">
                                         <div class="inner-men-cart-pro">
                                             <a href="{{route('chitietsanpham',$sp->id)}}" class="link-product-add-cart">@lang('pro_by_sup.detail')</a>
@@ -277,7 +277,7 @@
                     <div class="w3l-specilamk">
                         <div class="speioffer-agile">
                             <a href="{{route('chitietsanpham',$sp_k->id)}}">
-                                <img src="public/uploads/product/{{$sp_k->image}}" alt="" width="150" height="150">
+                                <img src="uploads/product/{{$sp_k->image}}" alt="" width="150" height="150">
                             </a>
                         </div>
                         <div class="product-name-w3l">

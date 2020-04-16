@@ -6,10 +6,10 @@
     display: flex;
     align-items: center;
 }
-.switcher-language .dropdown-menu{
+.switcher-language .dropdown-menu {
     padding: 4px;
 }
-.switcher-language a{
+.switcher-language a {
     display: block;
 }
 .switcher-language img {
@@ -17,7 +17,8 @@
     width: 24px;
     margin-right: 8px;
 }
-.switcher-language button, .switcher-language a {
+.switcher-language button,
+.switcher-language a {
     display: flex;
     align-items: center;
     margin: 1px;
@@ -26,4 +27,8 @@
 .header-bot .header ul {
     display: flex;
     align-items: center;
+}
+.offer-footer {
+    display: flex !important;
+    align-items: center !important;
 }
