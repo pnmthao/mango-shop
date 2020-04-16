@@ -1,48 +1,27 @@
-Header set Access-Control-Allow-Origin *
-Header set Access-Control-Allow-Methods *
-Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+<IfModule mod_rewrite.c>
+    <IfModule mod_headers.c>
+        <FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|font.css|css|js)$">
+            Header set Access-Control-Allow-Origin "*"
+        </FilesMatch>
+    </IfModule>
 
+    Options -MultiViews -Indexes
+    Require all granted
+    RewriteEngine On
 
-Options -MultiViews -Indexes
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-Require all granted
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
 
-
-RewriteEngine On
-
- 
-
-# Handle Authorization Header
-
-RewriteCond %{HTTP:Authorization} .
-
-RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
- 
-
-# Redirect Trailing Slashes If Not A Folder...
-
-RewriteCond %{REQUEST_FILENAME} !-d
-
-RewriteCond %{REQUEST_URI} (.+)/$
-
-RewriteRule ^ %1 [L,R=301]
-
- 
-
-# Handle Front Controller...
-
-RewriteCond %{REQUEST_URI} !(\.css|\.js|\.png|\.jpg|\.svg|\.gif|\.ttf|\.woff|\.woff2|\.eot|\.otf|robots\.txt)$ [NC]
-
-
-RewriteCond %{REQUEST_FILENAME} !-f
-
-RewriteRule ^ index.php [L]
-
- 
-
-RewriteCond %{REQUEST_FILENAME} !-f
-
-RewriteCond %{REQUEST_URI} !^/public/
-
-RewriteRule ^(css|js|images|uploads|fonts)/(.*)$ public/$1/$2/$3 [L,NC]
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_URI} !(\.css|\.js|\.png|\.jpg|\.svg|\.gif|\.ttf|\.woff|\.woff2|\.eot|\.otf|robots\.txt)$ [NC]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(css|js|images|uploads|fonts)/(.*)$ public/$1/$2/$3 [L,NC]
+</IfModule>
