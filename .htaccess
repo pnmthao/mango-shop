@@ -25,5 +25,5 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
     RewriteCond %{REQUEST_URI} !^/public/
-    RewriteRule ^(css|js|images|uploads|fonts|backend)/(.*)$ public/$1/$2/$3 [L,NC]
+    RewriteRule ^(css|js|images|uploads|fonts)/(.*)$ public/$1/$2/$3 [L,NC]
 </IfModule>
