@@ -12,7 +12,7 @@
 				<a href="{{route('trang-chu')}}">
 					<span>M</span>ango
 					<span>S</span>hop
-					<img src="{{asset('public/uploads/logo/logo2.png')}}" alt=" ">
+					<img src="{{asset('uploads/logo/logo2.png')}}" alt=" ">
 				</a>
 			</h1>
 		</div>
@@ -42,20 +42,20 @@
 					<div class="dropdown switcher-language">
 						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							@if (App::getLocale() == 'vi')
-								<img src="{{asset('public/uploads/flags/vi.png')}}" alt="Chinese" title="Tiếng Việt"> 
+								<img src="{{asset('uploads/flags/vi.png')}}" alt="Chinese" title="Tiếng Việt"> 
 								Tiếng Việt
 							@else
-								<img src="{{asset('public/uploads/flags/en.png')}}" alt="Chinese" title="English"> 
+								<img src="{{asset('uploads/flags/en.png')}}" alt="Chinese" title="English"> 
 								English
 							@endif
 						</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							<a class="dropdown-item" href="locale/vi">
-								<img src="{{asset('public/uploads/flags/vi.png')}}" alt="Chinese" title="Tiếng Việt"> 
+								<img src="{{asset('uploads/flags/vi.png')}}" alt="Chinese" title="Tiếng Việt"> 
 								Tiếng Việt
 							</a>
 							<a class="dropdown-item" href="locale/en">
-								<img src="{{asset('public/uploads/flags/en.png')}}" alt="Chinese" title="English"> 
+								<img src="{{asset('uploads/flags/en.png')}}" alt="Chinese" title="English"> 
 								English
 							</a>
 						</div>

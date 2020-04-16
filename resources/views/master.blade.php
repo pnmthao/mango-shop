@@ -17,20 +17,20 @@
 		}
 	</script>
 	<!--//tags -->
-	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{{asset('css/font-awesome.css')}}" rel="stylesheet">
 	<!--pop-up-box-->
-	<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="{{asset('css/popuo-box.css')}}" rel="stylesheet" type="text/css" media="all" />
 	<!--//pop-up-box-->
 	<!-- price range -->
-	<link rel="stylesheet" type="text/css" href="css/jquery-ui1.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/jquery-ui1.css')}}">
 	<!-- fonts -->
-	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+	{{-- <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet"> --}}
 	<!-- custom css -->
-	<link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="{{asset('css/custom.css')}}" rel="stylesheet" type="text/css" media="all" />
 	<!-- flexslider -->
-	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="{{asset('css/flexslider.css')}}" type="text/css" media="screen" />
 </head>
 
 <body>
@@ -41,11 +41,11 @@
 	<!-- js-files -->
 	
 	<!-- jquery -->
-	<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="{{asset('js/jquery-2.1.4.min.js')}}"></script>
 	<!-- //jquery -->
 
 	<!-- popup modal (for signin & signup)-->
-	<script src="js/jquery.magnific-popup.js"></script>
+	<script src="{{asset('js/jquery.magnific-popup.js')}}"></script>
 	<script>
 		$(document).ready(function () {
 			$('.popup-with-zoom-anim').magnificPopup({
@@ -70,7 +70,7 @@
 	<!-- //popup modal (for signin & signup)-->
 
 	<!-- cart-js -->
-	<script src="js/minicart.js"></script>
+	<script src="{{asset('js/minicart.js')}}"></script>
 	<script>
 		// paypalm.minicartk.reset()
 		let hrefCheckout = '@if(Session::get('customer_id')) {{"window.location.href='dat-hang'"}} @else {{"window.location.href='dang-nhap'"}} @endif';
@@ -184,7 +184,7 @@
 	<!-- //cart-js -->
 
 	<!-- price range (top products) -->
-	<script src="js/jquery-ui.js"></script>
+	<script src="{{asset('js/jquery-ui.js')}}"></script>
 	<script>
 		//<![CDATA[ 
 		$(window).load(function () {
@@ -203,11 +203,11 @@
 	<!-- //price range (top products) -->
 
 	<!-- imagezoom -->
-	<script src="js/imagezoom.js"></script>
+	<script src="{{asset('js/imagezoom.js')}}"></script>
 	<!-- //imagezoom -->
 
 	<!-- FlexSlider -->
-	<script src="js/jquery.flexslider.js"></script>
+	<script src="{{asset('js/jquery.flexslider.js')}}"></script>
 	<script>
 		// Can also be used with $(document).ready()
 		$(window).load(function () {
@@ -220,7 +220,7 @@
 	<!-- //FlexSlider-->
 
 	<!-- flexisel (for special offers) -->
-	<script src="js/jquery.flexisel.js"></script>
+	<script src="{{asset('js/jquery.flexisel.js')}}"></script>
 	<script>
 		$(window).load(function () {
 			$("#flexiselDemo1").flexisel({
@@ -290,12 +290,12 @@
 	<!-- //password-script -->
 
 	<!-- smoothscroll -->
-	<script src="js/SmoothScroll.min.js"></script>
+	<script src="{{asset('js/SmoothScroll.min.js')}}"></script>
 	<!-- //smoothscroll -->
 
 	<!-- start-smooth-scrolling -->
-	<script src="js/move-top.js"></script>
-	<script src="js/easing.js"></script>
+	<script src="{{asset('js/move-top.js')}}"></script>
+	<script src="{{asset('js/easing.js')}}"></script>
 	<script>
 		jQuery(document).ready(function ($) {
 			$(".scroll").click(function (event) {
@@ -329,7 +329,7 @@
 	<!-- //smooth-scrolling-of-move-up -->
 
 	<!-- for bootstrap working -->
-	<script src="js/bootstrap.js"></script>
+	<script src="{{asset('js/bootstrap.js')}}"></script>
 	<!-- //for bootstrap working -->
 	
 	<!-- //js-files -->
