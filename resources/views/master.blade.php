@@ -97,7 +97,7 @@
 						<td class="invert">${index+1}</td>
 						<td class="invert-image">
 							<a href="chi-tiet-san-pham/${item_id}">
-								<img src="public/uploads/product/${item_image}" alt=" " class="img-responsive">
+								<img src="{{asset('public/uploads/product/${item_image}')}}" alt=" " class="img-responsive">
 							</a>
 						</td>
 						<td class="invert">${item_name}</td>
