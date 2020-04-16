@@ -6,24 +6,7 @@
             Header set Access-Control-Allow-Methods "PUT, GET, POST, DELETE, PATCH, OPTIONS"
         </FilesMatch>
     </IfModule>
-
     Options -MultiViews -Indexes
     Require all granted
     RewriteEngine On
-
-    # Handle Authorization Header
-    RewriteCond %{HTTP:Authorization} .
-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
-    # Redirect Trailing Slashes If Not A Folder...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [L,R=301]
-
-    # Handle Front Controller...
-    RewriteCond %{REQUEST_URI} !(\.css|\.js|\.png|\.jpg|\.svg|\.gif|\.ttf|\.woff|\.woff2|\.eot|\.otf|robots\.txt)$ [NC]
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
-    RewriteCond %{REQUEST_URI} !^/public/
-    RewriteRule ^(css|js|images|uploads|fonts|backend)/(.*)$ public/$1/$2/$3 [L,NC]
 </IfModule>
