@@ -150,9 +150,6 @@ class PageController extends Controller
     }
     public function postLogin(Request $req)
     {
-        print_r("Debug\n");
-        print_r(isset($req));
-        print_r(isset($req->email));
         $this->validate(
             $req,
             [
@@ -167,13 +164,10 @@ class PageController extends Controller
                 'password.max' => 'Mật khẩu ít nhất 20 ký tự'
             ]
         );
-        $credentials = array('email' => $req->email, 'password' => $req->password);
+        // $credentials = array('email' => $req->email, 'password' => $req->password);
         $customer_email = $req->email;
         $customer_password = md5($req->password);
-        print_r($req->email);
-        print_r($req->password);
-        print_r(md5($req->password));
-        return;
+
         $result = DB::table('customers')->where('email', $customer_email)->where('password', $customer_password)->first();
 
         if ($result) {
