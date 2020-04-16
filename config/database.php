@@ -4,7 +4,7 @@
 use Illuminate\Support\Str;
 
 $mysql = [];
-$ENV = 'local'; // 'local' | 'production'
+$ENV = 'production'; // 'local' | 'production'
 if ($ENV == 'local') {
     $mysql = [
         'driver' => 'mysql',
