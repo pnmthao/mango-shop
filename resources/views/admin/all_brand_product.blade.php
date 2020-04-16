@@ -99,7 +99,7 @@
             <tr>
               <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
               <td>{{$bra_pro->name}}</td>
-              <td><img src="public/uploads/brand/{{$bra_pro->image}}" height="100" width="100"></td>
+              <td><img src="uploads/brand/{{$bra_pro->image}}" height="100" width="100"></td>
               <td>{{$bra_pro->description}}</td>
               <td>
                 <span class="text-ellipsis">

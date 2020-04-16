@@ -99,7 +99,7 @@
             <tr>
               <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
               <td>{{$cate_pro->name}}</td>
-              <td><img src="public/uploads/category_product/{{$cate_pro->image}}" height="100" width="100"></td>
+              <td><img src="uploads/category_product/{{$cate_pro->image}}" height="100" width="100"></td>
               <td>{{$cate_pro->description}}</td>
               <td>
                 <span class="text-ellipsis">

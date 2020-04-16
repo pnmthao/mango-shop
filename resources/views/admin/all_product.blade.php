@@ -60,7 +60,7 @@
                 <tr>
                   <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
                   <td>{{$pro->name}}</td>
-                  <td><img src="public/uploads/product/{{$pro->image}}" height="100" width="100"></td>
+                  <td><img src="uploads/product/{{$pro->image}}" height="100" width="100"></td>
                   <td>{{$pro->description_product}}</td>
                   <td>{{$pro->unit_price}}</td>
                   <td>{{$pro->promotion_price}}</td>

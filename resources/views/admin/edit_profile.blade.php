@@ -23,7 +23,7 @@
                             <div class="form-group">
                                 <label for="profile_image">Hình ảnh</label>
                                 <input type="file" class="form-control" name="profile_image" id="profile_image" value="{{$edit_value->admin_image}}">
-                                <img src="{{asset('public/uploads/profile/'.$edit_value->admin_image)}}" height="100" width="100"></<img>
+                                <img src="{{asset('uploads/profile/'.$edit_value->admin_image)}}" height="100" width="100"></<img>
                             </div>
                             {{-- <div class="form-group">
                                 <label for="profile_gender">Giới tính</label>
