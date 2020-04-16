@@ -150,6 +150,9 @@ class PageController extends Controller
     }
     public function postLogin(Request $req)
     {
+        print_r("Debug\n");
+        print_r(isset($req));
+        print_r(isset($req->email));
         $this->validate(
             $req,
             [
