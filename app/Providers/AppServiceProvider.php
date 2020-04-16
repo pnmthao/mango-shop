@@ -28,10 +28,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // if ($this->app->environment() == 'production') {
-        //     URL::forceScheme('https');
-        // }
-        URL::forceScheme('https'); //Production
+        if ($this->app->environment() == 'production') {
+            URL::forceScheme('https');
+        }
+        // URL::forceScheme('https'); //Production
         view()->composer('../header', function ($view) {
             $loai_sp = ProductType::all();
             $view->with('loai_sp', $loai_sp);
