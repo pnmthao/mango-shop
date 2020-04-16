@@ -56,5 +56,9 @@ $response = $kernel->handle(
 );
 
 $response->send();
-
+// print(env('DB_HOST'));
+// print(env('DB_DATABASE'));
+// print(env('DB_USERNAME'));
+// print(env('DB_PASSWORD'));
+// print(env('DB_PORT'));
 $kernel->terminate($request, $response);
