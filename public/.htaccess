@@ -2,6 +2,8 @@
     <IfModule mod_headers.c>
         <FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|font.css|css|js)$">
             Header set Access-Control-Allow-Origin "*"
+            Header set Access-Control-Allow-Headers "origin, x-requested-with, content-type, authorization"
+            Header set Access-Control-Allow-Methods "PUT, GET, POST, DELETE, PATCH, OPTIONS"
         </FilesMatch>
     </IfModule>
     <IfModule mod_negotiation.c>
