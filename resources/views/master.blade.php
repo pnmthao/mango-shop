@@ -334,6 +334,13 @@
 	<!-- //for bootstrap working -->
 	
 	<!-- //js-files -->
-	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150383460-2"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-150383460-2');
+	</script>
 </body>
 </html>
