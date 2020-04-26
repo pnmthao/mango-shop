@@ -32,6 +32,17 @@
 	<link href="{{asset('css/custom.css')}}" rel="stylesheet" type="text/css" media="all" />
 	<!-- flexslider -->
 	<link rel="stylesheet" href="{{asset('css/flexslider.css')}}" type="text/css" media="screen" />
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150383460-2"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+		gtag('config', 'UA-150383460-2');
+		console.log(window.dataLayer);
+	</script>
 </head>
 
 <body>
@@ -334,13 +345,5 @@
 	<!-- //for bootstrap working -->
 	
 	<!-- //js-files -->
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150383460-2"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'UA-150383460-2');
-	</script>
 </body>
 </html>
