@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <head>
 	<title>Trang quản lý Admin</title>
-	<link rel="icon" href="{{asset('images/mango.ico')}}" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -43,7 +42,7 @@
 			{{ csrf_field() }}
 			<input type="text" class="ggg" name="admin_email" placeholder="Vui lòng nhập địa chỉ email" required>
 			<input type="password" class="ggg" name="admin_password" placeholder="Vui lòng nhập mật khẩu" required>
-			<span><input type="checkbox" /> &nbsp Ghi nhớ</span>
+			{{-- <span><input type="checkbox" /> &nbsp Ghi nhớ</span> --}}
 			<h6><a href="#">Quên mật khẩu?</a></h6>
 			<div class="clearfix"></div>
 			<input type="submit" value="Đăng nhập" name="login">

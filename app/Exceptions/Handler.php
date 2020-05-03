@@ -15,7 +15,13 @@ class Handler extends ExceptionHandler
     protected $dontReport = [
         //
     ];
-
+    public function handle($request, Closure $next)
+    {
+        if ($this->app->isDownForMaintenance()) {
+            throw new HttpException(503);
+        }
+        return $next($request);
+    }
     /**
      * A list of the inputs that are never flashed for validation exceptions.
      *

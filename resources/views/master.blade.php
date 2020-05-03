@@ -7,7 +7,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="" />
-	<link rel="icon" href="{{asset('images/mango.ico')}}" />
 	<script>
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -32,17 +31,6 @@
 	<link href="{{asset('css/custom.css')}}" rel="stylesheet" type="text/css" media="all" />
 	<!-- flexslider -->
 	<link rel="stylesheet" href="{{asset('css/flexslider.css')}}" type="text/css" media="screen" />
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150383460-2"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){
-			dataLayer.push(arguments);
-		}
-		gtag('js', new Date());
-		gtag('config', 'UA-150383460-2');
-		console.log(window.dataLayer);
-	</script>
 </head>
 
 <body>
@@ -51,7 +39,12 @@
 	{{-- @include('footer') --}}
 
 	<!-- js-files -->
-	
+	<!-- js file FB comment -->
+	<div id="fb-root"></div>
+	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v6.0&appId=648796465667471"></script>
+	<!-- js fb comment  end -->
+
+
 	<!-- jquery -->
 	<script src="{{asset('js/jquery-2.1.4.min.js')}}"></script>
 	<!-- //jquery -->
@@ -345,5 +338,22 @@
 	<!-- //for bootstrap working -->
 	
 	<!-- //js-files -->
+	<!-- purechat script  -->
+    </script>
+	<script type='text/javascript' data-cfasync='false'>
+	window.purechatApi = { l: [], t: [], on: function () { 
+		this.l.push(arguments); 
+		} };
+		 (function () { 
+			 var done = false; 
+			 var script = document.createElement('script'); 
+			 script.async = true; 
+			 script.type = 'text/javascript'; 
+			 script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; 
+			 document.getElementsByTagName('HEAD').item(0).appendChild(script);
+			 script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '33682538-91b1-4ef0-97ff-89102e114fbf', f: true }); done = true; } }; })();
+	</script>
+	<!-- purechat end -->
+
 </body>
 </html>

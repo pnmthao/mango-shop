@@ -41,8 +41,13 @@ class BrandProduct extends Controller
     public function all_brand_product()
     {
         $this->AuthLogin();
-        $all_brand_product = DB::table('brand')->get();
-        $manager_brand_product = view('admin.all_brand_product')->with('all_brand_product', $all_brand_product);
+        $itemPerPage = 5;
+        $all_brand_product = DB::table('brand')->paginate($itemPerPage);
+        $count_brand_product = DB::table('brand')->count();
+        $manager_brand_product = view('admin.all_brand_product')
+                                ->with('all_brand_product', $all_brand_product)
+                                ->with('count_brand_product', $count_brand_product)
+                                ->with('itemPerPage', $itemPerPage);;
         return view('admin_layout')->with('admin.all_brand_product', $manager_brand_product);
     }
     public function save_brand_product(Request $req)

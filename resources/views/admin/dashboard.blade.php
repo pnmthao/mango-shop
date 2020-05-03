@@ -1,17 +1,17 @@
 @extends('admin_layout')
 @section('admin_content')
-<h3>Hi, admin</h3>
+<h3>Xin chào, admin</h3>
 <!-- //market-->
 <div class="market-updates">
     <div class="col-md-3 market-update-gd">
         <div class="market-update-block clr-block-2">
             <div class="col-md-4 market-update-right">
-                <i class="fa fa-eye"> </i>
+                <img src="backend/images/product.png" >
             </div>
             <div class="col-md-8 market-update-left">
-            <h4>Visitors</h4>
-            <h3>13,500</h3>
-            <p>Other hand, we denounce</p>
+            <h4>Tổng sản phẩm</h4>
+            <h3>{{$product_count}}</h3>
+            {{-- <p>Other hand, we denounce</p> --}}
         </div>
         <div class="clearfix"> </div>
         </div>
@@ -19,12 +19,12 @@
     <div class="col-md-3 market-update-gd">
         <div class="market-update-block clr-block-1">
             <div class="col-md-4 market-update-right">
-                <i class="fa fa-users" ></i>
+                <img src="backend/images/customer.png" >
             </div>
             <div class="col-md-8 market-update-left">
-            <h4>Users</h4>
-                <h3>1,250</h3>
-                <p>Other hand, we denounce</p>
+            <h4>Tổng khách hàng</h4>
+                <h3>{{$customer_count}}</h3>
+                {{-- <p>Other hand, we denounce</p> --}}
             </div>
         <div class="clearfix"> </div>
         </div>
@@ -32,12 +32,12 @@
     <div class="col-md-3 market-update-gd">
         <div class="market-update-block clr-block-3">
             <div class="col-md-4 market-update-right">
-                <i class="fa fa-usd"></i>
+                <img src="backend/images/review.png" >
             </div>
             <div class="col-md-8 market-update-left">
-                <h4>Sales</h4>
-                <h3>1,500</h3>
-                <p>Other hand, we denounce</p>
+                <h4>Tổng đánh giá khách hàng</h4>
+                <h3>{{$comment_count}}</h3>
+                {{-- <p>Other hand, we denounce</p> --}}
             </div>
         <div class="clearfix"> </div>
         </div>
@@ -45,18 +45,29 @@
     <div class="col-md-3 market-update-gd">
         <div class="market-update-block clr-block-4">
             <div class="col-md-4 market-update-right">
-                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                <img src="backend/images/cart.png" >
             </div>
             <div class="col-md-8 market-update-left">
-                <h4>Orders</h4>
-                <h3>1,500</h3>
-                <p>Other hand, we denounce</p>
+                <h4>Tổng đơn hàng</h4>
+                <h3>{{$bill_count}}</h3>
+                {{-- <p>Other hand, we denounce</p> --}}
             </div>
         <div class="clearfix"> </div>
         </div>
     </div>
 <div class="clearfix"> </div>
 </div>	
+<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Biểu đồ doanh thu</div>
+					<div class="panel-body">
+							<canvas id="line-chart" height="100" width="600"></canvas>       
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/.row-->
 <!-- //market-->
 <div class="row">
     <div class="panel-body">
@@ -108,7 +119,7 @@
     </div>
 </div>
 <!-- //calendar -->
-<div class="col-md-6 w3agile-notifications">
+{{-- <div class="col-md-6 w3agile-notifications">
     <div class="notifications">
         <!--notification start-->
         
@@ -181,10 +192,10 @@
         
         <!--notification end-->
         </div>
-    </div>
+    </div> --}}
     <div class="clearfix"> </div>
 </div>
-    <!-- tasks -->
+    {{-- <!-- tasks -->
     <div class="agile-last-grids">
         <div class="col-md-4 agile-last-left">
             <div class="agile-last-grid">
@@ -273,9 +284,9 @@
             </div>
         </div>
         <div class="clearfix"> </div>
-    </div>
+    </div> --}}
 <!-- //tasks -->
-<div class="agileits-w3layouts-stats">
+{{-- <div class="agileits-w3layouts-stats">
             <div class="col-md-4 stats-info widget">
                 <div class="stats-info-agileits">
                     <div class="stats-title">
@@ -370,5 +381,46 @@
                 </div>
             </div>
             <div class="clearfix"> </div>
-        </div>
+        </div> --}}
 @endsection
+
+<script type="text/javascript">
+    window.onload = function () {
+        Chart.defaults.global.defaultFontColor = '#000000';
+        Chart.defaults.global.defaultFontFamily = 'Arial';
+        var list_day = <?php echo json_encode($list_day); ?>;
+        var arrrevenue_statistics_month = <?php echo json_encode($arrrevenue_statistics_month); ?>;
+        var lineChart = document.getElementById('line-chart');
+        var myChart = new Chart(lineChart, {
+            type: 'line',
+            data: {
+                labels: list_day,
+                datasets: [
+                    {
+                        label: 'Doanh thu',
+                        data: arrrevenue_statistics_month,
+                        backgroundColor: 'rgba(0, 128, 128, 0.3)',
+                        borderColor: 'rgba(0, 128, 128, 0.7)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                },
+            }
+        });
+    };
+</script>
+
+<!--$revenue_statistics_month = Bill::where('id_status',1)
+    ->whereMonth('created_at',date('m'))
+    ->select(\DB::raw('sum(total) as totalMoney'), \DB::raw('DATE(created_at) day'))
+    ->groupBy('day')
+    ->get()->toArray();
+dd($revenue_statistics_month);-->

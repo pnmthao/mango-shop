@@ -44,6 +44,18 @@
 		</div>
 		<div class="w3l-welcome-text">
 			<p>@lang('about_us.logan')</p>
+			<p>@lang('about_us.logan1')</p>
+			<p>@lang('about_us.logan2')</p>
+			<p>@lang('about_us.logan3')</p>
+			<p>@lang('about_us.logan4')</p>
+			<p>@lang('about_us.logan5')</p>
+			<p>@lang('about_us.benefit')</p>
+			<p>@lang('about_us.benefit1')</p>
+			<p>@lang('about_us.benefit2')</p>
+			<p>@lang('about_us.benefit3')</p>
+			<p>@lang('about_us.benefit4')</p>
+			<p>@lang('about_us.benefit5')</p>
+			<p>@lang('about_us.benefit6')</p>
 		</div>
 	</div>
 </div>

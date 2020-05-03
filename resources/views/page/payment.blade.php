@@ -178,7 +178,29 @@
 								<div class="col-md-6">
 									<img class="pp-img" src="images/paypal.png" alt="Image Alternative text" title="Image Title">
 									<p>Important: You will be redirected to PayPal's website to securely complete your payment.</p>
-									<a class="btn btn-primary">Checkout via Paypal</a>
+									<a href="{{ url('paypal') }}" class="btn btn-primary">Checkout via Paypal</a>
+									
+
+
+									<style type="text/css"> @import url("https://www.w3schools.com/w3css/4/w3.css"); </style>
+									@if ($message = Session::get('success'))
+										<div class="w3-panel w3-green w3-display-container">
+											<span onclick="this.parentElement.style.display='none'"
+													class="w3-button w3-green w3-large w3-display-topright">&times;</span>
+											<p>{!! $message !!}</p>// thong bao thanh toan thanh cong
+										</div>
+										<?php Session::forget('success');?>
+									@endif
+									@if ($message = Session::get('error'))
+										<div class="w3-panel w3-red w3-display-container">
+											<span onclick="this.parentElement.style.display='none'"
+													class="w3-button w3-red w3-large w3-display-topright">&times;</span>
+											<p>{!! $message !!}</p> // thong bao thanh toan fail
+											
+											
+										</div>
+										<?php Session::forget('error');?>
+									@endif
 								</div>
 								<div class="col-md-6 number-paymk">
 									<form class="cc-form">

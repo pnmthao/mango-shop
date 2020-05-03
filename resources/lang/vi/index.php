@@ -50,7 +50,7 @@ return [
     'label_fruits' => 'Mới',
     'meat' => 'Thịt',
     'label_meat' => 'Mới',
-    'new_product' => 'Sản phẩm mới về',
+    'new_product' => 'Sản phẩm mới',
     'label_new_product' => 'Mới',
     'place_search' => "Nhập từ khóa cần tìm"
 ];

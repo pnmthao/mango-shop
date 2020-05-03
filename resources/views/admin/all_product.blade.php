@@ -3,7 +3,7 @@
 <div class="table-agile-info">
   <div class="panel panel-default">
 
-      <div class="panel-heading">Liệt kê sản phẩm</div>
+      <div class="panel-heading">Danh sách sản phẩm</div>
       <div class="row w3-res-tb">
         {{-- <div class="col-sm-5 m-b-xs">
           <select class="input-sm form-control w-sm inline v-middle">
@@ -39,46 +39,43 @@
             <table class="table table-striped b-t b-light">
               <thead>
                 <tr>
-                  <th style="width:20px;">
+                  {{-- <th style="width:20px;">
                     <label class="i-checks m-b-none"><input type="checkbox"></label>
-                  </th>
+                  </th> --}}
                   <th width="150px">Tên sản phẩm</th>
                   <th>Hình ảnh</th>
-                  <th width="150px">Mô tả sản phẩm</th>
+                  {{-- <th width="150px">Mô tả sản phẩm</th> --}}
                   <th width="100px">Giá gốc</th>
                   <th width="100px">Giá giảm</th>
                   <th>ĐVT</th>
                   <th>SL</th>
                   <th>Danh mục</th>
                   <th>NCC</th>
-                  <th width="100px">Hiển thị</th>
-                  <th style="width:30px;"></th>
+                  <th width="114px"></th>
+                  {{-- <th style="width:80px;"></th> --}}
                 </tr>
               </thead>
               <tbody>
                 @foreach($all_product as $key => $pro)
                 <tr>
-                  <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                  {{-- <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td> --}}
                   <td>{{$pro->name}}</td>
                   <td><img src="uploads/product/{{$pro->image}}" height="100" width="100"></td>
-                  <td>{{$pro->description_product}}</td>
+                  {{-- <td>{{$pro->description_product}}</td> --}}
                   <td>{{$pro->unit_price}}</td>
                   <td>{{$pro->promotion_price}}</td>
                   <td>{{$pro->unit_name}}</td>
                   <td>{{$pro->quantity}}</td>
                   <td>{{$pro->name_type}}</td>
                   <td>{{$pro->name_brand}}</td>
-                  <td>
-                    <span class="text-ellipsis">
-                        @if($pro->status==0)
-                            <a href="{{route('unactive-product', $pro->id)}}"><span class="fa-thumb-styling fa fa-thumbs-down"></span></a>
-                        @else
-                            <a href="{{route('active-product', $pro->id)}}"><span class="fa-thumb-styling fa fa-thumbs-up"></span></a>
-                        @endif
-                    </span></td>
-                  <td>
-                    <a href="{{route('edit-product', $pro->id)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-pencil-square-o text-success text-active"></i></a>
-                    <a onclick="return confirm('Bạn có chắc sẽ xóa?')" href="{{route('delete-product', $pro->id)}}" class="active styling-delete" ui-toggle-class=""><i class="fa fa-times text-danger text"></i></a>
+                  <td class="td-action">
+                    @if($pro->status==0)
+                        <a href="{{route('unactive-product', $pro->id)}}"><img class="active-icon" src="backend/images/unactive.png"></a>
+                    @else
+                        <a href="{{route('active-product', $pro->id)}}"><img class="active-icon" src="backend/images/active.png"></a>
+                    @endif
+                    <a href="{{route('edit-product', $pro->id)}}" class="active styling-edit" ui-toggle-class=""><img class="active-icon" src="backend/images/edit.png"></a>
+                    <a onclick="return confirm('Bạn có chắc sẽ xóa?')" href="{{route('delete-product', $pro->id)}}" class="active styling-delete" ui-toggle-class=""><img class="active-icon" src="backend/images/delete.png"></a>
                   </td>
                 </tr>
                 @endforeach
@@ -87,18 +84,12 @@
           </div>
         <footer class="panel-footer">
         <div class="row">
-          
-          <div class="col-sm-5 text-center">
-            <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+          <div class="col-sm-4 text-center">
+          <small class="text-muted inline m-t-sm m-b-sm">Hiển thị {{($all_product->currentPage()-1)*$itemPerPage+1}}-{{min($all_product->currentPage()*$itemPerPage, $count_product)}} trên {{$count_product}} sản phẩm</small>
           </div>
-          <div class="col-sm-7 text-right text-center-xs">                
+          <div class="col-sm-8 text-right text-center-xs">                
             <ul class="pagination pagination-sm m-t-none m-b-none">
-              <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
-              <li><a href="">1</a></li>
-              <li><a href="">2</a></li>
-              <li><a href="">3</a></li>
-              <li><a href="">4</a></li>
-              <li><a href=""><i class="fa fa-chevron-right"></i></a></li>
+              {{ $all_product->links() }}
             </ul>
           </div>
         </div>

@@ -19,12 +19,17 @@ class OrderController extends Controller
     }
     public function all_order(){
         $this->AuthLogin();
+        $itemPerPage = 5;
         $all_order = DB::table('bills')
                     ->join('customers','bills.id_customer','=','customers.id')
                     ->join('status','bills.id_status','=','status.id')
                     ->select('bills.*', 'customers.name as customer_name','status.name as status_name')
-                    ->orderby('bills.id','desc')->get();
-        $manager_order = view('admin.all_order')->with('all_order',$all_order);
+                    ->orderby('bills.id','desc')->paginate($itemPerPage);
+        $count_order = DB::table('bills')->count();
+        $manager_order = view('admin.all_order')
+                        ->with('all_order',$all_order)
+                        ->with('count_order', $count_order)
+                        ->with('itemPerPage', $itemPerPage);
         return view('admin_layout')->with('admin.all_order',$manager_order);
     }
     public function all_order_detail($order_detail_id){

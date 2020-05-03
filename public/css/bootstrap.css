@@ -1091,7 +1091,7 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
-    color: #333;
+    color: rgba(0, 0, 0, 0.75);
     background-color: #fff;
 }
 input,
@@ -3329,8 +3329,8 @@ fieldset[disabled] .btn-success.focus {
 }
 .btn-info {
     color: #fff;
-    background-color: #5bc0de;
-    border-color: #46b8da;
+    background-color: #1976d2;
+    border-color: #1976d2;
 }
 .btn-info:focus,
 .btn-info.focus {
@@ -3377,11 +3377,11 @@ fieldset[disabled] .btn-info:focus,
 .btn-info.disabled.focus,
 .btn-info[disabled].focus,
 fieldset[disabled] .btn-info.focus {
-    background-color: #5bc0de;
-    border-color: #46b8da;
+    background-color: #1976d2;
+    border-color: #1976d2;
 }
 .btn-info .badge {
-    color: #5bc0de;
+    color: #1976d2;
     background-color: #fff;
 }
 .btn-warning {
@@ -4995,7 +4995,7 @@ a.label:focus {
     background-color: #449d44;
 }
 .label-info {
-    background-color: #5bc0de;
+    background-color: #1976d2;
 }
 .label-info[href]:hover,
 .label-info[href]:focus {
@@ -5330,7 +5330,7 @@ a.thumbnail.active {
     );
 }
 .progress-bar-info {
-    background-color: #5bc0de;
+    background-color: #1976d2;
 }
 .progress-striped .progress-bar-info {
     background-image: -webkit-linear-gradient(

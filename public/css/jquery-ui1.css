@@ -54,7 +54,7 @@
 .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Verdana,Arial,sans-serif/*{ffDefault}*/; font-size: 1em; }
 .ui-widget-content { background: #e0ddda; color: #222222;  margin-top: 3em; }
 .ui-widget-content a { color: #222222/*{fcContent}*/; }
-.ui-widget-header { background: #1accfd; color: #222222/*{fcHeader}*/; font-weight: bold; }
+.ui-widget-header { background: rgba(0, 168, 255,1.0); color: #222222/*{fcHeader}*/; font-weight: bold; }
 .ui-widget-header a { color: #222222/*{fcHeader}*/; }
 
 /* Interaction states

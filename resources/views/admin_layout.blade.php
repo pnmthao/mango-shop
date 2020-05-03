@@ -2,7 +2,6 @@
 <head>
     <title>Dashboard</title>
     <base href="{{asset('')}}">
-    <link rel="icon" href="{{asset('images/mango.ico')}}" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -27,6 +26,7 @@
     <script src="{{asset('backend/js/jquery2.0.3.min.js')}}"></script>
     <script src="{{asset('backend/js/raphael-min.js')}}"></script>
     <script src="{{asset('backend/js/morris.js')}}"></script>
+    <script src="{{asset('backend/js/Chart.min.js')}}"></script>
 </head>
 <body>
     <section id="container">
@@ -273,56 +273,65 @@
                         </a>
                         <ul class="sub">
                             <li><a href="{{route('add-category-product')}}">Thêm danh mục sản phẩm</a></li>
-                            <li><a href="{{route('all-category-product')}}">Liệt kê danh mục sản phẩm</a></li>
+                            <li><a href="{{route('all-category-product')}}">Xem danh mục sản phẩm</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
-                            <i class="fa fa-book"></i>
-                            <span>Sản phẩm</span>
+                            <i class="fa fa-list"></i>
+                            <span>Quản lý sản phẩm</span>
                         </a>
                         <ul class="sub">
                             <li><a href="{{route('add-product')}}">Thêm sản phẩm</a></li>
-                            <li><a href="{{route('all-product')}}">Liệt kê sản phẩm</a></li>
+                            <li><a href="{{route('all-product')}}">Xem sản phẩm</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-home"></i>
-                            <span>Nhà cung cấp</span>
+                            <span>Quản lý nhà cung cấp</span>
                         </a>
                         <ul class="sub">
                             <li><a href="{{route('add-brand-product')}}">Thêm nhà cung cấp</a></li>
-                            <li><a href="{{route('all-brand-product')}}">Liệt kê nhà cung cấp</a></li>
+                            <li><a href="{{route('all-brand-product')}}">Xem nhà cung cấp</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-shopping-cart"></i>
-                            <span>Đơn đặt hàng</span>
+                            <span>Quản lý đơn hàng</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="{{route('all-order')}}">Liệt kê đơn hàng</a></li>
+                            <li><a href="{{route('all-order')}}">Xem đơn hàng</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-user"></i>
-                            <span>Khách hàng</span>
+                            <span>Quản lý khách hàng</span>
                         </a>
                         <ul class="sub">
                             <li><a href="{{route('add-customer')}}">Thêm khách hàng</a></li>
-                            <li><a href="{{route('all-customer')}}">Liệt kê khách hàng</a></li>
+                            <li><a href="{{route('all-customer')}}">Xem khách hàng</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
-                            <i class="fa fa-user"></i>
+                            <i class="fa fa-gift"></i>
                             <span>Quản lý khuyến mãi</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="{{route('add-customer')}}">Danh sách khuyến mãi</a></li>
-                            <li><a href="{{route('all-customer')}}">Liệt kê khách hàng</a></li>
+                            <li><a href="{{route('add-coupon')}}">Thêm khuyến mãi</a></li>
+                            <li><a href="{{route('all-coupon')}}">Danh sách khuyến mãi</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-thumbs-up"></i>
+                            <span>Quản lý đánh giá</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="{{route('all-comment')}}">Xem đánh giá sản phẩm</a></li>
                         </ul>
                     </li>
                 </ul>            
@@ -339,7 +348,7 @@
     <!-- footer -->
             <div class="footer">
                 <div class="wthree-copyright">
-                <p>© 2020 Visitors. All rights reserved | Design by <a href="#">Food Store</a></p>
+                <p>Cửa hàng trực tuyến 24/24 - <a href="#" style="color: #fff;font-weight: bold;">Food Store</a></p>
                 </div>
             </div>
     <!-- / footer -->

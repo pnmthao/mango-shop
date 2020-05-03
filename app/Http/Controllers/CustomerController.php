@@ -41,8 +41,13 @@ class CustomerController extends Controller
     public function all_customer()
     {
         $this->AuthLogin();
-        $all_customer = DB::table('customers')->get();
-        $manager_customer = view('admin.all_customer')->with('all_customer', $all_customer);
+        $itemPerPage = 5;
+        $all_customer = DB::table('customers')->paginate($itemPerPage);
+        $count_customer = DB::table('customers')->count();
+        $manager_customer = view('admin.all_customer')
+                            ->with('all_customer', $all_customer)
+                            ->with('count_customer', $count_customer)
+                            ->with('itemPerPage', $itemPerPage);
         return view('admin_layout')->with('admin.all_customer', $manager_customer);
     }
     public function save_customer(Request $req)

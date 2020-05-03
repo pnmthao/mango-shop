@@ -16,6 +16,14 @@ class Kernel extends ConsoleKernel
         //
     ];
 
+    protected $middleware = [
+        \App\Http\Middleware\CheckForMaintenanceMode::class,
+        \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
+        \App\Http\Middleware\TrimStrings::class,
+        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        \App\Http\Middleware\TrustProxies::class,
+        \App\Http\Middleware\CheckForMaintenanceMode::class,
+    ];
     /**
      * Define the application's command schedule.
      *

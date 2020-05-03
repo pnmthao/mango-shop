@@ -2,7 +2,7 @@
 @section('admin_content')
 <div class="table-agile-info">
   <div class="panel panel-default">
-      <div class="panel-heading">Liệt kê đơn hàng</div>
+      <div class="panel-heading">Đơn hàng</div>
       <div class="row w3-res-tb">
         {{-- <div class="col-sm-5 m-b-xs">
           <select class="input-sm form-control w-sm inline v-middle">
@@ -42,22 +42,22 @@
           <table class="table table-striped b-t b-light">
             <thead>
               <tr>
-                <th style="width:20px;">
+                {{-- <th style="width:20px;">
                   <label class="i-checks m-b-none"><input type="checkbox"></label>
-                </th>
+                </th> --}}
                 <th>Mã HĐ</th>
                 <th>Tên khách hàng</th>
                 <th>Trị giá</th>
                 <th>Ngày đặt hàng</th>
                 <th>Hình thức thanh toán</th>
                 <th>Trạng thái</th>
-                <th style="width:30px;">Chi tiết</th>
+                <th style="width:30px;">Xem</th>
               </tr>
             </thead>
             <tbody>
               @foreach($all_order as $key => $order)
               <tr>
-                <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                {{-- <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td> --}}
                 <td>{{$order->id}}</td>
                 <td>{{$order->customer_name}}</td>
                 <td>{{$order->total}}</td>
@@ -65,7 +65,7 @@
                 <td>{{$order->payment}}</td>
                 <td>{{$order->status_name}}</td>
                 <td>
-                  <a href="{{route('all-order-detail', $order->id)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-pencil-square-o text-success text-active"></i></a>
+                  <a href="{{route('all-order-detail', $order->id)}}" class="active styling-edit" ui-toggle-class=""><img class="active-icon" src="backend/images/edit.png"></a>
                 </td>
               </tr>
               @endforeach
@@ -74,17 +74,12 @@
         </div>
         <footer class="panel-footer">
           <div class="row">
-            <div class="col-sm-5 text-center">
-              <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+            <div class="col-sm-4 text-center">
+            <small class="text-muted inline m-t-sm m-b-sm">Hiển thị {{($all_order->currentPage()-1)*$itemPerPage+1}}-{{min($all_order->currentPage()*$itemPerPage, $count_order)}} trên {{$count_order}} đơn hàng</small>
             </div>
-            <div class="col-sm-7 text-right text-center-xs">                
+            <div class="col-sm-8 text-right text-center-xs">                
               <ul class="pagination pagination-sm m-t-none m-b-none">
-                <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
-                <li><a href="">1</a></li>
-                <li><a href="">2</a></li>
-                <li><a href="">3</a></li>
-                <li><a href="">4</a></li>
-                <li><a href=""><i class="fa fa-chevron-right"></i></a></li>
+                {{ $all_order->links() }}
               </ul>
             </div>
           </div>

@@ -286,4 +286,64 @@ Route::post('update-profile/{profile_id}',[
     'as'=>'update-profile',
     'uses'=>'UserController@update_profile'
 ]);
- 
+
+// Coupon
+Route::post('/coupon','CouponsController@store')->name('coupon.store');
+Route::delete('/coupon','CouponConstroller@destroy')->name('coupon.destroy');
+
+Route::get('add-coupon',[
+    'as'=>'add-coupon',
+    'uses'=>'CouponsController@add_coupon'
+]);
+Route::get('edit-coupon/{coupon_id}',[
+    'as'=>'edit-coupon',
+    'uses'=>'CouponsController@edit_coupon'
+]);
+Route::get('delete-coupon/{coupon_id}',[
+    'as'=>'delete-coupon',
+    'uses'=>'CouponsController@delete_coupon'
+]);
+Route::get('all-coupon',[
+    'as'=>'all-coupon',
+    'uses'=>'CouponsController@all_coupon'
+]);
+Route::post('save-coupon',[
+    'as'=>'save-coupon',
+    'uses'=>'CouponsController@save_coupon'
+]);
+Route::post('update-coupon/{coupon_id}',[
+    'as'=>'update-coupon',
+    'uses'=>'CouponsController@update_coupon'
+]);
+
+// Comment
+Route::post('comment/{id}','CommentController@postComment');
+
+Route::get('add-comment',[
+    'as'=>'add-comment',
+    'uses'=>'CommentController@add_comment'
+]);
+Route::get('delete-comment/{comment_id}',[
+    'as'=>'delete-comment',
+    'uses'=>'CommentController@delete_comment'
+]);
+Route::get('all-comment',[
+    'as'=>'all-comment',
+    'uses'=>'CommentController@all_comment'
+]);
+Route::get('unactive-comment/{comment_id}',[
+    'as'=>'unactive-comment',
+    'uses'=>'CommentController@unactive_comment'
+]);
+Route::get('active-comment/{comment_id}',[
+    'as'=>'active-comment',
+    'uses'=>'CommentController@active_comment'
+]);
+
+
+// Addchat::routes();
+
+Route::get('paypal', 'PaymentController@payWithpaypal');
+
+// route for check status of the payment
+Route::get('status', 'PaymentController@getPaymentStatus');

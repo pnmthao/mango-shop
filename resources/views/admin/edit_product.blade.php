@@ -85,6 +85,13 @@
                                 <label for="product_description_en">Mô tả sản phẩm (English)</label>
                                 <textarea style="resize:none" rows="8" class="form-control" id="product_description_en" name="product_description_en">{{$edit_value->description_en}}</textarea>
                             </div>
+                            <div class="form-group">
+                            <label for="product_status">Hiển thị</label>
+                            <select name="product_status" class="form-control input-sm m-bot15">
+                                <option value="1">Hiển thị</option>
+                                <option value="0">Ẩn</option>
+                            </select>
+                        </div>   
                             <button type="submit" class="btn btn-info" name="edit_product">Cập nhật sản phẩm</button>
                         </form>
                     @endforeach

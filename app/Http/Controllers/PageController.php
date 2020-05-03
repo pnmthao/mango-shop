@@ -32,25 +32,25 @@ class PageController extends Controller
     public function getIndex()
     {
         $slide = Slide::all();
-        $new_product = Product::where('new', 1)->paginate(4);
-        $sanpham_khuyenmai = Product::where('promotion_price', '<>', 0)->paginate(8);
+        $new_product = Product::where([['new', 1],['status', '=', 1],])->paginate(4);
+        $sanpham_khuyenmai = Product::where([['promotion_price', '<>', 0],['status', '=', 1],])->paginate(8);
         //return view('page.home',['slide'=>$slide]);
-        $sp_traicay = Product::where('id_type', '=', '4')->get();
-        $sp_thit = Product::where('id_type', '=', '20')->get();
+        $sp_traicay = Product::where([['id_type', '=', '4'],['status', '=', 1],])->get();
+        $sp_thit = Product::where([['id_type', '=', '20'],['status', '=', 1],])->get();
         return view('page.home', compact('slide', 'new_product', 'sanpham_khuyenmai', 'sp_traicay', 'sp_thit'));
     }
     public function getLoaiSp($type)
     {
-        $sp_theoloai = Product::where('id_type', $type)->get();
-        $sp_khac = Product::where('id_type', '<>', $type)->paginate(3);
+        $sp_theoloai = Product::where([['id_type', $type],['status', '=', 1],])->get();
+        $sp_khac = Product::where([['id_type', '<>', $type],['status', '=', 1],])->paginate(3);
         $loai = ProductType::all();
         $loai_sp = ProductType::where('id', $type)->first();
         return view('page.products_by_category', compact('sp_theoloai', 'sp_khac', 'loai', 'loai_sp'));
     }
     public function getNhaCungCapSp($type)
     {
-        $sp_theonhacungcap = Product::where('id_brand', $type)->get();
-        $sp_khac = Product::where('id_brand', '<>', $type)->paginate(3);
+        $sp_theonhacungcap = Product::where([['id_brand', $type],['status', '=', 1],])->get();
+        $sp_khac = Product::where([['id_brand', '<>', $type],['status', '=', 1],])->paginate(3);
         $nha_cung_cap = Brand::all();
         $nha_cung_cap_sp = Brand::where('id', $type)->first();
         return view('page.products_by_supplier', compact('sp_theonhacungcap', 'sp_khac', 'nha_cung_cap', 'nha_cung_cap_sp'));
@@ -59,7 +59,12 @@ class PageController extends Controller
     {
         $sanpham = Product::where('id', $req->id)->first();
         $sp_tuongtu = Product::where('id_type', $sanpham->id_type)->whereNotIn('id', array($req->id))->paginate(3);
-        return view('page.product_details', compact('sanpham', 'sp_tuongtu'));
+        $comment = DB::table('comments')
+                    ->join('customers','customers.id','=','comments.id_customer')
+                    ->select('comments.*', 'customers.name as name_customer')
+                    ->where([['id_product',$sanpham->id],['status', '=', 1],])
+                    ->orderby('comments.id','desc')->get();
+        return view('page.product_details', compact('sanpham', 'sp_tuongtu','comment'));
     }
     public function getLienHe()
     {
@@ -231,11 +236,11 @@ class PageController extends Controller
     }
     public function getSearch(Request $req)
     {
-        $product = Product::where('name', 'like', '%' . $req->key . '%')
-            ->orWhere('name_en', 'like', '%' . $req->key . '%')
+        $product = Product::where([['name', 'like', '%' . $req->key . '%'],['status', '=', 1],])
+            ->orWhere([['name_en', 'like', '%' . $req->key . '%'],['status', '=', 1],])
             ->orWhere('unit_price', $req->key)
             ->get();
-        $new_product = Product::where('new', 1)->paginate(4);
+        $new_product = Product::where([['new', 1],['status', '=', 1],])->paginate(4);
         return view('page.search', compact('product', 'new_product'));
     }
 }

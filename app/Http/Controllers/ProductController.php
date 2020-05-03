@@ -48,13 +48,18 @@ class ProductController extends Controller
     public function all_product()
     {
         $this->AuthLogin();
+        $itemPerPage = 5;
         $all_product = DB::table('products')
             ->join('type_products', 'type_products.id', '=', 'products.id_type')
             ->join('brand', 'brand.id', '=', 'products.id_brand')
             ->join('unit', 'unit.unit_id', '=', 'products.id_unit')
             ->select('products.*', 'products.description as description_product', 'type_products.name as name_type', 'brand.name as name_brand', 'unit.unit_name as unit_name')
-            ->orderby('products.id', 'desc')->get();
-        $manager_product = view('admin.all_product')->with('all_product', $all_product);
+            ->orderby('products.id', 'desc')->paginate($itemPerPage);
+        $count_product = DB::table('products')->count();
+        $manager_product = view('admin.all_product')
+                        ->with('all_product', $all_product)
+                        ->with('count_product', $count_product)
+                        ->with('itemPerPage', $itemPerPage);
         return view('admin_layout')->with('admin.all_product', $manager_product);
     }
     public function save_product(Request $req)

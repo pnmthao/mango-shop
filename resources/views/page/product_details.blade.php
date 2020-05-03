@@ -124,8 +124,40 @@
 		<div class="clearfix"> </div>
 	</div>
 </div>
+@if(Session::get('customer_id'))
+<div class="container">
+	<div class="well">
+		<h4>Viết đánh giá ...<span class="glyphicon glyphicon-pencil"></span></h4>
+		<form action="comment/{{$sanpham->id}}" method="post" role="form">
+		<input type="hidden" name="_token" value="{{csrf_token()}}"/>
+			<div class="form">
+					<div class="form-group">
+						<textarea class="form-control" name="NoiDung" rows="3"></textarea>
+					</div>
+					<button type="submit" class="btn btn-primary">Gửi</button>
+			</div>
+		</form>
+	</div>
+</div>
+@endif
+<div class="container">
+<hr>
+@foreach($comment as $cmt)
+    <div class=media>
+		<h4>{{$cmt->name_customer}} : {{$cmt->comment}}</h4>
+		<p>{{$cmt->created_at}}</p>
+	</div>
+<hr>
+</div>
+@endforeach
 <!-- //Product Detail Page -->
-
+<!-- facebook comment -->
+<!-- <div class="fb-comments" data-href="http://mango-shop-new.test/public" data-numposts="7" data-width=""></div> -->
+<div class="container"> 
+<div class="fb-comments" data-href="{{Request::url()}}" data-numposts="7" data-width="600" ></div>
+<hr>
+</div>
+<!-- facebook comment end -->
 <!-- special offers -->
 <div class="featured-section" id="projects">
 	<div class="container">

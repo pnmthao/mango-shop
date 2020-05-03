@@ -39,7 +39,7 @@ return [
     'shop_online' => 'Mango Shop Online Store 24/24',
     'shop_online_desc1' => 'Order online. All your favorite products from low price online supermarkets to home delivery.',
     'shop_online_desc2' => 'Online shopping with the best deals',
-    'shop_online_desc3' => 'Place an order today. Receive instant gifts. 40% discount on essentials displayed on promotion page every day. The range includes clean agricultural products, healthy foods and other daily necessities.',
+    'shop_online_desc3' => 'Place an order today. Receive instant gifts. The range includes clean agricultural products, healthy foods and other daily necessities.',
     'brand' => 'Suppliers',
     'payment' => 'Payment Method',
     'brand1' => 'Vinmart',

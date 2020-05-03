@@ -3,7 +3,7 @@
 <div class="table-agile-info">
     <div class="panel panel-default">
       <div class="panel-heading">
-        Liệt kê khách hàng
+        Danh sách khách hàng
       </div>
       <div class="row w3-res-tb">
         {{-- <div class="col-sm-5 m-b-xs">
@@ -41,24 +41,24 @@
         <table class="table table-striped b-t b-light">
           <thead>
             <tr>
-              <th style="width:20px;">
+              {{-- <th style="width:20px;">
                 <label class="i-checks m-b-none">
                   <input type="checkbox"><i></i>
                 </label>
-              </th>
+              </th> --}}
               <th>Tên khách hàng</th>
               <th>Hình ảnh</th>
               <th>Giới tính</th>
               <th>Email</th>
               <th>Địa chỉ</th>
-              <th>Số điện thoại</th>
-              <th style="width:30px;">Thao tác</th>
+              <th>SĐT</th>
+              <th width="80px"></th>
             </tr>
           </thead>
           <tbody>
             @foreach($all_customer as $key => $customer)
             <tr>
-              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+              {{-- <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td> --}}
               <td>{{$customer->name}}</td>
               <td><img src="uploads/customer/{{$customer->image}}" height="100" width="100"></td>
               <td>{{$customer->gender}}</td>
@@ -66,8 +66,8 @@
               <td>{{$customer->address}}</td>
               <td>{{$customer->phone}}</td>
               <td>
-                <a href="{{route('edit-customer', $customer->id)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-pencil-square-o text-success text-active"></i></a>
-                <a onclick="return confirm('Bạn có chắc sẽ xóa?')" href="{{route('delete-customer', $customer->id)}}" class="active styling-delete" ui-toggle-class=""><i class="fa fa-times text-danger text"></i></a>
+                <a href="{{route('edit-customer', $customer->id)}}" class="active styling-edit" ui-toggle-class=""><img class="active-icon" src="backend/images/edit.png"></a>
+                <a onclick="return confirm('Bạn có chắc sẽ xóa?')" href="{{route('delete-customer', $customer->id)}}" class="active styling-delete" ui-toggle-class=""><img class="active-icon" src="backend/images/delete.png"></a>
               </td>
             @endforeach
           </tbody>
@@ -75,18 +75,12 @@
       </div>
       <footer class="panel-footer">
         <div class="row">
-          
-          <div class="col-sm-5 text-center">
-            <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+          <div class="col-sm-4 text-center">
+          <small class="text-muted inline m-t-sm m-b-sm">Hiển thị {{($all_customer->currentPage()-1)*$itemPerPage+1}}-{{min($all_customer->currentPage()*$itemPerPage, $count_customer)}} trên {{$count_customer}} khách hàng</small>
           </div>
-          <div class="col-sm-7 text-right text-center-xs">                
+          <div class="col-sm-8 text-right text-center-xs">                
             <ul class="pagination pagination-sm m-t-none m-b-none">
-              <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
-              <li><a href="">1</a></li>
-              <li><a href="">2</a></li>
-              <li><a href="">3</a></li>
-              <li><a href="">4</a></li>
-              <li><a href=""><i class="fa fa-chevron-right"></i></a></li>
+              {{ $all_customer->links() }}
             </ul>
           </div>
         </div>

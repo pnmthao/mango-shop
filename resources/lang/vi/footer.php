@@ -39,7 +39,7 @@ return [
     'shop_online' => 'Cửa hàng mua sắm trực tuyến Mango Shop',
     'shop_online_desc1' => 'Đặt hàng trực tuyến. Tất cả các sản phẩm yêu thích của bạn từ siêu thị trực tuyến giá thấp đến giao hàng tại nhà.',
     'shop_online_desc2' => 'Mua sắm trực tuyến với các ưu đãi tốt nhất',
-    'shop_online_desc3' => 'Đặt hàng ngay hôm nay. Nhận quà liền tay.Giảm giá 40% các sản phẩm thiết yếu được hiển thị trên trang ưu đãi mỗi ngày. Phạm vi bao gồm nông sản sạch, các thực phẩm tốt cho sức khỏe và các sản phẩm cần thiết hàng ngày khác.',
+    'shop_online_desc3' => 'Đặt hàng ngay hôm nay. Nhận quà liền tay. Phạm vi bao gồm nông sản sạch, các thực phẩm tốt cho sức khỏe và các sản phẩm cần thiết hàng ngày khác.',
     'brand' => 'Nhà cung cấp',
     'payment' => 'Phương thức thanh toán',
     'brand1' => 'Vinmart',

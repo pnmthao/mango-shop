@@ -41,8 +41,13 @@ class CategoryProduct extends Controller
     public function all_category_product()
     {
         $this->AuthLogin();
-        $all_category_product = DB::table('type_products')->get();
-        $manager_category_product = view('admin.all_category_product')->with('all_category_product', $all_category_product);
+        $itemPerPage = 5;
+        $all_category_product = DB::table('type_products')->paginate($itemPerPage);
+        $count_category_product = DB::table('type_products')->count();
+        $manager_category_product = view('admin.all_category_product')
+                                    ->with('all_category_product', $all_category_product)
+                                    ->with('count_category_product', $count_category_product)
+                                    ->with('itemPerPage', $itemPerPage);
         return view('admin_layout')->with('admin.all_category_product', $manager_category_product);
     }
     public function save_category_product(Request $req)
