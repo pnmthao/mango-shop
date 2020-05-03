@@ -31,13 +31,13 @@ class PageController extends Controller
     }
     public function getIndex()
     {
-        $slide = Slide::all();
+        // $slide = Slide::all();
         $new_product = Product::where([['new', 1],['status', '=', 1],])->paginate(4);
         $sanpham_khuyenmai = Product::where([['promotion_price', '<>', 0],['status', '=', 1],])->paginate(8);
         //return view('page.home',['slide'=>$slide]);
         $sp_traicay = Product::where([['id_type', '=', '4'],['status', '=', 1],])->get();
         $sp_thit = Product::where([['id_type', '=', '20'],['status', '=', 1],])->get();
-        return view('page.home', compact('slide', 'new_product', 'sanpham_khuyenmai', 'sp_traicay', 'sp_thit'));
+        return view('page.home', compact('new_product', 'sanpham_khuyenmai', 'sp_traicay', 'sp_thit'));
     }
     public function getLoaiSp($type)
     {
