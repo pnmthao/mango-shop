@@ -204,16 +204,16 @@
 							<a href="https://vinmart.com/">@lang('footer.brand1')</a>
 						</li>
 						<li>
-							<a href="https://vinmart.com/">@lang('footer.brand2')</a>
+							<a href="http://mmvietnam.com/">@lang('footer.brand2')</a>
 						</li>
 						<li>
-							<a href="https://vinmart.com/">@lang('footer.brand3')</a>
+							<a href="https://www.lotteria.vn/">@lang('footer.brand3')</a>
 						</li>
 						<li>
-							<a href="https://vinmart.com/">@lang('footer.brand4')</a>
+							<a href="https://vinatex.com.vn/en/home/">@lang('footer.brand4')</a>
 						</li>
 						<li>
-							<a href="https://vinmart.com/">@lang('footer.brand5')</a>
+							<a href="http://www.co-opmart.com.vn/khuyenmai/camnangmuasam.aspx">@lang('footer.brand5')</a>
 						</li>
 					</ul>
 				</div>

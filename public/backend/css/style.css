@@ -1711,6 +1711,7 @@ p.hd-title {
 }
 select.input-sm {
     height: 30px;
+    /* width: 130px; */
     line-height: 30px;
 }
 .w-sm {
@@ -2392,6 +2393,10 @@ ul.inbox-pagination li {
 }
 .w3layouts-main .text-alert {
     color: yellow;
+    text-align: center;
+}
+.text-alert {
+    color: black;
     text-align: center;
 }
 /*--//header--*/

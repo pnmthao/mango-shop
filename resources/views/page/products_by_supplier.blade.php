@@ -252,7 +252,7 @@
                 </div>
             </div>
         </div>
-        @if(Session::get('locale') == 'en') Find {{count($sp_theonhacungcap)}} products @else  Tìm thấy {{count($sp_theonhacungcap)}} sản phẩm @endif
+        {{-- @if(Session::get('locale') == 'en') Find {{count($sp_theonhacungcap)}} products @else  Tìm thấy {{count($sp_theonhacungcap)}} sản phẩm @endif --}}
         <!-- //product right -->
     </div>
 </div>

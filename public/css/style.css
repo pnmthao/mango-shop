@@ -892,7 +892,7 @@ button.w3view-cart {
 }
 .search-hotel input[type='search'] {
     background: #fff;
-    border: none;
+    border: 1px solid;
     width: 81%;
     outline: none;
     padding: 11px 10px 10px 10px;
@@ -900,7 +900,7 @@ button.w3view-cart {
     color: #c4c4c4;
 }
 .search-hotel form input[type='submit'] {
-    background: url(../images/search.png) no-repeat 13px 11px rgba(0, 168, 255,1.0);
+    background: url(../images/search_2.png) no-repeat 13px 11px rgba(0, 168, 255,1.0);
     width: 44px;
     height: 39px;
     border: none;

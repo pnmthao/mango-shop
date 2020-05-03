@@ -252,7 +252,8 @@
                 </div>
             </div>
         </div>
-        @if(Session::get('locale') == 'en') Find {{count($sp_theoloai)}} products @else  Tìm thấy {{count($sp_theoloai)}} sản phẩm @endif
+        {{-- <div>{{$sp_theoloai->links()}}</div> --}}
+        {{-- @if(Session::get('locale') == 'en') Find {{count($sp_theoloai)}} products @else  Tìm thấy {{count($sp_theoloai)}} sản phẩm @endif --}}
         <!-- //product right -->
     </div>
 </div>

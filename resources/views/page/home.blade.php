@@ -185,7 +185,7 @@
             </div>
             <!-- //reviews -->
             <!-- cuisine -->
-            <div class="left-side">
+            {{-- <div class="left-side">
                 <h3 class="agileits-sear-head">@lang('index.cuisine')</h3>
                 <ul>
                     <li>
@@ -229,10 +229,10 @@
                         <span class="span"> Spanish </span>
                     </li>
                 </ul>
-            </div>
+            </div> --}}
             <!-- //cuisine -->
             <!-- deals -->
-            <div class="deal-leftmk left-side">
+            {{-- <div class="deal-leftmk left-side">
                 <h3 class="agileits-sear-head">@lang('index.deals')</h3>
                 <div class="special-sec1">
                     <div class="col-xs-4 img-deals">
@@ -244,7 +244,7 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
-            </div>
+            </div> --}}
             <!-- //deals -->
         </div>
         <!-- //product left -->
@@ -307,17 +307,18 @@
                     </div>
                     @endforeach
                     <div class="clearfix"></div>
+                    <div>{{$sanpham_khuyenmai->links()}}</div>
                 </div>
                 <!-- //first section (promotion products) -->
 
                 <!-- second section (advertised nuts) -->
                 <div class="product-sec1 product-sec2">
                     <div class="col-xs-7 effect-bg">
-                        <h3 class="">Pure Energy</h3>
-                        <h6>Enjoy our all healthy Products</h6>
-                        <p>Get Extra 10% Off</p>
+                        <h3 class="">@lang('index.carousel_content_1')</h3>
+                        <h6>@lang('index.carousel_content_2')</h6>
+                        <p>@lang('index.carousel_content_3')</p>
                     </div>
-                    <h3 class="w3l-nut-middle">Nuts & Dry Fruits</h3>
+                    <h3 class="w3l-nut-middle">@lang('index.carousel_content_6')</h3>
                     <div class="col-xs-5 bg-right-nut">
                         <img src="images/nut1.png" alt="">
                     </div>
@@ -380,6 +381,7 @@
                     </div>
                     @endforeach
                     <div class="clearfix"></div>
+                    <div>{{$sp_traicay->links()}}</div>
                 </div>
                 <!-- //third section (fruits)-->
 
@@ -438,6 +440,7 @@
                     </div>
                     @endforeach
                     <div class="clearfix"></div>
+                    <div>{{$sp_thit->links()}}</div>
                 </div>
                 <!-- //fourth section (meat) -->
             </div>

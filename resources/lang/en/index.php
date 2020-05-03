@@ -18,7 +18,7 @@ return [
     'carousel_content_3' => 'Get flat',
     'carousel_content_4' => '10%',
     'carousel_content_5' => 'Cashback',
-    'carousel_content_6' => 'Healthy',
+    'carousel_content_6' => 'Healthy and Food',
     'carousel_content_7' => 'Saving',
     'carousel_content_8' => 'Get Upto',
     'carousel_content_9' => '30%',

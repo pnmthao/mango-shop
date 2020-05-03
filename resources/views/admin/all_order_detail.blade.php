@@ -48,26 +48,35 @@
         <div class="panel-body">
             <table class="table table-striped b-t b-light">       
               <thead>
-                <tr> 
-                    <th>Mã đơn hàng: {{$id_bill}}</th> 
-                    <th>Ngày đặt: {{date('d-m-Y', strtotime($date_order))}}</th> 
-                    <th>Ghi chú: {{$note}}</th>     
+                <th>Mã đơn hàng</th> 
+                <th>Ngày đặt</th> 
+                <th>Ghi chú</th>
+                <th>Tên khách hàng</th> 
+                <th>Hình thức thanh toán</th>
+                {{-- <th>Trạng thái: {{$status_name}}</th> --}}
+                <tr>
+                  <th>{{$id_bill}}</th>
+                  <th>{{date('d-m-Y', strtotime($date_order))}}</th>
+                  <th>{{$note}}</th>
+                  <th>{{$customer_name}}</th>
+                  <th>{{$payment}}</th>
                 </tr>
                 <tr>
-                    <th>Tên khách hàng: {{$customer_name}}</th> 
-                    <th>Hình thức thanh toán: {{$payment}}</th>
-                    {{-- <th>Trạng thái: {{$status_name}}</th> --}}
-                    <th>
-                      <select name="bill_status" class="form-control input-sm m-bot15">
-                      @foreach ($bill_status as $key => $bill_sta)
-                        @if($bill_sta->id==$order_detail->id_status)
-                            <option selected value="{{$bill_sta->id}}">{{$bill_sta->name}}</option>
-                        @else
-                            <option value="{{$bill_sta->id}}">{{$bill_sta->name}}</option>
-                        @endif
-                      @endforeach
-                      </select>
-                   </th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <select name="bill_status" class="form-control input-sm m-bot15">
+                    @foreach ($bill_status as $key => $bill_sta)
+                      @if($bill_sta->id==$order_detail->id_status)
+                          <option selected value="{{$bill_sta->id}}">{{$bill_sta->name}}</option>
+                      @else
+                          <option value="{{$bill_sta->id}}">{{$bill_sta->name}}</option>
+                      @endif
+                    @endforeach
+                    </select>
+                  </td>
                 </tr>
                 <tr>
                     <th>Sản phẩm</th>
