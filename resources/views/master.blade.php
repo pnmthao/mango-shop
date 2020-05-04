@@ -339,7 +339,6 @@
 	
 	<!-- //js-files -->
 	<!-- purechat script  -->
-    </script>
 	<script type='text/javascript' data-cfasync='false'>
 	window.purechatApi = { l: [], t: [], on: function () { 
 		this.l.push(arguments); 
@@ -354,6 +353,14 @@
 			 script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: '33682538-91b1-4ef0-97ff-89102e114fbf', f: true }); done = true; } }; })();
 	</script>
 	<!-- purechat end -->
-
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150383460-2"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-150383460-2');
+	</script>
+	<!-- End Global site tag (gtag.js) - Google Analytics -->
 </body>
 </html>

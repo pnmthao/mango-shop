@@ -31,10 +31,8 @@ class PageController extends Controller
     }
     public function getIndex()
     {
-        // $slide = Slide::all();
         $new_product = Product::where([['new', 1],['status', '=', 1],])->paginate(4);
         $sanpham_khuyenmai = Product::where([['promotion_price', '<>', 0],['status', '=', 1],])->paginate(9);
-        //return view('page.home',['slide'=>$slide]);
         $sp_traicay = Product::where([['id_type', '=', '4'],['status', '=', 1],])->paginate(6);
         $sp_thit = Product::where([['id_type', '=', '20'],['status', '=', 1],])->paginate(6);
         return view('page.home', compact('new_product', 'sanpham_khuyenmai', 'sp_traicay', 'sp_thit'));
@@ -169,10 +167,8 @@ class PageController extends Controller
                 'password.max' => 'Mật khẩu ít nhất 20 ký tự'
             ]
         );
-        // $credentials = array('email' => $req->email, 'password' => $req->password);
         $customer_email = $req->email;
         $customer_password = md5($req->password);
-
         $result = DB::table('customers')->where('email', $customer_email)->where('password', $customer_password)->first();
 
         if ($result) {
@@ -182,16 +178,8 @@ class PageController extends Controller
             Session::put('customer_address', $result->address);
             Session::put('customer_phone', $result->phone);
             return Redirect('index');
-            // return redirect()->back()->with(['flag'=>'success','message'=>'Bạn đăng nhập thành công']);
         }
         return redirect()->back()->with(['flag' => 'fail', 'message' => 'Bạn đăng nhập thất bại']);
-        // if(Auth::attempt($credentials)){
-        //     $result = DB::table('customers')->where('email',$req->email)->first();
-        //     Session::put('customer_name',$result->name);
-        //     Session::put('customer_id',$result->id);
-        //     return redirect()->back()->with(['flag'=>'success','message'=>'Bạn đăng nhập thành công']);
-        // }
-        // return redirect()->back()->with(['flag'=>'success','message'=>'Bạn đăng nhập thành công']);
     }
     public function getSignup()
     {

@@ -42,30 +42,22 @@ class PaymentController extends Controller
     public function payWithpaypal(Request $request)
     {
         $customer_id = Session::get('customer_id');
-       
         $data = DB::table('bill_detail')->join('bills','bill_detail.id_bill' , '=' , 'bills.id')
                                         ->join('products','bill_detail.id_product' , '=' , 'products.id')
                                         ->where('bills.id_customer' , $customer_id)->where('bills.id_status' , 1)
-                                        
-                                        ->select('products.name_en',DB::raw('sum(bill_detail.quantity) as quantity'),DB::raw('max(bill_detail.unit_price) as unit_price'))
+                                        ->select('products.name_en',DB::raw('sum(bill_detail.quantity) as quantity'),DB::raw('max(bill_detail.unit_price) as unit_price'),DB::raw('max(products.promotion_price) as promotion_price'))
                                         ->groupBy('products.name_en')
-                                        
                                         ->get();
-
         // $total = Bill::where('id_customer' ,'=', $customer_id)->value('total');
-
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
-
-        
         $total = 0;
         $i = 0;
-        
-        
         foreach($data as $unpaid)
             {
                 $items[$i] = new Item();
                 //change currency vnd to usd /23000.0
+                if($unpaid->promotion_price)$unpaid->unit_price = $unpaid->promotion_price;
                 $unpaid->unit_price = number_format($unpaid->unit_price/23000,2);
                 $items[$i]->setQuantity($unpaid->quantity)
                             ->setName($unpaid->name_en)
@@ -74,10 +66,6 @@ class PaymentController extends Controller
                 $i++;
                 $total +=  $unpaid->quantity*$unpaid->unit_price;
             }
-        
-        
-        
- 
         $item_list = new ItemList();
         $item_list->setItems($items);
 
@@ -111,7 +99,6 @@ class PaymentController extends Controller
             ->setTransactions(array($transaction));
         /** dd($payment->create($this->_api_context));exit; **/
         try {
-            
             $payment->create($this->_api_context);
  
         } catch (\PayPal\Exception\PPConnectionException $ex) {
@@ -131,31 +118,21 @@ class PaymentController extends Controller
             // }
  
         }
- 
         foreach ($payment->getLinks() as $link) {
- 
             if ($link->getRel() == 'approval_url') {
- 
                 $redirect_url = $link->getHref();
                 break;
- 
             }
- 
         }
  
         /** add payment ID to session **/
         Session::put('paypal_payment_id', $payment->getId());
- 
         if (isset($redirect_url)) {
- 
             /** redirect to paypal **/
             return Redirect::away($redirect_url);
- 
         }
- 
         \Session::put('error', 'Unknown error occurred');
         return Redirect::route('payment');
- 
     }
     public function getPaymentStatus()
     {
@@ -165,30 +142,22 @@ class PaymentController extends Controller
         /** clear the session payment ID **/
         Session::forget('paypal_payment_id');
         if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
- 
             \Session::put('error', 'Payment failed');
             return Redirect::route('payment');
- 
         }
- 
         $payment = Payment::get($payment_id, $this->_api_context);
-        
         $execution = new PaymentExecution();
         $execution->setPayerId(Input::get('PayerID'));
  
         /**Execute the payment **/
         $result = $payment->execute($execution, $this->_api_context);
- 
         if ($result->getState() == 'approved') {
- 
             \Session::put('success', 'Payment success');
-
             /**change bill status **/
             Bill::where('id_customer' , $customer_id)->update(['id_status' => 4]);
             return Redirect::route('payment');
  
         }
- 
         \Session::put('error', 'Payment failed');
         return Redirect::route('payment');
  

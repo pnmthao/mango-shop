@@ -34,6 +34,6 @@ return [
     'order_email'=> 'Email',
     'order_phone'=> 'Phone Number',
     'order_address'=> 'Address',
-    'order_delivery'=> 'Delivery',
-    'payment'=> 'Payment',
+    'order_delivery'=> 'Checkout Via COD',
+    'payment'=> 'Online Payment',
 ];

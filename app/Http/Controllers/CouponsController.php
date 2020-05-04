@@ -19,7 +19,6 @@ class CouponsController extends Controller
             return Redirect('admin')->send();
         }
     }
-
     public function add_coupon(){
         $this->AuthLogin();
         return view('admin.add_coupon');
@@ -69,7 +68,6 @@ class CouponsController extends Controller
         Session::put('message','Cập nhật khuyến mãi thành công');
         return redirect('all-coupon');
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -95,9 +93,6 @@ class CouponsController extends Controller
         ]);
         return redirect()->route('dathang')->withErrors('hihi');*/
     }
-
-   
-
     /**
      * Remove the specified resource from storage.
      *

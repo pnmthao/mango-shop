@@ -114,8 +114,8 @@ class ProductController extends Controller
         $data = array();
         $data['name'] = $req->product_name;
         $data['name_en'] = $req->product_name_en;
-        $data['id_type'] = $req->product_cate; //Products table
-        $data['id_brand'] = $req->product_brand; //Products table
+        $data['id_type'] = $req->product_cate; 
+        $data['id_brand'] = $req->product_brand; 
         $data['id_unit'] = $req->product_unit;
         $data['description'] = $req->product_description;
         $data['description_en'] = $req->product_description_en;

@@ -34,6 +34,6 @@ return [
     'order_email'=> 'Email',
     'order_phone'=> 'Số điện thoại',
     'order_address'=> 'Địa chỉ giao hàng',
-    'order_delivery'=> 'Delivery',
-    'payment'=> 'Phương thức thanh toán',
+    'order_delivery'=> 'Xác nhận thanh toán COD',
+    'payment'=> 'Thanh toán trực tuyến',
 ];

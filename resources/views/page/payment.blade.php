@@ -6,7 +6,7 @@
 <div class="privacy">
 	<div class="container">
 		<!-- tittle heading -->
-		<h3 class="tittle-w3l">Phương thức thanh toán
+		<h3 class="tittle-w3l">Thanh toán trực tuyến
 			<span class="heading-style">
 				<i></i>
 				<i></i>
@@ -17,15 +17,14 @@
 		<div class="checkout-right">
 			<!--Horizontal Tab-->
 			<div id="parentHorizontalTab">
-				<ul class="resp-tabs-list hor_1">
+				{{-- <ul class="resp-tabs-list hor_1">
 					<li>Cash on delivery (COD)</li>
 					<li>Credit/Debit</li>
 					<li>Net Banking</li>
 					<li>Paypal Account</li>
-				</ul>
+				</ul> --}}
 				<div class="resp-tabs-container hor_1">
-
-					<div>
+					{{-- <div>
 						<div class="vertical_post check_box_agile">
 							<h5>COD</h5>
 							<div class="checkbox">
@@ -38,8 +37,8 @@
 
 							</div>
 						</div>
-					</div>
-					<div>
+					</div> --}}
+					{{-- <div>
 						<form action="#" method="post" class="creditly-card-form agileinfo_form">
 							<div class="creditly-wrapper wthree, w3_agileits_wrapper">
 								<div class="credit-card-wrapper">
@@ -75,9 +74,8 @@
 								</div>
 							</div>
 						</form>
-
-					</div>
-					<div>
+					</div> --}}
+					{{-- <div>
 						<div class="vertical_post">
 							<form action="#" method="post">
 								<h5>Select From Popular Banks</h5>
@@ -171,7 +169,7 @@
 								<input type="submit" value="PAY NOW">
 							</form>
 						</div>
-					</div>
+					</div> --}}
 					<div>
 						<div id="tab4" class="tab-grid" style="display: block;">
 							<div class="row">
@@ -196,13 +194,11 @@
 											<span onclick="this.parentElement.style.display='none'"
 													class="w3-button w3-red w3-large w3-display-topright">&times;</span>
 											<p>{!! $message !!}</p> // thong bao thanh toan fail
-											
-											
 										</div>
 										<?php Session::forget('error');?>
 									@endif
 								</div>
-								<div class="col-md-6 number-paymk">
+								{{-- <div class="col-md-6 number-paymk">
 									<form class="cc-form">
 										<div class="clearfix">
 											<div class="form-group form-group-cc-number">
@@ -231,7 +227,7 @@
 										</div>
 										<input type="submit" class="submit" value="Proceed Payment">
 									</form>
-								</div>
+								</div> --}}
 							</div>
 
 						</div>

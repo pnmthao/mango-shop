@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2020 at 04:13 PM
+-- Generation Time: May 04, 2020 at 06:16 AM
 -- Server version: 10.3.15-MariaDB
 -- PHP Version: 7.3.6
 
@@ -133,11 +133,11 @@ CREATE TABLE `brand` (
 --
 
 INSERT INTO `brand` (`id`, `name`, `name_en`, `description`, `description_en`, `status`, `image`, `created_at`, `updated_at`) VALUES
-(2, 'BigC', 'BigC Super', 'Siêu thị BigC', 'Supermarket BigC', 0, 'bigC95.png', '2020-02-09 04:15:28', '2020-02-09 04:15:28'),
-(3, 'CoopMart', 'Coop Super', 'Siêu thị CoopMart', 'Supermarket Coop', 0, 'coop_mart35.jpg', '2020-02-09 04:15:35', '2020-02-09 04:15:35'),
+(2, 'BigC', 'BigC Super', 'Siêu thị BigC', 'Supermarket BigC', 1, 'bigC95.png', '2020-02-09 04:15:28', '2020-02-09 04:15:28'),
+(3, 'CoopMart', 'Coop Super', 'Siêu thị CoopMart', 'Supermarket Coop', 1, 'coop_mart35.jpg', '2020-02-09 04:15:35', '2020-02-09 04:15:35'),
 (4, 'Mega', 'Mega Super', 'Siêu thị Mega', 'Supermarket Mega', 1, 'mega.jpg', '2020-02-08 14:32:56', '2020-02-08 14:32:56'),
 (5, 'VinMart', 'VinMart Super', 'Siêu thị VinMart', 'Supermarket Vin', 1, 'vinmart65.jpg', '2020-02-09 04:15:44', '2020-02-09 04:15:44'),
-(6, 'VinatexMart', 'Vinatex Super', 'Siêu thị VinatexMart', 'Supermarket Vinatex', 0, 'vinatex.jpg', '2020-02-08 03:41:23', '2020-02-08 03:41:23'),
+(6, 'VinatexMart', 'Vinatex Super', 'Siêu thị VinatexMart', 'Supermarket Vinatex', 1, 'vinatex.jpg', '2020-02-08 03:41:23', '2020-02-08 03:41:23'),
 (7, 'Metro', 'Metro Super', 'Siêu thị Metro', 'Supermarket Metro', 1, 'metro.png', '2020-02-08 03:53:34', '2020-02-08 03:53:34');
 
 -- --------------------------------------------------------

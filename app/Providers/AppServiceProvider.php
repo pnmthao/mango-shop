@@ -31,13 +31,12 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment() == 'production') {
             URL::forceScheme('https');
         }
-        // URL::forceScheme('https'); //Production
         view()->composer('../header', function ($view) {
-            $loai_sp = ProductType::all();
+            $loai_sp = ProductType::where('status',1)->get();
             $view->with('loai_sp', $loai_sp);
         });
         view()->composer('../header', function ($view) {
-            $nha_cung_cap_sp = Brand::all();
+            $nha_cung_cap_sp = Brand::where('status',1)->get();
             $view->with('nha_cung_cap_sp', $nha_cung_cap_sp);
         });
         view()->composer(['../header', 'page.checkout'], function ($view) {

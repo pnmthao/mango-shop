@@ -48,8 +48,6 @@ class AdminController extends Controller
             }
             $arrrevenue_statistics_month[] = $total;
         }
-        //dd($revenue_statistics_month);
-        //dd($list_day);
         if ($admin_id) return view('admin.dashboard', compact('list_day','arrrevenue_statistics_month','product_count', 'customer_count', 'bill_count', 'comment_count'));
         return view('admin_login');
     }
@@ -68,17 +66,13 @@ class AdminController extends Controller
                 'admin_password.max' => 'Mật khẩu ít nhất 20 ký tự'
             ]
         );
-
     $admin_email = $req->admin_email;
     $admin_password = md5($req->admin_password);
-
     $result = DB::table('admin')->where('admin_email', $admin_email)->where('admin_password', $admin_password)->first();
-    
     if ($result) {
         Session::put('admin_name', $result->admin_name);
         Session::put('admin_image', $result->admin_image);
         Session::put('admin_id', $result->admin_id);
-
         return Redirect('dashboard');
     } 
     else {
@@ -86,7 +80,6 @@ class AdminController extends Controller
             return view('admin_login');
         }
     }
-
     public function logout()
     {
         $this->AuthLogin();
