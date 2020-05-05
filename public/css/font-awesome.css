@@ -664,6 +664,7 @@
 }
 .fa-hand-o-right:before {
     content: "\f0a4";
+    padding: 5px;
 }
 .fa-hand-o-left:before {
     content: "\f0a5";

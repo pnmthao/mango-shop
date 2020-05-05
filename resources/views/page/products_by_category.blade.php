@@ -129,7 +129,7 @@
             </div>
             <!-- //reviews -->
             <!-- cuisine -->
-            <div class="left-side">
+            {{-- <div class="left-side">
                 <h3 class="agileits-sear-head">@lang('pro_by_cate.cuisine')</h3>
                 <ul>
                     <li>
@@ -173,10 +173,10 @@
                         <span class="span"> Spanish </span>
                     </li>
                 </ul>
-            </div>
+            </div> --}}
             <!-- //cuisine -->
             <!-- deals -->
-            <div class="deal-leftmk left-side">
+            {{-- <div class="deal-leftmk left-side">
                 <h3 class="agileits-sear-head">@lang('pro_by_cate.deals')</h3>
                 <div class="special-sec1">
                     <div class="col-xs-4 img-deals">
@@ -188,7 +188,7 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
-            </div>
+            </div> --}}
             <!-- //deals -->
         </div>
         <!-- //product left -->

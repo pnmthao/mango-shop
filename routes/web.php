@@ -347,3 +347,5 @@ Route::get('paypal', 'PaymentController@payWithpaypal');
 
 // route for check status of the payment
 Route::get('status', 'PaymentController@getPaymentStatus');
+
+Route::post('prepay', 'PaymentController@postPrepay');

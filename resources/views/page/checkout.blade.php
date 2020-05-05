@@ -81,12 +81,15 @@
 								</div>
 							</div>
 							<button type="submit" class="submit check_out">@lang('checkout.order_delivery')</button> 
+							<div>
+								<button  type="submit" formaction="{{url('prepay')}}" class="submit check_out">@lang('checkout.payment')<span class="fa fa-hand-o-right" aria-hidden="true"></span></button> 
+							</div>
 						</div>
 					</div>
 				</form>
-				<div class="checkout-right-basket">
+				{{-- <div class="checkout-right-basket">
 					<a href="payment">@lang('checkout.payment')<span class="fa fa-hand-o-right" aria-hidden="true"></span></a>
-				</div>
+				</div> --}}
 			</div>
 			<div class="clearfix"> </div>
 		</div>
