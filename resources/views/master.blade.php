@@ -76,7 +76,6 @@
 
 	<!-- cart-js -->
 	<script src="{{asset('js/minicart.js')}}"></script>
-	@isset($coupons)
 	<script>
 		// paypalm.minicartk.reset()
 		let hrefCheckout = '@if(Session::get('customer_id')) {{"window.location.href='dat-hang'"}} @else {{"window.location.href='dang-nhap'"}} @endif';
@@ -176,6 +175,7 @@
 			}
 		}
 		function CheckCoupon(e, total){
+			`@isset($coupons)`
 			let coupons = `{{json_encode($coupons)}}`
 			coupons = coupons.replace(/\&quot\;/g, '"')
 			coupons = JSON.parse(coupons)
@@ -216,6 +216,7 @@
 			if (!value){
 				document.getElementById('coupon-stt').innerText = ""
 			}
+			`@endisset`
 		}
 		function checkout(){
 			paypalm.minicartk.reset()
@@ -238,7 +239,6 @@
 		});
 		renderTable()
 	</script>
-	@endisset
 	<!-- //cart-js -->
 
 	<!-- price range (top products) -->
