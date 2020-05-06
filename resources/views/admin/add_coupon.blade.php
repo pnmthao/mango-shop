@@ -36,6 +36,14 @@
                             <label for="coupon_percent_of">Phần trăm giảm</label>
                             <input type="text" class="form-control" name="coupon_percent_of" id="coupon_percent_of" placeholder="Tên khuyến mãi">
                         </div>
+                        <div class="form-group">
+                            <label for="coupon_percent_of">Ngày áp dụng</label>
+                            <input type="date" class="form-control" name="apply_at" id="apply_at" placeholder="Tên khuyến mãi">
+                        </div>
+                        <div class="form-group">
+                            <label for="coupon_percent_of">Ngày kết thúc</label>
+                            <input type="date" class="form-control" name="end_at" id="end_at" placeholder="Tên khuyến mãi">
+                        </div>
                         <button type="submit" class="btn btn-info" name="add_coupon">Thêm khuyến mãi</button>
                     </form>
                 </div>

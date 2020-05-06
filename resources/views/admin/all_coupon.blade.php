@@ -61,6 +61,14 @@
                             <label for="coupon_percent_of">Phần trăm giảm</label>
                             <input type="text" class="form-control" name="coupon_percent_of" id="coupon_percent_of" placeholder="Tên nhà cung cấp">
                         </div>
+                        <div class="form-group">
+                            <label for="coupon_percent_of">Ngày áp dụng</label>
+                            <input type="date" class="form-control" name="apply_at" id="apply_at" placeholder="Tên khuyến mãi">
+                        </div>
+                        <div class="form-group">
+                            <label for="coupon_percent_of">Ngày kết thúc</label>
+                            <input type="date" class="form-control" name="end_at" id="end_at" placeholder="Tên khuyến mãi">
+                        </div>
                         <button type="submit" class="btn btn-info" name="add_coupon">Thêm khuyến mãi</button>
                 </div>
           </form>
@@ -88,6 +96,8 @@
               <th>Loại mã</th>
               <th>Giá tiền giảm</th>
               <th>Giá tiền giảm theo phần trăm</th>
+              <th>Ngày áp dụng</th>
+              <th>Ngày kết thúc</th>
               <th width="80px"></th>
             </tr>
           </thead>
@@ -99,6 +109,8 @@
               <td>{{$coupon->type}}</td>
               <td>{{$coupon->value}}</td>
               <td>{{$coupon->percent_of}}</td>
+              <td>{{$coupon->apply_at}}</td>
+              <td>{{$coupon->end_at}}</td>
               <td>
                 <a href="{{route('edit-coupon', $coupon->id)}}" class="active styling-edit" ui-toggle-class=""><img class="active-icon" src="backend/images/edit.png"></a>
                 <a onclick="return confirm('Bạn có chắc sẽ xóa?')" href="{{route('delete-coupon', $coupon->id)}}" class="active styling-delete" ui-toggle-class=""><img class="active-icon" src="backend/images/delete.png"></a>

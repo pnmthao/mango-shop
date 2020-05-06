@@ -153,16 +153,67 @@
 				document.forms["form-checkout"]["items"].value = JSON.stringify(items_array)
 				document.forms["form-checkout"]["total"].value = total
 			}
+			raws += `<tr class="rem-coupon">
+						<td class="invert" colspan="4">@if(Session::get('locale') == 'en') Code Coupon @else Nhập mã Coupon @endif</td>
+						<td class="invert" colspan="2">
+							<input id="coupon" name="coupon" value="" placeholder="Code" onkeyup="CheckCoupon(event, ${total})">
+							<div id="coupon-stt" style="color: red; text-align: left;"></div>
+						</td>
+						<td class="invert" id="coupon-val" style="font-weight: bold">${number_format(0)}</td>
+						<td class="invert"><i class="fa fa-check icon-check"></i></td>
+					</tr>`
 			raws += `<tr class="rem-total">
 						<td class="invert" colspan="4">@if(Session::get('locale') == 'en') Total @else Tổng @endif</td>
 						<td class="invert total total-discount">${number_format(totalDiscount)}</td>
 						<td class="invert total total-amount">${number_format(totalAmount)}</td>
-						<td class="invert total item-total" style="font-weight: bold">${number_format(total)}</td>
+						<td class="invert total item-total" id="total" style="font-weight: bold">${number_format(total)}</td>
 						<td class="invert"><i class="fa fa-check icon-check"></i></td>
 					</tr>`
 			if (document.getElementById("body-checkout") && document.getElementById("product-qty")){
 				document.getElementById("body-checkout").innerHTML = raws
 				document.getElementById("product-qty").innerHTML = items.length + " @if(Session::get('locale') == 'en') products @else sản phẩm @endif"
+			}
+		}
+		function CheckCoupon(e, total){
+			let coupons = `{{json_encode($coupons)}}`
+			coupons = coupons.replace(/\&quot\;/g, '"')
+			coupons = JSON.parse(coupons)
+			let value = e.target.value
+			value = value.toUpperCase()
+			let valid = false, expried = true, coupon_value
+			for (let i in coupons){
+				coupon = coupons[i]
+				if (coupon["code"] === value){
+					valid = true
+					let current = new Date()
+					current = current.setHours(0,0,0,0)
+					let started = new Date(coupon["apply_at"]).setHours(0,0,0,0)
+					let ended = new Date(coupon["end_at"]).setHours(0,0,0,0)
+					expried = !(started <= current && current <= ended)
+					coupon_value = coupon["value"]
+				}
+			}
+			if (!valid){
+				document.getElementById('coupon-stt').innerText = "* Not existed"
+				document.getElementById('coupon-val').innerText = `${number_format(0)}`
+				document.getElementById('total').innerText = `${number_format(total)}`
+				document.forms["form-checkout"]["total"].value = total
+			} else {
+				if (!expried) {
+					document.getElementById('coupon-stt').innerText = ""
+					document.getElementById('coupon-val').innerText = `${number_format(-coupon_value)}`
+					document.getElementById('total').innerText = `${number_format(total - coupon_value)}`
+					document.forms["form-checkout"]["total"].value = total - coupon_value
+				} else {
+					document.getElementById('coupon-stt').innerText = "* Expired"
+					document.getElementById('coupon-val').innerText = `${number_format(0)}`
+					document.getElementById('total').innerText = `${number_format(total)}`
+					document.forms["form-checkout"]["total"].value = total
+				}
+				
+			}
+			if (!value){
+				document.getElementById('coupon-stt').innerText = ""
 			}
 		}
 		function checkout(){

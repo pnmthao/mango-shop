@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2020 at 06:16 AM
+-- Generation Time: May 06, 2020 at 04:53 AM
 -- Server version: 10.3.15-MariaDB
 -- PHP Version: 7.3.6
 
@@ -177,18 +177,19 @@ CREATE TABLE `coupons` (
   `code` varchar(50) NOT NULL,
   `type` varchar(50) NOT NULL,
   `value` int(11) DEFAULT NULL,
-  `percent_of` int(11) DEFAULT NULL
+  `percent_of` int(11) DEFAULT NULL,
+  `apply_at` date NOT NULL,
+  `end_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `coupons`
 --
 
-INSERT INTO `coupons` (`id`, `code`, `type`, `value`, `percent_of`) VALUES
-(1, 'ABC', 'fixed', 10000, NULL),
-(2, 'PNMTHAO', 'fixed', NULL, 50),
-(3, 'THAO123', 'fixed', 20000, NULL),
-(4, 'MINHTHAO', 'percent', NULL, 20);
+INSERT INTO `coupons` (`id`, `code`, `type`, `value`, `percent_of`, `apply_at`, `end_at`) VALUES
+(5, 'MT50', 'fixed', 50000, NULL, '2020-05-10', '2020-05-15'),
+(6, 'CTTY50', 'fixed', 50000, NULL, '2020-05-06', '2020-05-06'),
+(7, 'MTYD200', 'fixed', 200000, NULL, '2020-05-06', '2020-05-06');
 
 -- --------------------------------------------------------
 
@@ -596,7 +597,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `coupons`
 --
 ALTER TABLE `coupons`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `customers`

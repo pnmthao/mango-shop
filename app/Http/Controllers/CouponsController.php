@@ -52,7 +52,9 @@ class CouponsController extends Controller
         $data['code'] = $req->coupon_code;
         $data['type'] = $req->coupon_type;
         $data['value'] = $req->coupon_value;
-        $data['percent_of'] = $req->coupon_percent_of;      
+        $data['percent_of'] = $req->coupon_percent_of;
+        $data['apply_at'] = $req->apply_at;
+        $data['end_at'] = $req->end_at;      
         DB::table('coupons')->insert($data);
         Session::put('message','Thêm khuyến mãi thành công');
         return redirect()->back();
@@ -63,7 +65,9 @@ class CouponsController extends Controller
         $data['code'] = $req->coupon_code;
         $data['type'] = $req->coupon_type;
         $data['value'] = $req->coupon_value;
-        $data['percent_of'] = $req->coupon_percent_of;  
+        $data['percent_of'] = $req->coupon_percent_of;
+        $data['apply_at'] = $req->apply_at;
+        $data['end_at'] = $req->end_at;
         DB::table('coupons')->where('id',$coupon_id)->update($data);
         Session::put('message','Cập nhật khuyến mãi thành công');
         return redirect('all-coupon');

@@ -12,6 +12,8 @@ use App\Bill;
 use App\BillDetail;
 use App\User;
 use App\Brand;
+use App\Coupon;
+
 use DB;
 use Session;
 use Hash;
@@ -118,7 +120,8 @@ class PageController extends Controller
             //dd($cart);
             return view('page.checkout', ['product_cart' => $cart->items, 'totalPrice' => $cart->totalPrice, 'totalQty' => $cart->totalQty]);
         } else {
-            return view('page.checkout');
+            $coupons = Coupon::All();
+            return view('page.checkout')->with('coupons', $coupons);;
         }
     }
     public function postCheckout(Request $req)
