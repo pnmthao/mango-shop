@@ -76,6 +76,7 @@
 
 	<!-- cart-js -->
 	<script src="{{asset('js/minicart.js')}}"></script>
+	@isset($coupons)
 	<script>
 		// paypalm.minicartk.reset()
 		let hrefCheckout = '@if(Session::get('customer_id')) {{"window.location.href='dat-hang'"}} @else {{"window.location.href='dang-nhap'"}} @endif';
@@ -237,6 +238,7 @@
 		});
 		renderTable()
 	</script>
+	@endisset
 	<!-- //cart-js -->
 
 	<!-- price range (top products) -->
