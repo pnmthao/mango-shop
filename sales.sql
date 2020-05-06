@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2020 at 05:03 AM
+-- Generation Time: May 06, 2020 at 05:31 AM
 -- Server version: 10.3.15-MariaDB
 -- PHP Version: 7.3.6
 
@@ -73,7 +73,8 @@ INSERT INTO `bills` (`id`, `id_customer`, `id_status`, `date_order`, `total`, `p
 (61, 29, 1, '2020-05-03', 100000, 'COD', NULL, '2020-05-03 14:00:20', '2020-05-03 14:00:20'),
 (62, 29, 1, '2020-05-03', 2857000, 'COD', NULL, '2020-05-03 14:00:34', '2020-05-03 14:00:34'),
 (63, 31, 1, '2020-05-03', 1060000, 'COD', NULL, '2020-05-03 14:01:34', '2020-05-03 14:01:34'),
-(64, 32, 1, '2020-05-03', 265000, 'COD', NULL, '2020-05-03 14:04:47', '2020-05-03 14:04:47');
+(64, 32, 1, '2020-05-03', 265000, 'COD', NULL, '2020-05-03 14:04:47', '2020-05-03 14:04:47'),
+(65, 29, 1, '2020-05-06', 1150000, 'COD', NULL, '2020-05-06 03:31:22', '2020-05-06 03:31:22');
 
 -- --------------------------------------------------------
 
@@ -108,7 +109,8 @@ INSERT INTO `bill_detail` (`id`, `id_bill`, `id_product`, `id_unit`, `quantity`,
 (84, 63, 116, 1, 1, 9500000, '2020-05-03 14:01:34', '2020-05-03 14:01:34'),
 (85, 64, 111, 1, 1, 45000, '2020-05-03 14:04:47', '2020-05-03 14:04:47'),
 (86, 64, 114, 1, 1, 120000, '2020-05-03 14:04:47', '2020-05-03 14:04:47'),
-(87, 64, 129, 2, 1, 100000, '2020-05-03 14:04:47', '2020-05-03 14:04:47');
+(87, 64, 129, 2, 1, 100000, '2020-05-03 14:04:47', '2020-05-03 14:04:47'),
+(88, 65, 108, 1, 3, 500000, '2020-05-06 03:31:22', '2020-05-06 03:31:22');
 
 -- --------------------------------------------------------
 
@@ -573,13 +575,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `bills`
 --
 ALTER TABLE `bills`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `bill_detail`
 --
 ALTER TABLE `bill_detail`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `brand`

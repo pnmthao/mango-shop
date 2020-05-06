@@ -179,12 +179,12 @@
 			let coupons = `{{json_encode($coupons)}}`
 			coupons = coupons.replace(/\&quot\;/g, '"')
 			coupons = JSON.parse(coupons)
-			let value = e.target.value
-			value = value.toUpperCase()
+			let coupon_code = e.target.value
+			coupon_code = coupon_code.toUpperCase()
 			let valid = false, expried = true, coupon_value
 			for (let i in coupons){
 				coupon = coupons[i]
-				if (coupon["code"] === value){
+				if (coupon["code"] === coupon_code){
 					valid = true
 					let current = new Date()
 					current = current.setHours(0,0,0,0)
@@ -192,6 +192,7 @@
 					let ended = new Date(coupon["end_at"]).setHours(0,0,0,0)
 					expried = !(started <= current && current <= ended)
 					coupon_value = coupon["value"]
+					break
 				}
 			}
 			if (!valid){
@@ -199,21 +200,24 @@
 				document.getElementById('coupon-val').innerText = `${number_format(0)}`
 				document.getElementById('total').innerText = `${number_format(total)}`
 				document.forms["form-checkout"]["total"].value = total
+				document.forms["form-checkout"]["coupon"].value = ""
 			} else {
 				if (!expried) {
 					document.getElementById('coupon-stt').innerText = ""
 					document.getElementById('coupon-val').innerText = `${number_format(-coupon_value)}`
 					document.getElementById('total').innerText = `${number_format(total - coupon_value)}`
 					document.forms["form-checkout"]["total"].value = total - coupon_value
+					document.forms["form-checkout"]["coupon"].value = coupon_code
 				} else {
 					document.getElementById('coupon-stt').innerText = "* Expired"
 					document.getElementById('coupon-val').innerText = `${number_format(0)}`
 					document.getElementById('total').innerText = `${number_format(total)}`
 					document.forms["form-checkout"]["total"].value = total
+					document.forms["form-checkout"]["coupon"].value = ""
 				}
 				
 			}
-			if (!value){
+			if (!coupon_code){
 				document.getElementById('coupon-stt').innerText = ""
 			}
 			`@endisset`
