@@ -58,15 +58,15 @@
 <div class="clearfix"> </div>
 </div>	
 <div class="row">
-			<div class="col-lg-12">
-				<div class="panel panel-default">
-					<div class="panel-heading">Biểu đồ doanh thu</div>
-					<div class="panel-body">
-							<canvas id="line-chart" height="100" width="600"></canvas>       
-						</div>
-					</div>
-				</div>
-			</div>
+	<div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Biểu đồ doanh thu</div>
+            <div class="panel-body">
+                <canvas id="line-chart" height="230" width="600"></canvas>
+            </div>
+        </div>
+	</div>
+</div>
 		</div><!--/.row-->
 <!-- //market-->
 <div class="row">
@@ -401,7 +401,7 @@
                         data: arrrevenue_statistics_month,
                         backgroundColor: 'rgba(0, 128, 128, 0.3)',
                         borderColor: 'rgba(0, 128, 128, 0.7)',
-                        borderWidth: 1
+                        borderWidth: 4
                     }
                 ]
             },
@@ -409,7 +409,14 @@
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero:true
+                                beginAtZero: true,
+                                //stepSize: 500000,
+                                userCallback: function(value, index, values) {
+                                value = value.toString();
+                                value = value.split(/(?=(?:...)*$)/);
+                                value = value.join('.');
+                                return value;
+                            }
                         }
                     }]
                 },
@@ -417,10 +424,3 @@
         });
     };
 </script>
-
-<!--$revenue_statistics_month = Bill::where('id_status',1)
-    ->whereMonth('created_at',date('m'))
-    ->select(\DB::raw('sum(total) as totalMoney'), \DB::raw('DATE(created_at) day'))
-    ->groupBy('day')
-    ->get()->toArray();
-dd($revenue_statistics_month);-->

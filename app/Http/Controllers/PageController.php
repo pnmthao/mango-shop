@@ -130,7 +130,7 @@ class PageController extends Controller
         $bill->id_customer = Session::get('customer_id');
         $bill->date_order = date('Y-m-d');
         $bill->total = $req->total;
-        $bill->id_coupon = $req->coupon_id;
+        $bill->id_coupon = $req->id_coupon;
         // $bill->payment = $req->payment_method;
         // $bill->note = $req->notes;
         $bill->save();

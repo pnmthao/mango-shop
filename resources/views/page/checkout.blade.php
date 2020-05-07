@@ -59,7 +59,7 @@
 				<form name="form-checkout" action="{{route('dathang')}}" method="post" class="creditly-card-form agileinfo_form" onsubmit="checkout()">
 					<input type="hidden" name="_token" value="{{csrf_token()}}">
 					<input type="hidden" name="items" value="">
-					<input type="hidden" name="coupon" value="">
+					<input type="hidden" name="id_coupon" value="">
 					<input type="hidden" name="total" value="">
 					<div class="creditly-wrapper wthree, w3_agileits_wrapper">
 						<div class="information-wrapper">

@@ -181,7 +181,7 @@
 			coupons = JSON.parse(coupons)
 			let coupon_code = e.target.value
 			coupon_code = coupon_code.toUpperCase()
-			let valid = false, expried = true, coupon_value
+			let valid = false, expried = true, coupon_value, coupon_id
 			for (let i in coupons){
 				coupon = coupons[i]
 				if (coupon["code"] === coupon_code){
@@ -192,6 +192,7 @@
 					let ended = new Date(coupon["end_at"]).setHours(0,0,0,0)
 					expried = !(started <= current && current <= ended)
 					coupon_value = coupon["value"]
+					coupon_id = coupon["id"]
 					break
 				}
 			}
@@ -200,20 +201,20 @@
 				document.getElementById('coupon-val').innerText = `${number_format(0)}`
 				document.getElementById('total').innerText = `${number_format(total)}`
 				document.forms["form-checkout"]["total"].value = total
-				document.forms["form-checkout"]["coupon"].value = ""
+				document.forms["form-checkout"]["id_coupon"].value = ""
 			} else {
 				if (!expried) {
 					document.getElementById('coupon-stt').innerText = ""
 					document.getElementById('coupon-val').innerText = `${number_format(-coupon_value)}`
 					document.getElementById('total').innerText = `${number_format(total - coupon_value)}`
 					document.forms["form-checkout"]["total"].value = total - coupon_value
-					document.forms["form-checkout"]["coupon"].value = coupon_code
+					document.forms["form-checkout"]["id_coupon"].value = coupon_id
 				} else {
 					document.getElementById('coupon-stt').innerText = "* Expired"
 					document.getElementById('coupon-val').innerText = `${number_format(0)}`
 					document.getElementById('total').innerText = `${number_format(total)}`
 					document.forms["form-checkout"]["total"].value = total
-					document.forms["form-checkout"]["coupon"].value = ""
+					document.forms["form-checkout"]["id_coupon"].value = ""
 				}
 				
 			}
@@ -234,8 +235,8 @@
 		function qtyChange(index, value){
 			let items = paypalm.minicartk.cart.items()
 			let item  = items[index]._data
-			if (item.quantity >= item.available_qty && value == 1) {
-			alert('Số lượng hàng vượt mức kho !');
+			if (item.quantity > item.available_qty && value == 1) {
+				alert('Số lượng hàng vượt mức kho !');
 			}
 			else {
 				let newData = Object.assign({}, item, {	"quantity": value })
