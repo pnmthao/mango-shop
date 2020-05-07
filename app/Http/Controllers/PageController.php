@@ -130,7 +130,7 @@ class PageController extends Controller
         $bill->id_customer = Session::get('customer_id');
         $bill->date_order = date('Y-m-d');
         $bill->total = $req->total;
-        // $bill->coupon = $req->coupon;
+        $bill->id_coupon = $req->coupon_id;
         // $bill->payment = $req->payment_method;
         // $bill->note = $req->notes;
         $bill->save();
@@ -233,5 +233,31 @@ class PageController extends Controller
             ->get();
         $new_product = Product::where([['new', 1],['status', '=', 1],])->paginate(4);
         return view('page.search', compact('product', 'new_product'));
+    }
+    // đơn hàng
+    public function getDonHang()
+    {
+        $id_customer = Session::get('customer_id');
+        $all_order = DB::table('bills')
+            ->join('customers','bills.id_customer','=','customers.id')
+            ->join('status','bills.id_status','=','status.id')
+            ->join('coupons','bills.id_coupon','=','coupons.id')
+            ->select('bills.*', 'customers.name as customer_name','status.name as status_name','coupons.code as coupon_code')
+            ->where('id_customer',$id_customer)
+            ->orderby('bills.id','desc')->get();
+        return view('page.all_order', compact('all_order'));
+    }
+    public function getChiTietDonHang($order_detail_id){
+        $all_order_detail = DB::table('bill_detail')
+            ->where('id_bill', $order_detail_id)
+            ->join('bills','bill_detail.id_bill','=', 'bills.id')
+            ->join('customers','bills.id_customer','=','customers.id')
+            ->join('products','bill_detail.id_product','=','products.id')
+            ->join('status','bills.id_status','=','status.id')
+            ->join('coupons','bills.id_coupon','=','coupons.id')
+            ->join('unit','unit.unit_id','=','bill_detail.id_unit')
+            ->select('bill_detail.*', 'customers.name as customer_name', 'products.name as product_name','bills.*', 'status.name as status_name','unit.unit_name as unit_name', 'coupons.code as coupon_code' )
+            ->get();
+        return view('page.all_order_detail', compact('all_order_detail'));
     }
 }

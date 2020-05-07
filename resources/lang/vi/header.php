@@ -27,5 +27,6 @@ return [
     'brand' => 'Nhà cung cấp',
     'faqs' => 'Tư vấn',
     'contact' => 'Liên hệ',
-    'logo' => 'Cửa hàng trực tuyến ưu đãi toàn cầu'
+    'logo' => 'Cửa hàng trực tuyến ưu đãi toàn cầu',
+    'bill'=>'Đơn Hàng'
 ];

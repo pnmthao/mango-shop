@@ -225,13 +225,23 @@
 		function checkout(){
 			paypalm.minicartk.reset()
 		}
+		// function qtyChange(index, value){
+		// 	let items = paypalm.minicartk.cart.items()
+		// 	let item  = items[index]._data
+		// 	let newData = Object.assign({}, item, {	"quantity": value })
+		// 	paypalm.minicartk.cart.add(newData)
+		// }
 		function qtyChange(index, value){
 			let items = paypalm.minicartk.cart.items()
 			let item  = items[index]._data
-			let newData = Object.assign({}, item, {	"quantity": value })
-			paypalm.minicartk.cart.add(newData)
+			if (item.quantity >= item.available_qty && value == 1) {
+			alert('Số lượng hàng vượt mức kho !');
+			}
+			else {
+				let newData = Object.assign({}, item, {	"quantity": value })
+						paypalm.minicartk.cart.add(newData)
+			}
 		}
-
 		function removeItem(index){
 			paypalm.minicartk.cart.remove(index)
 		}

@@ -50,6 +50,7 @@
                 <th>Trị giá</th>
                 <th>Ngày đặt hàng</th>
                 <th>Hình thức thanh toán</th>
+                <th>Khuyến mãi</th>
                 <th>Trạng thái</th>
                 <th style="width:30px;">Xem</th>
               </tr>
@@ -63,6 +64,7 @@
                 <td>{{$order->total}}</td>
                 <td>{{date('d-m-Y', strtotime($order->date_order))}}</td>
                 <td>{{$order->payment}}</td>
+                <td>{{$order->coupon_code}}</td>
                 <td>{{$order->status_name}}</td>
                 <td>
                   <a href="{{route('all-order-detail', $order->id)}}" class="active styling-edit" ui-toggle-class=""><img class="active-icon" src="backend/images/edit.png"></a>

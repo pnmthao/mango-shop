@@ -349,3 +349,25 @@ Route::get('paypal', 'PaymentController@payWithpaypal');
 Route::get('status', 'PaymentController@getPaymentStatus');
 
 Route::post('prepay', 'PaymentController@postPrepay');
+
+// đơn hàng của khách hàng
+Route::get('don-hang',[
+    'as'=>'donhang',
+    'uses'=>'PageController@getDonhang'
+]);
+Route::get('chi-tiet-don-hang/{order_detail_id}',[
+    'as'=>'chitietdonhang',
+    'uses'=>'PageController@getChiTietDonHang'
+]);
+
+Route::post('edit-Bill-Detail/{order_detail_id}','OrderController@postEditBillDetail');
+
+// manintenance
+Route::get('site/shutdown',[
+    'as' => 'maintenance-down',
+    'uses'=>'AdminController@maintenance_down'
+]);
+Route::get('site/live',[
+    'as' => 'maintenance-up',
+    'uses'=>'AdminController@maintenance_up'
+]);

@@ -200,6 +200,9 @@
 							<li class="">
 								<a class="nav-stylehead" href="{{route('lienhe')}}">@lang('header.contact')</a>
 							</li>
+							<li class="">
+								<a class="nav-stylehead" href="{{route('donhang')}}">@lang('header.bill')</a>
+							</li>
 						</ul>
 					</div>
 				</div>

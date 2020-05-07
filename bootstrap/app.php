@@ -52,8 +52,8 @@ $app->singleton(
 |
 */
 
-$envFile = $_SERVER['HTTP_HOST'] == 'localhost' ? '.env' : '.env-production';
-// $envFile = '.env';
+// $envFile = $_SERVER['HTTP_HOST'] == 'localhost' ? '.env' : '.env-production';
+$envFile = '.env';
 $app->loadEnvironmentFrom($envFile);
 
 return $app;

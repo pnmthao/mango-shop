@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2020 at 05:31 AM
+-- Generation Time: May 07, 2020 at 05:44 AM
 -- Server version: 10.3.15-MariaDB
 -- PHP Version: 7.3.6
 
@@ -30,11 +30,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `admin_id` int(10) UNSIGNED NOT NULL,
-  `admin_image` varchar(200) DEFAULT NULL,
-  `admin_email` varchar(50) NOT NULL,
-  `admin_password` varchar(50) NOT NULL,
-  `admin_name` varchar(50) NOT NULL,
-  `admin_phone` varchar(100) NOT NULL,
+  `admin_image` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `admin_email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `admin_password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `admin_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `admin_phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -54,8 +54,9 @@ INSERT INTO `admin` (`admin_id`, `admin_image`, `admin_email`, `admin_password`,
 
 CREATE TABLE `bills` (
   `id` int(10) UNSIGNED NOT NULL,
-  `id_customer` int(11) DEFAULT NULL,
+  `id_customer` int(11) NOT NULL DEFAULT 0,
   `id_status` int(2) DEFAULT 1,
+  `id_coupon` int(11) DEFAULT 0,
   `date_order` date DEFAULT NULL,
   `total` float DEFAULT NULL COMMENT 'tổng tiền',
   `payment` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT 'COD' COMMENT 'hình thức thanh toán',
@@ -68,13 +69,18 @@ CREATE TABLE `bills` (
 -- Dumping data for table `bills`
 --
 
-INSERT INTO `bills` (`id`, `id_customer`, `id_status`, `date_order`, `total`, `payment`, `note`, `created_at`, `updated_at`) VALUES
-(60, 29, 1, '2020-05-03', 255000, 'COD', NULL, '2020-05-03 13:59:37', '2020-05-03 13:59:37'),
-(61, 29, 1, '2020-05-03', 100000, 'COD', NULL, '2020-05-03 14:00:20', '2020-05-03 14:00:20'),
-(62, 29, 1, '2020-05-03', 2857000, 'COD', NULL, '2020-05-03 14:00:34', '2020-05-03 14:00:34'),
-(63, 31, 1, '2020-05-03', 1060000, 'COD', NULL, '2020-05-03 14:01:34', '2020-05-03 14:01:34'),
-(64, 32, 1, '2020-05-03', 265000, 'COD', NULL, '2020-05-03 14:04:47', '2020-05-03 14:04:47'),
-(65, 29, 1, '2020-05-06', 1150000, 'COD', NULL, '2020-05-06 03:31:22', '2020-05-06 03:31:22');
+INSERT INTO `bills` (`id`, `id_customer`, `id_status`, `id_coupon`, `date_order`, `total`, `payment`, `note`, `created_at`, `updated_at`) VALUES
+(60, 29, 1, 0, '2020-05-03', 255000, 'COD', NULL, '2020-05-03 13:59:37', '2020-05-03 13:59:37'),
+(61, 29, 1, 0, '2020-05-03', 100000, 'COD', NULL, '2020-05-03 14:00:20', '2020-05-03 14:00:20'),
+(62, 29, 3, 0, '2020-05-03', 2857000, 'COD', NULL, '2020-05-06 12:22:33', '2020-05-03 14:00:34'),
+(63, 31, 1, 0, '2020-05-03', 1060000, 'COD', NULL, '2020-05-03 14:01:34', '2020-05-03 14:01:34'),
+(64, 32, 4, 0, '2020-05-03', 265000, 'COD', NULL, '2020-05-07 02:18:47', '2020-05-03 14:04:47'),
+(65, 29, 1, 5, '2020-05-07', 445000, 'COD', NULL, '2020-05-07 02:26:08', '2020-05-07 02:21:44'),
+(66, 29, 1, 0, '2020-05-07', 445000, 'COD', NULL, '2020-05-07 02:26:35', '2020-05-07 02:26:35'),
+(67, 29, 1, 0, '2020-05-07', 895000, 'COD', NULL, '2020-05-07 02:29:06', '2020-05-07 02:29:06'),
+(72, 33, 1, NULL, '2020-05-07', 495000, 'COD', NULL, '2020-05-07 03:01:42', '2020-05-07 03:01:42'),
+(73, 33, 1, NULL, '2020-05-07', 900000, 'COD', NULL, '2020-05-07 03:02:06', '2020-05-07 03:02:06'),
+(74, 33, 1, NULL, '2020-05-07', 560000, 'COD', NULL, '2020-05-07 03:10:18', '2020-05-07 03:10:18');
 
 -- --------------------------------------------------------
 
@@ -110,7 +116,25 @@ INSERT INTO `bill_detail` (`id`, `id_bill`, `id_product`, `id_unit`, `quantity`,
 (85, 64, 111, 1, 1, 45000, '2020-05-03 14:04:47', '2020-05-03 14:04:47'),
 (86, 64, 114, 1, 1, 120000, '2020-05-03 14:04:47', '2020-05-03 14:04:47'),
 (87, 64, 129, 2, 1, 100000, '2020-05-03 14:04:47', '2020-05-03 14:04:47'),
-(88, 65, 108, 1, 3, 500000, '2020-05-06 03:31:22', '2020-05-06 03:31:22');
+(88, 65, 105, 1, 1, 50000, '2020-05-07 02:21:44', '2020-05-07 02:21:44'),
+(89, 65, 108, 1, 1, 500000, '2020-05-07 02:21:44', '2020-05-07 02:21:44'),
+(90, 66, 105, 1, 1, 50000, '2020-05-07 02:26:35', '2020-05-07 02:26:35'),
+(91, 66, 110, 1, 1, 500000, '2020-05-07 02:26:35', '2020-05-07 02:26:35'),
+(92, 67, 105, 1, 1, 50000, '2020-05-07 02:29:06', '2020-05-07 02:29:06'),
+(93, 67, 108, 1, 1, 500000, '2020-05-07 02:29:06', '2020-05-07 02:29:06'),
+(94, 67, 110, 1, 1, 500000, '2020-05-07 02:29:06', '2020-05-07 02:29:06'),
+(95, 68, 105, 1, 1, 50000, '2020-05-07 02:32:48', '2020-05-07 02:32:48'),
+(96, 68, 108, 1, 1, 500000, '2020-05-07 02:32:48', '2020-05-07 02:32:48'),
+(97, 69, 105, 1, 1, 50000, '2020-05-07 02:38:29', '2020-05-07 02:38:29'),
+(98, 69, 108, 1, 1, 500000, '2020-05-07 02:38:29', '2020-05-07 02:38:29'),
+(99, 70, 105, 1, 1, 50000, '2020-05-07 02:39:23', '2020-05-07 02:39:23'),
+(100, 70, 108, 1, 1, 500000, '2020-05-07 02:39:23', '2020-05-07 02:39:23'),
+(101, 71, 108, 1, 1, 500000, '2020-05-07 02:41:31', '2020-05-07 02:41:31'),
+(102, 71, 105, 1, 1, 50000, '2020-05-07 02:41:31', '2020-05-07 02:41:31'),
+(103, 72, 105, 1, 1, 50000, '2020-05-07 03:01:42', '2020-05-07 03:01:42'),
+(104, 72, 110, 1, 1, 500000, '2020-05-07 03:01:42', '2020-05-07 03:01:42'),
+(105, 73, 110, 1, 1, 500000, '2020-05-07 03:02:06', '2020-05-07 03:02:06'),
+(106, 73, 108, 1, 1, 500000, '2020-05-07 03:02:06', '2020-05-07 03:02:06');
 
 -- --------------------------------------------------------
 
@@ -166,7 +190,8 @@ INSERT INTO `comments` (`id`, `id_customer`, `id_product`, `comment`, `created_a
 (1, 29, 105, 'ngon ghê hông', '2020-04-23', '2020-04-23', 0),
 (2, 30, 105, 'Sạch và ngon', '2020-05-02', '2020-05-02', 1),
 (3, 32, 108, 'ngon thật!!!!', '2020-05-03', '2020-05-03', 1),
-(4, 31, 116, 'Hơi đắt nha hihi', '2020-05-03', '2020-05-03', 1);
+(4, 31, 116, 'Hơi đắt nha hihi', '2020-05-03', '2020-05-03', 1),
+(5, 33, 105, 'hi', '2020-05-07', '2020-05-07', 1);
 
 -- --------------------------------------------------------
 
@@ -189,9 +214,8 @@ CREATE TABLE `coupons` (
 --
 
 INSERT INTO `coupons` (`id`, `code`, `type`, `value`, `percent_of`, `apply_at`, `end_at`) VALUES
-(5, 'MT50', 'fixed', 50000, NULL, '2020-05-10', '2020-05-15'),
-(6, 'CTTY50', 'fixed', 50000, NULL, '2020-05-06', '2020-05-06'),
-(7, 'MTYD200', 'fixed', 200000, NULL, '2020-05-06', '2020-05-06');
+(0, 'không có khuyến mãi', 'null', 0, 0, '0000-00-00', '0000-00-00'),
+(5, 'MT50', 'fixed', 50000, NULL, '2020-05-07', '2020-05-15');
 
 -- --------------------------------------------------------
 
@@ -221,7 +245,9 @@ INSERT INTO `customers` (`id`, `name`, `password`, `gender`, `image`, `email`, `
 (29, 'Phan Nguyễn Minh Thảo', 'e10adc3949ba59abbe56e057f20f883e', NULL, 'thao.jpg', 'pnmthaoct@gmail.com', 'Nguyen Van Cu Street, An Hoa Ward, Ninh Kieu District, Can Tho City, Viet Nam', '0949422936', NULL, '2020-05-03 14:07:52', '2020-05-03 14:07:52'),
 (30, 'Huỳnh Thanh Phúc', '2241de9a7b2e0e61532daecab5103b62', NULL, 'thao.jpg', 'danhuynh98@gmail.com', '18b vo thi sau', '0907026987', NULL, '2020-05-03 14:07:20', '2020-04-29 11:05:42'),
 (31, 'Minh Thảo', 'e10adc3949ba59abbe56e057f20f883e', NULL, 'thao.jpg', 'pnmthao98@gmail.com', 'Cần Thơ', '093304485', NULL, '2020-05-03 14:07:24', '2020-05-03 14:01:11'),
-(32, 'Thảo Phan', 'e10adc3949ba59abbe56e057f20f883e', NULL, 'thao.jpg', 'minhthao123@gmail.com', 'Hà Nội', '123456789', NULL, '2020-05-03 14:08:09', '2020-05-03 14:08:09');
+(32, 'Thảo Phan', 'e10adc3949ba59abbe56e057f20f883e', NULL, 'thao.jpg', 'minhthao123@gmail.com', 'Hà Nội', '123456789', NULL, '2020-05-03 14:08:09', '2020-05-03 14:08:09'),
+(33, 'phúc huỳnh', 'e10adc3949ba59abbe56e057f20f883e', NULL, NULL, 'htphuc@gmail.com', 'Can Tho City', '123456789', NULL, '2020-05-07 03:01:03', '2020-05-07 03:01:03'),
+(34, 'dan huynh', 'e10adc3949ba59abbe56e057f20f883e', NULL, NULL, 'htphuc123@gmail.com', 'Can Tho City', '123456789', NULL, '2020-05-07 03:03:59', '2020-05-07 03:03:59');
 
 -- --------------------------------------------------------
 
@@ -376,7 +402,8 @@ INSERT INTO `products` (`id`, `name`, `name_en`, `id_type`, `id_brand`, `id_unit
 (209, 'Hàng Tây', 'Western restaurant', 5, 7, 2, NULL, NULL, 50, 30000, NULL, 'hanh-tay44.jpg', '2020-05-03 04:04:58', '2020-05-03 04:04:58', 1, 1),
 (210, 'Hành Tím', 'Shallots', 5, 7, 2, NULL, NULL, 50, 30000, NULL, 'hanh-tim57.jpg', '2020-05-03 04:16:13', '2020-05-03 04:16:13', 1, 1),
 (211, 'Tỏi', 'Garlic', 5, 7, 2, NULL, NULL, 50, 30000, NULL, 'toi97.jpg', '2020-05-03 04:05:49', '2020-05-03 04:05:49', 1, 1),
-(212, 'abc', NULL, 24, 7, 4, NULL, NULL, 3, 14000, NULL, 'review16.png', '2020-05-03 13:02:18', '2020-05-03 13:02:18', 1, NULL);
+(212, 'abc', NULL, 24, 7, 4, NULL, NULL, 3, 14000, NULL, 'review16.png', '2020-05-03 13:02:18', '2020-05-03 13:02:18', 1, NULL),
+(213, 'abc', 'abc', 24, 7, 4, NULL, NULL, 30, 14000, NULL, '', '2020-05-07 02:57:50', '2020-05-07 02:57:50', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -490,7 +517,8 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `bills`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `bills_ibfk_1` (`id_customer`);
+  ADD KEY `bills_ibfk_1` (`id_customer`),
+  ADD KEY `bills_idcoupon_1` (`id_coupon`);
 
 --
 -- Indexes for table `bill_detail`
@@ -575,13 +603,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `bills`
 --
 ALTER TABLE `bills`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `bill_detail`
 --
 ALTER TABLE `bill_detail`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT for table `brand`
@@ -593,31 +621,41 @@ ALTER TABLE `brand`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `coupons`
 --
 ALTER TABLE `coupons`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=213;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=214;
 
 --
 -- AUTO_INCREMENT for table `type_products`
 --
 ALTER TABLE `type_products`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `bills`
+--
+ALTER TABLE `bills`
+  ADD CONSTRAINT `bills_idcoupon_1` FOREIGN KEY (`id_coupon`) REFERENCES `coupons` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -334,6 +334,18 @@
                             <li><a href="{{route('all-comment')}}">Xem đánh giá sản phẩm</a></li>
                         </ul>
                     </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-user"></i>
+                            <span>Bảo trì</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="{{route('maintenance-down')}}">Bảo trì </a></li>
+                        </ul>
+                        <ul class="sub">
+                            <li><a href="{{route('maintenance-up')}}">Tắt bảo trì </a></li>
+                        </ul>
+                    </li>
                 </ul>            
             </div>
             <!-- sidebar menu end-->

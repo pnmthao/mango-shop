@@ -184,7 +184,7 @@ class PaymentController extends Controller
             \Session::put('success', 'Payment success');
 
             /**change bill status **/
-            Bill::where('id_customer' , $customer_id)->update(['id_status' => 4]);
+            Bill::where('id_customer' , $customer_id)->where('payment','=','prepay')->update(['id_status' => 4]);
             return Redirect::route('payment');
  
         }

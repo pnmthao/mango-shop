@@ -10,6 +10,7 @@ use App\Customer;
 use App\Bill;
 use App\Comment;
 use App\HelpersClass\Date;
+use Illuminate\Support\Facades\Artisan;
 class AdminController extends Controller
 {
     public function AuthLogin()
@@ -112,5 +113,14 @@ class AdminController extends Controller
         DB::table('admin')->insert($data);
         Session::put('message', 'Thêm tài khoản thành công');
         return view('admin_login');
+    }
+
+    public function maintenance_down(){
+        Artisan::call('down');
+        return redirect()->back();
+    }
+    public function maintenance_up(){
+        Artisan::call('up');
+        return redirect()->back();
     }
 }

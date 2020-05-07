@@ -27,5 +27,6 @@ return [
     'brand' => 'Brand',
     'faqs' => 'FAQs',
     'contact' => 'Contact',
-    'logo' => 'Best Store in Gobal'
+    'logo' => 'Best Store in Gobal',
+    'bill' => 'Bill'
 ];
