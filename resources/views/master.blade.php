@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html  lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-	<title>Mango Shop</title>
+	<!-- <title>Mango Shop</title> -->
 	<base href="{{asset('')}}">
 	<!--/tags -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="" />
+	@include('meta::manager', [
+    'title'         => 'Mango Shop',
+    'description'   => 'Cửa hàng trực tuyến ưu đãi toàn cầu',
+    'image'         => 'Url to the image',
+])
 	<script>
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -235,7 +240,7 @@
 		function qtyChange(index, value){
 			let items = paypalm.minicartk.cart.items()
 			let item  = items[index]._data
-			if (item.quantity > item.available_qty && value == 1) {
+			if (item.quantity >= item.available_qty && value == 1) {
 				alert('Số lượng hàng vượt mức kho !');
 			}
 			else {

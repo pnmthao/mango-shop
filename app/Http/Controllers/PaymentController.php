@@ -20,9 +20,11 @@ use PayPal\Api\Transaction;
 use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Rest\ApiContext;
 use App\Cart;
+use App\Product;
 use App\Customer;
 use App\Bill;
 use App\BillDetail;
+use App\Coupon;
 use Redirect;
 use Session;
 use URL;
@@ -43,19 +45,31 @@ class PaymentController extends Controller
     public function payWithpaypal(Request $request)
     {
         $customer_id = Session::get('customer_id');
-       
-        $data = DB::table('bill_detail')->join('bills','bill_detail.id_bill' , '=' , 'bills.id')
+        $check_coupon = DB::table('bills')->where('bills.id_customer' , $customer_id)->where('bills.id_status' , 1)->where('bills.payment','prepay')
+                                        ->value('bills.id_coupon');
+        
+        if($check_coupon == ''){
+            $data = DB::table('bill_detail')->join('bills','bill_detail.id_bill' , '=' , 'bills.id')
                                         ->join('products','bill_detail.id_product' , '=' , 'products.id')
                                         ->where('bills.id_customer' , $customer_id)->where('bills.id_status' , 1)->where('bills.payment','prepay')
                                         ->select('products.name_en',DB::raw('sum(bill_detail.quantity) as quantity'),DB::raw('max(bill_detail.unit_price) as unit_price'),DB::raw('max(products.promotion_price) as promotion_price'))
                                         ->groupBy('products.name_en')
                                         ->get();
-
+           
+        }
+         else{
+            $data = DB::table('bill_detail')->join('bills','bill_detail.id_bill' , '=' , 'bills.id')
+                                            ->join('products','bill_detail.id_product' , '=' , 'products.id')
+                                            ->join('coupons','bills.id_coupon', '=', 'coupons.id')
+                                            ->where('bills.id_customer' , $customer_id)->where('bills.id_status' , 1)->where('bills.payment','prepay')
+                                            ->select('products.name_en','coupons.code','coupons.value',DB::raw('sum(bill_detail.quantity) as quantity'),DB::raw('max(bill_detail.unit_price) as unit_price'),DB::raw('max(products.promotion_price) as promotion_price'))
+                                            ->groupBy('products.name_en','coupons.code','coupons.value')
+                                            ->get();
+        
+         }
         // $total = Bill::where('id_customer' ,'=', $customer_id)->value('total');
 
-        $payer = new Payer();
-        $payer->setPaymentMethod('paypal');
-
+        
         
         $total = 0;
         $i = 0;
@@ -74,8 +88,22 @@ class PaymentController extends Controller
                 $i++;
                 $total +=  $unpaid->quantity*$unpaid->unit_price;
             }
+
+        if(isset($unpaid->value)){
+                $unpaid->value = number_format($unpaid->value/23000,2);
+                $items[$i] = new Item();
+                $items[$i]->setQuantity(1)
+                            ->setName($unpaid->code)
+                            ->setPrice(0-$unpaid->value)
+                            ->setCurrency('USD'); 
+                $total +=  0-$unpaid->value;
+        }
+
+
+
         
-        
+        $payer = new Payer();
+        $payer->setPaymentMethod('paypal');
         
  
         $item_list = new ItemList();
@@ -201,6 +229,7 @@ class PaymentController extends Controller
         $bill->date_order = date('Y-m-d');
         $bill->total = $req->total;
         $bill->payment = 'prepay';
+        $bill->id_coupon = $req->id_coupon;
         // $bill->note = $req->notes;
         $bill->save();
 
@@ -213,6 +242,10 @@ class PaymentController extends Controller
             $bill_detail->quantity = $value['quantity'];
             $bill_detail->unit_price = $value['unit_price'];
             $bill_detail->save();
+            $quantity_instock = Product::where('id','=',$value['item_id'])->value('quantity_left');
+            $quantity_left = bcsub($quantity_instock , $value['quantity']);
+            Product::where('id','=',$value['item_id'])->update(['quantity_left'=>$quantity_left]);
+
         }
 
 

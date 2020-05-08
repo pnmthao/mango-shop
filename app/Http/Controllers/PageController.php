@@ -144,6 +144,9 @@ class PageController extends Controller
             $bill_detail->quantity = $value['quantity'];
             $bill_detail->unit_price = $value['unit_price'];
             $bill_detail->save();
+            $quantity_instock = Product::where('id','=',$value['item_id'])->value('quantity_left');
+            $quantity_left = bcsub($quantity_instock , $value['quantity']);
+            Product::where('id','=',$value['item_id'])->update(['quantity_left'=>$quantity_left]);
         }
         return redirect()->back()->with('thongbao', 'Đặt hàng thành công');
     }

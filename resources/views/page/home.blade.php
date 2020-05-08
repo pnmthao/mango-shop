@@ -296,6 +296,7 @@
                                             <input type="hidden" name="amount" value="{{$spkm->unit_price}}" />
                                             <input type="hidden" name="discount_amount" value="{{$spkm->promotion_price == 0 ? 0 : $spkm->unit_price-$spkm->promotion_price}}" />
                                             <input type="hidden" name="currency_code" value="@if(Session::get('locale') == 'en'){{'USD'}}@else{{'VND'}}@endif" />
+                                            <input type="hidden" name="available_qty" value="{{$spkm->quantity_left}}" />
                                             <input type="hidden" name="return" value=" " />
                                             <input type="hidden" name="cancel_return" value=" " />
                                             <input type="submit" name="submit" value="@lang('checkout.cart_button')" class="button" />
@@ -370,7 +371,7 @@
                                             <input type="hidden" name="amount" value="{{$sp_tc->unit_price}}" />
                                             <input type="hidden" name="discount_amount" value="{{$sp_tc->promotion_price == 0 ? 0 : $sp_tc->unit_price-$sp_tc->promotion_price}}" />
                                             <input type="hidden" name="currency_code" value="@if(Session::get('locale') == 'en'){{'USD'}}@else{{'VND'}}@endif" />
-                                            <input type="hidden" name="available_qty" value="{{$spkm->quantity}}" />
+                                            <input type="hidden" name="available_qty" value="{{$sp_tc->quantity_left}}" />
                                             <input type="hidden" name="return" value=" " />
                                             <input type="hidden" name="cancel_return" value=" " />
                                             <input type="submit" name="submit" value="@lang('checkout.cart_button')" class="button" />
